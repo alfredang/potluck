@@ -1,0 +1,98 @@
+name: Mobile App Build & Deploy
+
+on:
+  push:
+    tags:
+      - 'mobile-v*'
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'Platform to build'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - ios
+          - android
+      submit:
+        description: 'Submit to stores'
+        required: false
+        default: false
+        type: boolean
+
+env:
+  WORKING_DIR: apps/mobile
+
+jobs:
+  build-ios:
+    name: Build iOS
+    runs-on: ubuntu-latest
+    if: github.event.inputs.platform == 'ios' || github.event.inputs.platform == 'all' || github.event_name == 'push'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Setup Expo
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Build iOS
+        working-directory: ${{ env.WORKING_DIR }}
+        run: eas build --platform ios --profile production --non-interactive
+
+      - name: Submit to App Store
+        if: github.event.inputs.submit == 'true' || github.event_name == 'push'
+        working-directory: ${{ env.WORKING_DIR }}
+        run: eas submit --platform ios --latest --non-interactive
+
+  build-android:
+    name: Build Android
+    runs-on: ubuntu-latest
+    if: github.event.inputs.platform == 'android' || github.event.inputs.platform == 'all' || github.event_name == 'push'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Setup Expo
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Build Android
+        working-directory: ${{ env.WORKING_DIR }}
+        run: eas build --platform android --profile production --non-interactive
+
+      - name: Submit to Play Store
+        if: github.event.inputs.submit == 'true' || github.event_name == 'push'
+        working-directory: ${{ env.WORKING_DIR }}
+        run: eas submit --platform android --latest --non-interactive

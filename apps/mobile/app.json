@@ -1,50 +1,34 @@
 {
   "expo": {
-    "name": "HomeChef",
-    "slug": "homechef",
+    "name": "Potluck",
+    "slug": "potluck",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "scheme": "homechef",
-    "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
+    "icon": "./src/assets/icon.png",
+    "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./src/assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#f97316"
+      "backgroundColor": "#F97316"
     },
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.homechef.app",
-      "config": {
-        "googleMapsApiKey": "YOUR_GOOGLE_MAPS_API_KEY"
-      }
+      "bundleIdentifier": "com.potluck.app",
+      "buildNumber": "1"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#f97316"
+        "foregroundImage": "./src/assets/adaptive-icon.png",
+        "backgroundColor": "#F97316"
       },
-      "package": "com.homechef.app",
-      "config": {
-        "googleMaps": {
-          "apiKey": "YOUR_GOOGLE_MAPS_API_KEY"
-        }
-      }
+      "package": "com.potluck.app",
+      "versionCode": 1
     },
     "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/favicon.png"
+      "favicon": "./src/assets/favicon.png"
     },
-    "plugins": [
-      "expo-router",
-      "expo-font",
-      "expo-secure-store"
-    ],
-    "experiments": {
-      "typedRoutes": true
-    },
+    "plugins": [],
     "extra": {
       "eas": {
         "projectId": "your-project-id"

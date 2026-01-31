@@ -1,0 +1,15 @@
+title: Potluck Documentation
+description: Complete guide for deploying and configuring Potluck - the home chef marketplace
+theme: jekyll-theme-minimal
+baseurl: "/potluck"
+url: "https://alfredang.github.io"
+
+plugins:
+  - jekyll-relative-links
+
+relative_links:
+  enabled: true
+  collections: true
+
+markdown: kramdown
+highlighter: rouge
