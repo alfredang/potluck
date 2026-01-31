@@ -1,9 +1,9 @@
 import { pgTable, uuid, varchar, text, integer, boolean, timestamp } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
-import { bookings } from './bookings.js';
-import { users } from './users.js';
-import { chefProfiles } from './chefs.js';
-import { menus } from './menus.js';
+import { bookings } from './bookings';
+import { users } from './users';
+import { chefProfiles } from './chefs';
+import { menus } from './menus';
 
 export const reviews = pgTable('reviews', {
   id: uuid('id').defaultRandom().primaryKey(),

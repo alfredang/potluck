@@ -1,7 +1,7 @@
 import { pgTable, uuid, date, time, integer, boolean, timestamp } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
-import { chefProfiles } from './chefs.js';
-import { bookings } from './bookings.js';
+import { chefProfiles } from './chefs';
+import { bookings } from './bookings';
 
 export const chefAvailability = pgTable('chef_availability', {
   id: uuid('id').defaultRandom().primaryKey(),

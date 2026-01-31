@@ -59,3 +59,5 @@ ios/build/
 # Database
 *.db
 *.sqlite
+.vercel
+.env*.local

@@ -1,7 +1,7 @@
 import { pgTable, uuid, varchar, integer, timestamp } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
-import { paymentStatusEnum } from './enums.js';
-import { bookings } from './bookings.js';
+import { paymentStatusEnum } from './enums';
+import { bookings } from './bookings';
 
 export const payments = pgTable('payments', {
   id: uuid('id').defaultRandom().primaryKey(),

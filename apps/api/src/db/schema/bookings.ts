@@ -9,14 +9,14 @@ import {
   timestamp,
 } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
-import { bookingStatusEnum } from './enums.js';
-import { users } from './users.js';
-import { chefProfiles } from './chefs.js';
-import { menus } from './menus.js';
-import { chefAvailability } from './availability.js';
-import { payments } from './payments.js';
-import { reviews } from './reviews.js';
-import { disputes } from './disputes.js';
+import { bookingStatusEnum } from './enums';
+import { users } from './users';
+import { chefProfiles } from './chefs';
+import { menus } from './menus';
+import { chefAvailability } from './availability';
+import { payments } from './payments';
+import { reviews } from './reviews';
+import { disputes } from './disputes';
 
 export const bookings = pgTable('bookings', {
   id: uuid('id').defaultRandom().primaryKey(),

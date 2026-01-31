@@ -9,7 +9,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <Link href="/" className="text-2xl font-bold text-orange-500">
-              HomeChef
+              Potluck
             </Link>
             <div className="hidden md:flex md:items-center md:gap-8">
               <Link href="/explore" className="text-gray-600 hover:text-gray-900">
@@ -137,7 +137,7 @@ export default function HomePage() {
           <div className="rounded-2xl bg-orange-500 p-8 text-center text-white md:p-12">
             <h2 className="text-3xl font-bold">Ready to Share Your Cuisine?</h2>
             <p className="mt-4 text-lg text-orange-100">
-              Join HomeChef as a home chef and share your passion for cooking with food lovers in
+              Join Potluck as a home chef and share your passion for cooking with food lovers in
               your neighborhood.
             </p>
             <Link
@@ -155,7 +155,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 md:grid-cols-4">
             <div>
-              <span className="text-xl font-bold text-orange-500">HomeChef</span>
+              <span className="text-xl font-bold text-orange-500">Potluck</span>
               <p className="mt-4 text-sm text-gray-600">
                 Connecting home chefs with food lovers in Singapore.
               </p>
@@ -207,7 +207,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="mt-8 border-t border-gray-200 pt-8 text-center text-sm text-gray-600">
-            © {new Date().getFullYear()} HomeChef. All rights reserved.
+            © {new Date().getFullYear()} Potluck. All rights reserved.
           </div>
         </div>
       </footer>

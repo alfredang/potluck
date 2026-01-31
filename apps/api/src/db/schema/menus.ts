@@ -10,9 +10,9 @@ import {
   json,
 } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
-import { chefProfiles } from './chefs.js';
-import { bookings } from './bookings.js';
-import { reviews } from './reviews.js';
+import { chefProfiles } from './chefs';
+import { bookings } from './bookings';
+import { reviews } from './reviews';
 
 export const menuCategories = pgTable('menu_categories', {
   id: uuid('id').defaultRandom().primaryKey(),

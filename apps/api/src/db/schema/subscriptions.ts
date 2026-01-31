@@ -1,7 +1,7 @@
 import { pgTable, uuid, varchar, integer, boolean, timestamp } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
-import { subscriptionTierEnum, subscriptionStatusEnum } from './enums.js';
-import { chefProfiles } from './chefs.js';
+import { subscriptionTierEnum, subscriptionStatusEnum } from './enums';
+import { chefProfiles } from './chefs';
 
 export const subscriptions = pgTable('subscriptions', {
   id: uuid('id').defaultRandom().primaryKey(),

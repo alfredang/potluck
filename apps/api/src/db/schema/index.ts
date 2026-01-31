@@ -1,14 +1,14 @@
 // Enums
-export * from './enums.js';
+export * from './enums';
 
 // Tables
-export * from './users.js';
-export * from './chefs.js';
-export * from './menus.js';
-export * from './availability.js';
-export * from './bookings.js';
-export * from './payments.js';
-export * from './subscriptions.js';
-export * from './reviews.js';
-export * from './disputes.js';
-export * from './admin.js';
+export * from './users';
+export * from './chefs';
+export * from './menus';
+export * from './availability';
+export * from './bookings';
+export * from './payments';
+export * from './subscriptions';
+export * from './reviews';
+export * from './disputes';
+export * from './admin';

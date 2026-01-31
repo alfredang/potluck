@@ -1,6 +1,6 @@
 import { pgTable, uuid, varchar, text, timestamp, boolean } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
-import { userRoleEnum } from './enums.js';
+import { userRoleEnum } from './enums';
 
 export const users = pgTable('users', {
   id: uuid('id').defaultRandom().primaryKey(),
@@ -41,6 +41,6 @@ export const usersRelations = relations(users, ({ one, many }) => ({
 }));
 
 // Forward declarations for relations (will be properly imported in index.ts)
-import { chefProfiles } from './chefs.js';
-import { bookings } from './bookings.js';
-import { reviews } from './reviews.js';
+import { chefProfiles } from './chefs';
+import { bookings } from './bookings';
+import { reviews } from './reviews';

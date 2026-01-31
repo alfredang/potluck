@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "npm install -g pnpm@10 && pnpm install --no-frozen-lockfile",
+  "buildCommand": "pnpm turbo build --filter=@homechef/web",
+  "outputDirectory": "apps/web/.next",
+  "framework": "nextjs"
+}

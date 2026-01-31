@@ -10,12 +10,12 @@ import {
   json,
 } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
-import { users } from './users.js';
-import { menus } from './menus.js';
-import { chefAvailability } from './availability.js';
-import { bookings } from './bookings.js';
-import { reviews } from './reviews.js';
-import { subscriptions } from './subscriptions.js';
+import { users } from './users';
+import { menus } from './menus';
+import { chefAvailability } from './availability';
+import { bookings } from './bookings';
+import { reviews } from './reviews';
+import { subscriptions } from './subscriptions';
 
 export const chefProfiles = pgTable('chef_profiles', {
   id: uuid('id').defaultRandom().primaryKey(),
