@@ -18,6 +18,8 @@ COPY --from=deps /app/packages/shared/node_modules ./packages/shared/node_module
 COPY --from=deps /app/packages/ui/node_modules ./packages/ui/node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
+ARG DATABASE_URL=postgres://placeholder:placeholder@localhost:5432/placeholder
+ENV DATABASE_URL=${DATABASE_URL}
 RUN pnpm --filter @homechef/shared build 2>/dev/null || true
 RUN pnpm --filter @homechef/ui build 2>/dev/null || true
 RUN pnpm --filter @homechef/web build
