@@ -23,6 +23,7 @@ ENV DATABASE_URL=${DATABASE_URL}
 RUN pnpm --filter @homechef/shared build 2>/dev/null || true
 RUN pnpm --filter @homechef/ui build 2>/dev/null || true
 RUN pnpm --filter @homechef/web build
+RUN mkdir -p /app/apps/web/public
 
 # Production
 FROM base AS runner
