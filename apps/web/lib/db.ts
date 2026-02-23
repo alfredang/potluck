@@ -1,9 +1,12 @@
-import { neon } from '@neondatabase/serverless';
-import { drizzle } from 'drizzle-orm/neon-http';
+import { drizzle } from 'drizzle-orm/node-postgres';
+import pg from 'pg';
 
-// For Vercel serverless functions
-const sql = neon(process.env.DATABASE_URL!);
-export const db = drizzle({ client: sql });
+const pool = new pg.Pool({
+  connectionString: process.env.DATABASE_URL!,
+  ssl: false,
+});
+
+export const db = drizzle({ client: pool });
 
 // Re-export schema from shared package
 export * from './schema';
