@@ -33,8 +33,8 @@ export const config = {
   jwtRefreshExpiry: '7d',
 
   // Stripe
-  stripeSecretKey: requireEnv('STRIPE_SECRET_KEY'),
-  stripePublishableKey: requireEnv('STRIPE_PUBLISHABLE_KEY'),
+  stripeSecretKey: optionalEnv('STRIPE_SECRET_KEY', ''),
+  stripePublishableKey: optionalEnv('STRIPE_PUBLISHABLE_KEY', ''),
   stripeWebhookSecret: optionalEnv('STRIPE_WEBHOOK_SECRET', ''),
   stripePriceBasic: optionalEnv('STRIPE_PRICE_BASIC', 'price_basic_monthly'),
   stripePricePro: optionalEnv('STRIPE_PRICE_PRO', 'price_pro_monthly'),
