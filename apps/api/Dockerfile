@@ -14,10 +14,13 @@ RUN pnpm install --frozen-lockfile
 FROM base AS runner
 ENV NODE_ENV=production
 WORKDIR /app
+
+# Copy source FIRST, then overlay node_modules so deps aren't overwritten
+COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/apps/api/node_modules ./apps/api/node_modules
 COPY --from=deps /app/packages/shared/node_modules ./packages/shared/node_modules
-COPY . .
+
 RUN npm install -g tsx
 RUN npm rebuild argon2 2>/dev/null || echo "argon2 rebuild skipped"
 EXPOSE 3001
