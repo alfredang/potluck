@@ -13,8 +13,9 @@ const pool = new pg.Pool({
   connectionTimeoutMillis: 10000,
 });
 
+// Log pool errors without crashing the process — connections will be retried.
 pool.on('error', (err) => {
-  console.error('[DB] Pool error:', err.message);
+  console.error('[DB] Pool error (non-fatal):', err.message);
 });
 
 pool.on('connect', () => {
@@ -22,6 +23,24 @@ pool.on('connect', () => {
 });
 
 export const db = drizzle({ client: pool, schema });
+
+/**
+ * Attempt a lightweight connection test.
+ * Returns true on success, false on failure — never throws.
+ */
+export async function testConnection(): Promise<boolean> {
+  try {
+    const client = await pool.connect();
+    await client.query('SELECT 1');
+    client.release();
+    console.log('[DB] Connection test passed');
+    return true;
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error('[DB] Connection test failed (server will still start):', msg);
+    return false;
+  }
+}
 
 export type Database = typeof db;
 export { schema };

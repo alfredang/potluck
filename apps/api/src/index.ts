@@ -3,7 +3,7 @@ import cors from '@fastify/cors';
 import helmet from '@fastify/helmet';
 import rateLimit from '@fastify/rate-limit';
 import { config } from './config/index.js';
-import { db } from './db/index.js';
+import { db, testConnection } from './db/index.js';
 
 // Import routes
 import { authRoutes } from './routes/auth/index.js';
@@ -61,9 +61,9 @@ async function registerPlugins() {
 
 // Register routes
 async function registerRoutes() {
-  // Health check
-  fastify.get('/health', async () => {
-    return { status: 'ok', timestamp: new Date().toISOString() };
+  // Health check — always responds 200, no DB required.
+  fastify.get('/health', async (_request, reply) => {
+    reply.status(200).send({ status: 'ok', timestamp: new Date().toISOString() });
   });
 
   // API v1 routes
@@ -115,6 +115,16 @@ async function start() {
     });
 
     console.log(`HomeChef API running at http://${config.host}:${config.port}`);
+
+    // Test DB connection after server starts — non-fatal, just informational.
+    testConnection().then((ok) => {
+      if (!ok) {
+        console.warn(
+          '[DB] Initial connection test failed. The server is still running. ' +
+            'Database queries will fail until the DB is reachable.'
+        );
+      }
+    });
   } catch (err: unknown) {
     fastify.log.error({ err }, 'Failed to start server');
     process.exit(1);

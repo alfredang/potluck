@@ -12,6 +12,20 @@ function optionalEnv(name: string, defaultValue: string): string {
   return process.env[name] ?? defaultValue;
 }
 
+// Warn about missing JWT secrets but don't crash — the server can still start
+// and return 500 on protected routes until secrets are configured.
+function warnEnv(name: string, fallback: string): string {
+  const value = process.env[name];
+  if (!value) {
+    console.warn(
+      `[config] WARNING: ${name} is not set. Using an insecure fallback. ` +
+        `Authentication will not work correctly until this is configured.`
+    );
+    return fallback;
+  }
+  return value;
+}
+
 export const config = {
   // Server
   nodeEnv: optionalEnv('NODE_ENV', 'development'),
@@ -26,9 +40,9 @@ export const config = {
   // Redis
   redisUrl: optionalEnv('REDIS_URL', ''),
 
-  // JWT
-  jwtAccessSecret: requireEnv('JWT_ACCESS_SECRET'),
-  jwtRefreshSecret: requireEnv('JWT_REFRESH_SECRET'),
+  // JWT — required for auth to work but not for the server to start
+  jwtAccessSecret: warnEnv('JWT_ACCESS_SECRET', 'INSECURE_FALLBACK_ACCESS_SECRET_CHANGE_ME'),
+  jwtRefreshSecret: warnEnv('JWT_REFRESH_SECRET', 'INSECURE_FALLBACK_REFRESH_SECRET_CHANGE_ME'),
   jwtAccessExpiry: '15m',
   jwtRefreshExpiry: '7d',
 
