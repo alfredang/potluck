@@ -41,7 +41,7 @@ async function registerPlugins() {
   await fastify.register(cors, {
     origin: config.isDevelopment
       ? true
-      : [config.appUrl, /\.homechef\.com$/],
+      : [config.appUrl, /\.potluckhub\.io$/, /\.tertiaryinfo\.tech$/, /\.homechef\.com$/],
     credentials: true,
   });
 
