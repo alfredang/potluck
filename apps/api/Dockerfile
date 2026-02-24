@@ -12,4 +12,4 @@ ENV NODE_ENV=production
 EXPOSE 3001
 ENV PORT=3001
 # Wrap in shell to capture crash output
-CMD ["sh", "-c", "echo '=== ENV CHECK ===' && echo \"DATABASE_URL set: $(test -n \"$DATABASE_URL\" && echo YES || echo NO)\" && echo \"NODE_ENV: $NODE_ENV\" && echo \"PORT: $PORT\" && echo '=== STARTING ===' && exec tsx apps/api/src/index.ts"]
+CMD ["sh", "-c", "echo 'Running database migrations...' && cd apps/api && npx drizzle-kit push --force 2>&1 || echo 'Migration warning (non-fatal)' && cd /app && echo 'Starting API...' && exec tsx apps/api/src/index.ts"]
