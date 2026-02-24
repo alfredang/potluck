@@ -23,6 +23,19 @@ COPY --from=deps /app/packages/shared/node_modules ./packages/shared/node_module
 
 RUN npm install -g tsx
 RUN npm rebuild argon2 2>/dev/null || echo "argon2 rebuild skipped"
+
+# Verify critical files exist
+RUN echo "=== Checking files ===" && \
+    ls -la apps/api/src/index.ts && \
+    ls -la node_modules/.pnpm || echo "no .pnpm" && \
+    ls -la node_modules/fastify/package.json || echo "no fastify" && \
+    ls -la node_modules/pg/package.json || echo "no pg" && \
+    ls -la packages/shared/src/ || echo "no shared src" && \
+    echo "=== node_modules dirs ===" && \
+    ls node_modules/ | head -20 && \
+    echo "=== Check tsx ===" && \
+    tsx --version
+
 EXPOSE 3001
 ENV PORT=3001
-CMD ["tsx", "apps/api/src/index.ts"]
+CMD ["sh", "-c", "echo 'Starting API...' && tsx apps/api/src/index.ts 2>&1"]
