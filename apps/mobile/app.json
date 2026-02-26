@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Potluck",
+    "name": "PotLuck",
     "slug": "potluck",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,10 +11,12 @@
       "resizeMode": "contain",
       "backgroundColor": "#F97316"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.potluck.app",
+      "bundleIdentifier": "io.potluckhub.app",
       "buildNumber": "1"
     },
     "android": {
@@ -22,7 +24,7 @@
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#F97316"
       },
-      "package": "com.potluck.app",
+      "package": "io.potluckhub.app",
       "versionCode": 1
     },
     "web": {
@@ -31,8 +33,10 @@
     "plugins": [],
     "extra": {
       "eas": {
-        "projectId": "your-project-id"
+        "projectId": "8043d408-6d17-43fc-9b1b-4b954e5966f9"
       }
-    }
+    },
+    "description": "Home-cooked meals, made with love. Connect with home chefs in Singapore.",
+    "owner": "potluckhub"
   }
 }
