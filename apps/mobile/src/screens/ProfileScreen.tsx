@@ -1,5 +1,14 @@
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Linking, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
+// Contact handlers
+const handleEmail = () => {
+  Linking.openURL('mailto:hello@potluckhub.io?subject=PotLuck%20Inquiry');
+};
+
+const handleWhatsApp = () => {
+  Linking.openURL('https://wa.me/6590480277');
+};
 
 export default function ProfileScreen() {
   return (
@@ -39,9 +48,15 @@ export default function ProfileScreen() {
             <Text style={styles.menuText}>Help Center</Text>
             <Text style={styles.menuArrow}>›</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem}>
+          {/* Contact Options */}
+          <TouchableOpacity style={styles.menuItem} onPress={handleEmail}>
+            <Text style={styles.menuIcon}>📧</Text>
+            <Text style={styles.menuText}>Email Us</Text>
+            <Text style={styles.menuArrow}>›</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.menuItem} onPress={handleWhatsApp}>
             <Text style={styles.menuIcon}>💬</Text>
-            <Text style={styles.menuText}>Contact Us</Text>
+            <Text style={styles.menuText}>WhatsApp</Text>
             <Text style={styles.menuArrow}>›</Text>
           </TouchableOpacity>
         </View>

@@ -1,10 +1,13 @@
 import type { FastifyPluginAsync } from 'fastify';
 import Stripe from 'stripe';
 import { config } from '../config/index.js';
+import { whatsappWebhookRoutes } from './whatsapp.js';
 
 const stripe = new Stripe(config.stripeSecretKey);
 
 export const webhooksRoutes: FastifyPluginAsync = async (fastify) => {
+  // Register WhatsApp webhook
+  await fastify.register(whatsappWebhookRoutes);
   // Stripe webhook
   fastify.post('/stripe', {
     config: {
