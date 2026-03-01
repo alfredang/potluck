@@ -1,4 +1,4 @@
-import type { SubscriptionPlan, FoodCategory } from '../types/index.js';
+import type { SubscriptionPlan, FoodCategory } from '../types/index';
 
 // Platform fee percentage (4%)
 export const PLATFORM_FEE_PERCENTAGE = 0.04;

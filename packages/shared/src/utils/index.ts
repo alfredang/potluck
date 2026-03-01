@@ -1,4 +1,4 @@
-import { PLATFORM_FEE_PERCENTAGE } from '../constants/index.js';
+import { PLATFORM_FEE_PERCENTAGE } from '../constants/index';
 
 /**
  * Format price from cents to display string

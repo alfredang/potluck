@@ -1,8 +1,8 @@
-export * from './user.js';
-export * from './menu.js';
-export * from './booking.js';
-export * from './payment.js';
-export * from './review.js';
+export * from './user';
+export * from './menu';
+export * from './booking';
+export * from './payment';
+export * from './review';
 
 // API Response types
 export interface ApiResponse<T> {
