@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Environment Variables</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #1e1e1e;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    }
+    .terminal {
+      width: 700px;
+      background: #1d1d1d;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+    .terminal-header {
+      background: #2d2d2d;
+      padding: 12px 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27ca40; }
+    .terminal-title {
+      flex: 1;
+      text-align: center;
+      color: #888;
+      font-size: 13px;
+    }
+    .terminal-body {
+      padding: 20px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .comment {
+      color: #6a9955;
+    }
+    .key {
+      color: #9cdcfe;
+    }
+    .value {
+      color: #ce9178;
+    }
+    .file-icon {
+      color: #e8ab6b;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <div class="terminal-header">
+      <span class="terminal-dot dot-red"></span>
+      <span class="terminal-dot dot-yellow"></span>
+      <span class="terminal-dot dot-green"></span>
+      <span class="terminal-title">.env</span>
+    </div>
+    <div class="terminal-body">
+      <div><span class="comment"># WhatsApp API Configuration</span></div>
+      <div><span class="key">WHATSAPP_PHONE_NUMBER_ID</span>=<span class="value">123456789012345</span></div>
+      <div><span class="key">WHATSAPP_ACCESS_TOKEN</span>=<span class="value">EAAGk...</span><span class="comment"> # Your Meta access token</span></div>
+      <div><span class="key">WHATSAPP_WEBHOOK_VERIFY_TOKEN</span>=<span class="value">whatsapp_verify_token123</span></div>
+      <div><span class="key">WHATSAPP_API_URL</span>=<span class="value">https://graph.facebook.com/v18.0</span></div>
+      <br>
+      <div><span class="comment"># Telegram Forwarding</span></div>
+      <div><span class="key">TELEGRAM_BOT_TOKEN</span>=<span class="value">1234567890:ABCdefGHIjklMNOpqrsTUVwxyz</span></div>
+      <div><span class="key">TELEGRAM_CHAT_ID</span>=<span class="value">-5089150604</span></div>
+      <br>
+      <div><span class="comment"># App Configuration</span></div>
+      <div><span class="key">PORT</span>=<span class="value">3000</span></div>
+      <div><span class="key">NODE_ENV</span>=<span class="value">production</span></div>
+      <div><span class="key">DOMAIN</span>=<span class="value">api.potluck.tertiaryinfo.tech</span></div>
+    </div>
+  </div>
+</body>
+</html>

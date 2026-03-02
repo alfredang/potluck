@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Terminal - Webhook Verification</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #1e1e1e;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    }
+    .terminal {
+      width: 800px;
+      background: #1d1d1d;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+    .terminal-header {
+      background: #2d2d2d;
+      padding: 12px 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27ca40; }
+    .terminal-title {
+      flex: 1;
+      text-align: center;
+      color: #888;
+      font-size: 13px;
+    }
+    .terminal-body {
+      padding: 20px;
+      color: #d4d4d4;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .prompt {
+      color: #4ec9b0;
+    }
+    .command {
+      color: #ce9178;
+    }
+    .arg {
+      color: #9cdcfe;
+    }
+    .output {
+      color: #d4d4d4;
+      margin-top: 8px;
+      white-space: pre-wrap;
+    }
+    .success {
+      color: #4ec9b0;
+    }
+    .comment {
+      color: #6a9955;
+    }
+    .highlight {
+      color: #569cd6;
+    }
+    .curl-line {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <div class="terminal-header">
+      <span class="terminal-dot dot-red"></span>
+      <span class="terminal-dot dot-yellow"></span>
+      <span class="terminal-dot dot-green"></span>
+      <span class="terminal-title">bash — webhook verification</span>
+    </div>
+    <div class="terminal-body">
+      <div class="curl-line">
+        <span class="prompt">$</span> <span class="command">curl</span> -s <span class="arg">"https://api.potluck.tertiaryinfo.tech/webhooks/whatsapp</span>?hub.mode=subscribe&hub.verify_token=whatsapp_verify_token123&hub.challenge=test123<span class="arg">"</span>
+      </div>
+      <div class="output">test123</div>
+      
+      <div style="margin-top: 20px;" class="curl-line">
+        <span class="comment"># Webhook verification successful - returns the challenge string</span>
+      </div>
+      
+      <div style="margin-top: 20px;" class="curl-line">
+        <span class="prompt">$</span> <span class="command">curl</span> -X POST <span class="arg">"https://api.potluck.tertiaryinfo.tech/webhooks/whatsapp"</span> \
+      </div>
+      <div style="padding-left: 20px;" class="curl-line">
+        -H <span class="highlight">"Content-Type: application/json"</span> \
+      </div>
+      <div style="padding-left: 20px;" class="curl-line">
+        -d <span class="arg">'{"object":"whatsapp_business_account","entry":[{"id":"123456789","changes":[{"value":{"messaging_product":"whatsapp","from":"+6591234567","message":{"id":"test_msg_123","text":{"body":"Hello!"}}},"field":"messages"}]}]}'</span>
+      </div>
+      <div class="output success">{"status":"ok","message":"Auto-reply sent","forwarded_to_telegram":true}</div>
+    </div>
+  </div>
+</body>
+</html>

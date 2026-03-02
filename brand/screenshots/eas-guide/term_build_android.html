@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #1a1a2e; padding: 20px; font-family: 'Fira Code', monospace; }
+.terminal { background: #0d0d1a; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5); max-width: 800px; margin: 0 auto; }
+.terminal-header { background: #16162a; padding: 10px 15px; display: flex; gap: 8px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot-red { background: #ff5f56; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #27c93f; }
+.terminal-title { flex: 1; text-align: center; color: #6c6c8a; font-size: 13px; }
+.terminal-body { padding: 20px; color: #e0e0e0; font-size: 14px; line-height: 1.6; }
+.prompt { color: #61dafb; }
+.command { color: #98c379; }
+.output { color: #abb2bf; }
+.comment { color: #5c6370; }
+.success { color: #98c379; }
+.info { color: #61dafb; }
+</style>
+</head>
+<body>
+<div class="terminal">
+  <div class="terminal-header">
+    <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+    <div class="terminal-title">Terminal — ~/projects/potluck</div>
+  </div>
+  <div class="terminal-body">
+    <div><span class="prompt">➜</span> <span class="command">eas build --platform android</span></div>
+    <div class="output">
+      <span class="comment"># Build Android app with EAS</span><br>
+      <br>
+      ✓ Fetched project configuration<br>
+      <span class="info">ℹ</span> Using remote build service<br>
+      <br>
+      Build Details:<br>
+      - Project: potluck (potluckhub)<br>
+      - Platform: Android<br>
+      - Build Type: apk<br>
+      <br>
+      <span class="info">ℹ</span> Building Android project...<br>
+      <span class="comment">  [1/4] ████████████░░░░░░░░  25% - Gradle: Configure</span><br>
+      <span class="comment">  [2/4] ██████████████████░  50% - Gradle: Build</span><br>
+      <span class="comment">  [3/4] ████████████████████  75% - Bundling JS</span><br>
+      <span class="comment">  [4/4] ████████████████████ 100% - APK Ready</span><br>
+      <br>
+      <span class="success">✓</span> Build completed successfully!<br>
+      <br>
+      📦 APK: potluck-release.apk (45.2 MB)<br>
+      <span class="comment"># Run 'eas submit --platform android --latest' to submit</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

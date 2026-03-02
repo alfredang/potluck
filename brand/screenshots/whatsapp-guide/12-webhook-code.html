@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Webhook Handler Code</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #1e1e1e;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    }
+    .editor {
+      width: 750px;
+      background: #1d1d1d;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+    .editor-header {
+      background: #2d2d2d;
+      padding: 12px 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .editor-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27ca40; }
+    .editor-title {
+      flex: 1;
+      text-align: center;
+      color: #888;
+      font-size: 13px;
+    }
+    .editor-body {
+      padding: 20px;
+      font-size: 13px;
+      line-height: 1.7;
+      overflow-x: auto;
+    }
+    .keyword { color: #569cd6; }
+    .function { color: #dcdcaa; }
+    .string { color: #ce9178; }
+    .comment { color: #6a9955; }
+    .number { color: #b5cea8; }
+    .property { color: #9cdcfe; }
+    .variable { color: #4ec9b0; }
+    .operator { color: #d4d4d4; }
+    .brace { color: #ffd700; }
+  </style>
+</head>
+<body>
+  <div class="editor">
+    <div class="editor-header">
+      <span class="editor-dot dot-red"></span>
+      <span class="editor-dot dot-yellow"></span>
+      <span class="editor-dot dot-green"></span>
+      <span class="editor-title">src/plugins/whatsapp.ts</span>
+    </div>
+    <div class="editor-body">
+      <div><span class="comment">// WhatsApp webhook handler</span></div>
+      <div><span class="keyword">import</span> <span class="brace">{</span> <span class="variable">FastifyPluginAsync</span> <span class="brace">}</span> <span class="keyword">from</span> <span class="string">'fastify'</span>;</div>
+      <br>
+      <div><span class="keyword">export</span> <span class="keyword">const</span> <span class="variable">whatsappWebhook</span> <span class="operator">=</span> <span class="keyword">async</span> <span class="brace">(</span><span class="variable">fastify</span>: <span class="keyword">any</span><span class="brace">)</span> <span class="operator">=></span> <span class="brace">{</span></div>
+      <div>&nbsp;&nbsp;<span class="comment">// Webhook verification (GET)</span></div>
+      <div>&nbsp;&nbsp;<span class="variable">fastify</span>.<span class="function">get</span><span class="brace">(</span><span class="string">'/webhooks/whatsapp'</span>, <span class="keyword">async</span> <span class="brace">(</span><span class="variable">request</span>, <span class="variable">reply</span><span class="brace">)</span> <span class="operator">=></span> <span class="brace">{</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">const</span> <span class="brace">{</span> <span class="property">hub.mode</span>, <span class="property">hub.verify_token</span>, <span class="property">hub.challenge</span> <span class="brace">}</span> <span class="operator">=</span> <span class="variable">request</span>.<span class="property">query</span>;</div>
+      <br>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> <span class="brace">(</span><span class="property">hub.mode</span> <span class="operator">===</span> <span class="string">'subscribe'</span> <span class="operator">&&</span> <span class="property">hub.verify_token</span> <span class="operator">===</span> <span class="variable">process</span>.<span class="property">env</span>.<span class="property">WHATSAPP_WEBHOOK_VERIFY_TOKEN</span><span class="brace">)</span> <span class="brace">{</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">fastify</span>.<span class="property">log</span>.<span class="function">info</span><span class="brace">(</span><span class="string">'WhatsApp webhook verified'</span><span class="brace">)</span>;</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="variable">reply</span>.<span class="function">send</span><span class="brace">(</span><span class="property">hub.challenge</span><span class="brace">)</span>;</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="brace">}</span></div>
+      <br>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">reply</span>.<span class="property">code</span><span class="brace">(</span><span class="number">403</span><span class="brace">)</span>.<span class="function">send</span><span class="brace">(</span><span class="string">'Forbidden'</span><span class="brace">)</span>;</div>
+      <div>&nbsp;&nbsp;<span class="brace">}</span><span class="brace">)</span>;</div>
+      <br>
+      <div>&nbsp;&nbsp;<span class="comment">// Message handling (POST)</span></div>
+      <div>&nbsp;&nbsp;<span class="variable">fastify</span>.<span class="function">post</span><span class="brace">(</span><span class="string">'/webhooks/whatsapp'</span>, <span class="keyword">async</span> <span class="brace">(</span><span class="variable">request</span>, <span class="variable">reply</span><span class="brace">)</span> <span class="operator">=></span> <span class="brace">{</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">const</span> <span class="property">body</span> <span class="operator">=</span> <span class="variable">request</span>.<span class="property">body</span>;</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">const</span> <span class="variable">entry</span> <span class="operator">=</span> <span class="property">body</span>.<span class="property">entry</span><span class="brace">?.[</span><span class="number">0</span><span class="brace">]</span>;</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">const</span> <span class="variable">message</span> <span class="operator">=</span> <span class="property">entry</span>?.<span class="property">changes</span><span class="brace">?.[</span><span class="number">0</span><span class="brace">]?.</span><span class="property">value</span>?.<span class="property">messages</span><span class="brace">?.[</span><span class="number">0</span><span class="brace">]</span>;</div>
+      <br>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> <span class="brace">(</span><span class="variable">message</span><span class="brace">)</span> <span class="brace">{</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">const</span> <span class="variable">from</span> <span class="operator">=</span> <span class="property">message</span>.<span class="property">from</span>;</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">const</span> <span class="variable">text</span> <span class="operator">=</span> <span class="property">message</span>.<span class="property">text</span>?.<span class="property">body</span>;</div>
+      <br>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Send auto-reply</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">await</span> <span class="function">sendWhatsAppMessage</span><span class="brace">(</span><span class="variable">from</span>, <span class="variable">AUTOREPLY_MESSAGE</span><span class="brace">)</span>;</div>
+      <br>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Forward to Telegram</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">await</span> <span class="function">forwardToTelegram</span><span class="brace">(</span><span class="variable">from</span>, <span class="variable">text</span><span class="brace">)</span>;</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="brace">}</span></div>
+      <br>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="variable">reply</span>.<span class="function">send</span><span class="brace">(</span><span class="brace">{</span> <span class="property">status</span>: <span class="string">'ok'</span> <span class="brace">}</span><span class="brace">)</span>;</div>
+      <div>&nbsp;&nbsp;<span class="brace">}</span><span class="brace">)</span>;</div>
+      <div><span class="brace">}</span>;</div>
+    </div>
+  </div>
+</body>
+</html>

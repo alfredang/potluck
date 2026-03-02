@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal - Expo Doctor</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'SF Mono', 'Fira Code', 'Monaco', monospace;
+            background: #0d1117;
+            min-height: 100vh;
+            padding: 30px;
+        }
+        .terminal {
+            background: #0d1117;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #30363d;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .terminal-header {
+            background: #161b22;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #30363d;
+        }
+        .terminal-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .terminal-btn.red { background: #ff5f56; }
+        .terminal-btn.yellow { background: #ffbd2e; }
+        .terminal-btn.green { background: #27c93f; }
+        .terminal-title {
+            margin-left: 12px;
+            color: #8b949e;
+            font-size: 13px;
+        }
+        .terminal-body {
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .command { color: #79c0ff; margin-bottom: 15px; }
+        .prompt { color: #8b949e; }
+        .output { color: #c9d1d9; white-space: pre-wrap; }
+        .success { color: #3fb950; }
+        .info { color: #58a6ff; }
+        .warning { color: #d29922; }
+        .error { color: #f85149; }
+        .check-pass {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 8px 0;
+        }
+        .check-icon {
+            width: 18px;
+            height: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 12px;
+        }
+        .pass { background: #238636; }
+        .pass::after { content: "✓"; color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="terminal-btn red"></div>
+            <div class="terminal-btn yellow"></div>
+            <div class="terminal-btn green"></div>
+            <span class="terminal-title">~ — zsh</span>
+        </div>
+        <div class="terminal-body">
+            <div class="command"><span class="prompt">➜</span> npx expo-doctor</div>
+            <div class="output">
+<span class="info">Checking project configuration...</span>
+
+<span class="success">✔</span> <span class="success">Project and Platform</span>
+  <span class="check-pass"><span class="check-icon pass"></span> Expo SDK: 51.0.0</span>
+  <span class="check-pass"><span class="check-icon pass"></span> react-native: 0.74.5</span>
+  <span class="check-pass"><span class="check-icon pass"></span> node: >=18</span>
+
+<span class="success">✔</span> <span class="success">Dependencies</span>
+  <span class="check-pass"><span class="check-icon pass"></span> Required packages installed</span>
+  <span class="check-pass"><span class="check-icon pass"></span> No unmet dependencies</span>
+  <span class="check-pass"><span class="check-icon pass"></span> lockfile valid</span>
+
+<span class="success">✔</span> <span class="success">Config Files</span>
+  <span class="check-pass"><span class="check-icon pass"></span> app.json exists</span>
+  <span class="check-pass"><span class="check-icon pass"></span> eas.json configured</span>
+  <span class="check-pass"><span class="check-icon pass"></span> babel.config.js present</span>
+
+<span class="success">✔</span> <span class="success">iOS Configuration</span>
+  <span class="check-pass"><span class="check-icon pass"></span> Bundle identifier: com.potluck.app</span>
+  <span class="check-pass"><span class="check-icon pass"></span> Build number: 1</span>
+  <span class="check-pass"><span class="check-icon pass"></span> iOS scheme: PotLuck</span>
+  <span class="check-pass"><span class="check-icon pass"></span> iOS deployment target: 13.4</span>
+
+<span class="success">✔</span> <span class="success">Android Configuration</span>
+  <span class="check-pass"><span class="check-icon pass"></span> Package: com.potluck.app</span>
+  <span class="check-pass"><span class="check-icon pass"></span> Version code: 1</span>
+  <span class="check-pass"><span class="check-icon pass"></span> Android SDK configured</span>
+
+<span class="success">✔</span> <span class="success">Network</span>
+  <span class="check-pass"><span class="check-icon pass"></span> API endpoint reachable</span>
+  <span class="check-pass"><span class="check-icon pass"></span> Expo Go compatible</span>
+
+<span class="success">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+  <span class="success">✔</span> <span class="success">All checks passed!</span>
+<span class="success">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+
+<span class="prompt">➜</span> 
+            </div>
+        </div>
+    </div>
+</body>
+</html>

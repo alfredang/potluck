@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { background: #1a1a2e; padding: 40px; font-family: 'Fira Code', monospace; }
+        .terminal {
+            background: #0d1117;
+            border-radius: 8px;
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            border: 1px solid #30363d;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .prompt { color: #7ee787; }
+        .command { color: #79c0ff; }
+        .output { color: #8b949e; }
+        .success { color: #7ee787; }
+        .path { color: #d2a8ff; }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div><span class="prompt">$</span> <span class="command">eas submit --platform android --latest</span></div>
+        <div class="output">
+✔ EAS CLI detected<br>
+✔ Logged in as @pawbot<br>
+✔ Found latest build: build-1234567890<br>
+<br>
+📤 Submitting to Google Play...<br>
+<br>
+🎯 Submission Details:<br>
+  Platform: android<br>
+  Build ID: 1234567890<br>
+  App: com.potluck.app<br>
+  Track: internal<br>
+<br>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>
+📋 Steps completed:<br>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>
+✔ Extracted AAB from build<br>
+✔ Validated app bundle<br>
+✔ Uploaded to Google Play<br>
+✔ Submitted for review<br>
+<br>
+<span class="success">✅ Submission successful!</span><br>
+<br>
+📝 Track: Internal Testing<br>
+⏱ Review time: typically 1-2 hours<br>
+🔗 Play Console: <span style="color: #58a6ff">play.google.com/console/...</span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { background: #1e1e1e; margin: 0; padding: 20px; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', 'Source Code Pro', monospace; }
+    .terminal { background: #0d0d0d; border-radius: 8px; padding: 20px; max-width: 700px; margin: 0 auto; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .header { display: flex; align-items: center; margin-bottom: 15px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+    .red { background: #ff5f56; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #27c93f; }
+    .title { color: #888; font-size: 14px; margin-left: 10px; }
+    .output { color: #aaa; line-height: 1.8; font-size: 13px; }
+    .key { color: #e06c75; }
+    .string { color: #98c379; }
+    .number { color: #d19a66; }
+    .boolean { color: #56b6c2; }
+    .bracket { color: #abb2bf; }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <div class="header">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+      <span class="title">eas.json</span>
+    </div>
+    <div class="output">
+<span class="bracket">{</span><br>
+&nbsp;&nbsp;<span class="key">"cli"</span>: <span class="bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"version"</span>: <span class="string">">= 3.0.0"</span><span class="bracket">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"promptToPush"</span>: <span class="boolean">false</span><br>
+&nbsp;&nbsp;<span class="bracket">}</span><span class="bracket">,</span><br><br>
+&nbsp;&nbsp;<span class="key">"build"</span>: <span class="bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"development"</span>: <span class="bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"developmentClient"</span>: <span class="boolean">true</span><span class="bracket">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"distribution"</span>: <span class="string">"internal"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="bracket">}</span><span class="bracket">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"preview"</span>: <span class="bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"distribution"</span>: <span class="string">"internal"</span><span class="bracket">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"ios"</span>: <span class="bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"simulator"</span>: <span class="boolean">true</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="bracket">}</span><span class="bracket">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"production"</span>: <span class="bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"distribution"</span>: <span class="string">"app-store"</span><span class="bracket">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"ios"</span>: <span class="bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"provisioningProfilePath"</span>: <span class="string">"potluck.provision-profile"</span><span class="bracket">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"certificatePath"</span>: <span class="string">"potluck-distribution.p12"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="bracket">}</span><br>
+&nbsp;&nbsp;<span class="bracket">}</span><span class="bracket">,</span><br><br>
+&nbsp;&nbsp;<span class="key">"submit"</span>: <span class="bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"production"</span>: <span class="bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"ios"</span>: <span class="bracket">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"appleId"</span>: <span class="string">"your-email@example.com"</span><span class="bracket">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"ascAppId"</span>: <span class="string">"1234567890"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="bracket">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="bracket">}</span><br>
+&nbsp;&nbsp;<span class="bracket">}</span><br>
+<span class="bracket">}</span>
+    </div>
+  </div>
+</body>
+</html>

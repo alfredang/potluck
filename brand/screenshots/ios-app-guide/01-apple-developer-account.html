@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Developer Account</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 40px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { 
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .apple-logo {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+            fill: #fff;
+        }
+        h1 {
+            color: #fff;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        .subtitle {
+            color: rgba(255,255,255,0.6);
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        .nav {
+            display: flex;
+            gap: 30px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .nav-item {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 0;
+            transition: color 0.3s;
+        }
+        .nav-item:hover { color: #fff; }
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+        .card:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-4px);
+        }
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #007aff, #5856d6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .card h3 {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .card p {
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .status-badge {
+            display: inline-block;
+            background: rgba(52,199,89,0.2);
+            color: #34c759;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <svg class="apple-logo" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            <h1>Apple Developer</h1>
+            <p class="subtitle">Build, test, and distribute your apps</p>
+            <nav class="nav">
+                <a href="#" class="nav-item">Account</a>
+                <a href="#" class="nav-item">Certificates, Identifiers & Profiles</a>
+                <a href="#" class="nav-item">Devices</a>
+                <a href="#" class="nav-item">Sandbox</a>
+                <a href="#" class="nav-item">App Store Connect</a>
+            </nav>
+        </div>
+        <div class="content-grid">
+            <div class="card">
+                <div class="card-icon">📱</div>
+                <h3>Certificates & Profiles</h3>
+                <p>Manage signing certificates and provisioning profiles for app distribution</p>
+                <span class="status-badge">Active</span>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔑</div>
+                <h3>API Keys</h3>
+                <p>Create and manage API keys for App Store Connect and Xcode services</p>
+                <span class="status-badge">2 Keys</span>
+            </div>
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <h3>Users and Access</h3>
+                <p>Manage team members and their access to developer resources</p>
+                <span class="status-badge">3 Users</span>
+            </div>
+            <div class="card">
+                <div class="card-icon">💳</div>
+                <h3>Membership</h3>
+                <p>View your Apple Developer Program membership details</p>
+                <span class="status-badge">✓ Verified</span>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚙️</div>
+                <h3>Devices</h3>
+                <p>Register devices for development and testing</p>
+                <span class="status-badge">5 Devices</span>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h3>App Store Connect</h3>
+                <p>Submit and manage your apps on the App Store</p>
+                <span class="status-badge">Open</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

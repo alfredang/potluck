@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { background: #1e1e2e; padding: 40px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+        .flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+        }
+        .step {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            text-align: center;
+            min-width: 140px;
+        }
+        .step-alt {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+            box-shadow: 0 4px 15px rgba(168, 237, 234, 0.4);
+        }
+        .step-green {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            box-shadow: 0 4px 15px rgba(17, 153, 142, 0.4);
+        }
+        .step-orange {
+            background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);
+            box-shadow: 0 4px 15px rgba(255, , 0.94, 984);
+        }
+        .arrow {
+            color: #a6a6a6;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .title {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">🎯 Google Play Console App Creation Flow</div>
+    <div class="flow">
+        <div class="step">📝<br>Create Developer<br>Account</div>
+        <span class="arrow">→</span>
+        <div class="step-alt">➕<br>Create App</div>
+        <span class="arrow">→</span>
+        <div class="step-green">🏷️<br>Store Listing<br>(Title, Desc, Screenshots)</div>
+        <span class="arrow">→</span>
+        <div class="step-orange">⭐<br>Content Rating<br>Questionnaire</div>
+        <span class="arrow">→</span>
+        <div class="step-alt">💰<br>Pricing &<br>Distribution</div>
+        <span class="arrow">→</span>
+        <div class="step-green">📦<br>Upload AAB<br>(app-release.aab)</div>
+        <span class="arrow">→</span>
+        <div class="step-orange">🔍<br>Review<br>(1-7 days)</div>
+        <span class="arrow">→</span>
+        <div class="step">✅<br>Published<br>on Play Store!</div>
+    </div>
+</body>
+</html>

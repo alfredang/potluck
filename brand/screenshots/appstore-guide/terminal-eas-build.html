@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { background: #1e1e1e; margin: 0; padding: 20px; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', 'Source Code Pro', monospace; }
+    .terminal { background: #0d0d0d; border-radius: 8px; padding: 20px; max-width: 900px; margin: 0 auto; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .header { display: flex; align-items: center; margin-bottom: 15px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+    .red { background: #ff5f56; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #27c93f; }
+    .title { color: #888; font-size: 14px; margin-left: 10px; }
+    .prompt { color: #7ec699; }
+    .command { color: #fff; }
+    .output { color: #aaa; line-height: 1.6; }
+    .success { color: #27c93f; }
+    .info { color: #61afef; }
+    .warning { color: #e5c07b; }
+    .error { color: #ff6b6b; }
+    .path { color: #61afef; }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <div class="header">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+      <span class="title">~ — zsh</span>
+    </div>
+    <div class="output">
+      <span class="prompt">➜</span> <span class="path">~/potluck</span> <span class="command">eas build --platform ios</span><br><br>
+      <span class="info">✔</span> Using local daemon<br>
+      <span class="info">✔</span> Authenticated as potluckhub<br>
+      <span class="info">✔</span> Fetched project configuration<br><br>
+      <span class="info">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</span><br>
+      <span class="info">Build Details</span><br>
+      <span class="info">▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀</span><br><br>
+      <span class="path">  Platform:</span> ios<br>
+      <span class="path">  Project:</span> potluck<br>
+      <span class="path">  Build Mode:</span> archive<br>
+      <span class="path">  SDK Version:</span> 52.0.0<br><br>
+      <span class="info">▶</span> Preparing build...<br>
+      <span class="success">✔</span> Build created successfully!<br><br>
+      <span class="info">Build URL:</span> https://expo.dev/artifacts/7gXY9mNQYjVYK9XYZ123AB<br><br>
+      <span class="success">✓</span> Build completed successfully!<br>
+      <span class="prompt">➜</span> <span class="path">~/potluck</span>
+    </div>
+  </div>
+</body>
+</html>

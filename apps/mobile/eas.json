@@ -27,7 +27,9 @@
         "appleTeamId": "GU9WTSTX9M",
         "ascApiKeyId": "AQR8RU478G",
         "ascApiKeyIssuerId": "f026f849-65f1-4ca4-9d49-1b6764131f40",
-        "ascApiKeyPath": "./AuthKey_AQR8RU478G.p8"
+        "ascApiKeyPath": "./AuthKey_AQR8RU478G.p8",
+        "ascAppId": "6759842391",
+        "appleId": "angchewhoe@gmail.com"
       },
       "android": {
         "serviceAccountKeyPath": "./google-service-account.json",

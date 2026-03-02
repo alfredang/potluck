@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal - EAS Build</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'SF Mono', 'Fira Code', 'Monaco', monospace;
+            background: #0d1117;
+            min-height: 100vh;
+            padding: 30px;
+        }
+        .terminal {
+            background: #0d1117;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #30363d;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .terminal-header {
+            background: #161b22;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #30363d;
+        }
+        .terminal-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .terminal-btn.red { background: #ff5f56; }
+        .terminal-btn.yellow { background: #ffbd2e; }
+        .terminal-btn.green { background: #27c93f; }
+        .terminal-title {
+            margin-left: 12px;
+            color: #8b949e;
+            font-size: 13px;
+        }
+        .terminal-body {
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .command {
+            color: #79c0ff;
+            margin-bottom: 15px;
+        }
+        .prompt {
+            color: #8b949e;
+        }
+        .output {
+            color: #c9d1d9;
+            white-space: pre-wrap;
+        }
+        .success { color: #3fb950; }
+        .info { color: #58a6ff; }
+        .warning { color: #d29922; }
+        .error { color: #f85149; }
+        .link { color: #58a6ff; text-decoration: underline; }
+        .progress-bar {
+            display: inline-block;
+            background: #238636;
+            height: 8px;
+            border-radius: 4px;
+            margin: 10px 0;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="terminal-btn red"></div>
+            <div class="terminal-btn yellow"></div>
+            <div class="terminal-btn green"></div>
+            <span class="terminal-title">~ — zsh</span>
+        </div>
+        <div class="terminal-body">
+            <div class="command"><span class="prompt">➜</span> eas build --platform ios --profile production</div>
+            <div class="output">
+<span class="info">✔</span> Logged in as @potluck-dev
+<span class="info">✔</span> Using local credentials
+
+📐 <span class="info">Project configuration:</span>
+  Platform: ios
+  Build profile: production
+
+👤 <span class="info">Account:</span> @potluck-dev (Paid)
+📦 <span class="info">App:</span> com.potluck.app
+
+<span class="warning">⚠</span> Checking if this build should be triggered...
+
+<span class="info">✔</span> Git commit verified: "feat: production build"
+
+🚀 <span class="info">Build queued!</span>
+
+<span class="success">Build Details:</span>
+  Build ID: 2c9a4f7e-d3b1-4a8c-9f2e-1d3c5b7a9e4f
+  Status: <span class="success">IN_QUEUE</span>
+  Platform: iOS
+  Profile: production
+
+<span class="info">View build details:</span> <span class="link">https://expo.dev/builds/2c9a4f7e-d3b1-4a8c-9f2e-1d3c5b7a9e4f</span>
+
+<span class="warning">⏳</span> You can monitor the build progress with:
+  <span class="prompt">eas build:list</span>
+  <span class="prompt">eas build:view --id 2c9a4f7e-d3b1-4a8c-9f2e-1d3c5b7a9e4f</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

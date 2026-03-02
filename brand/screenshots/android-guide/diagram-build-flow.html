@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { background: #1e1e2e; padding: 40px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+        .flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+        }
+        .step {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            text-align: center;
+            min-width: 120px;
+        }
+        .step-alt {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+        }
+        .step-green {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+        }
+        .step-orange {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            box-shadow: 0 4px 15px rgba(250, 112, 154, 0.4);
+        }
+        .arrow {
+            color: #a6a6a6;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .title {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">📱 Android Build & Deploy Flow</div>
+    <div class="flow">
+        <div class="step">💻<br>Code</div>
+        <span class="arrow">→</span>
+        <div class="step-alt">🚀<br>eas build</div>
+        <span class="arrow">→</span>
+        <div class="step">☁️<br>EAS Cloud</div>
+        <span class="arrow">→</span>
+        <div class="step-green">⚙️<br>Gradle</div>
+        <span class="arrow">→</span>
+        <div class="step-alt">📦<br>AAB</div>
+        <span class="arrow">→</span>
+        <div class="step-orange">📤<br>eas submit</div>
+        <span class="arrow">→</span>
+        <div class="step">🎮<br>Google Play<br>Console</div>
+        <span class="arrow">→</span>
+        <div class="step-green">✅<br>Review</div>
+        <span class="arrow">→</span>
+        <div class="step-alt">🌐<br>Published!</div>
+    </div>
+</body>
+</html>

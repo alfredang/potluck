@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iOS Developer Mode - Expo Documentation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            min-height: 100vh;
+            color: #e5e5e5;
+        }
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: #111;
+            padding: 30px 20px;
+            border-right: 1px solid #222;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #000, #333);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            border: 1px solid #333;
+        }
+        .nav-section { margin-bottom: 30px; }
+        .nav-title {
+            color: #666;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            padding: 0 10px;
+        }
+        .nav-item {
+            display: block;
+            color: #999;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .nav-item:hover, .nav-item.active {
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .nav-item.active { border-left: 3px solid #fff; }
+        .main {
+            margin-left: 280px;
+            padding: 40px 60px;
+            max-width: 800px;
+        }
+        .breadcrumb {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .description {
+            color: #888;
+            font-size: 18px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        .info-box {
+            background: rgba(0,122,255,0.1);
+            border: 1px solid rgba(0,122,255,0.3);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 30px 0;
+        }
+        .info-box h3 {
+            color: #007aff;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .info-box p {
+            color: #888;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .step {
+            background: #111;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 1px solid #222;
+        }
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .step-number {
+            width: 32px;
+            height: 32px;
+            background: #007aff;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+        }
+        .step-content {
+            color: #888;
+            font-size: 14px;
+            line-height: 1.7;
+            padding-left: 47px;
+        }
+        code {
+            background: #1a1a1a;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #79c0ff;
+            font-family: 'SF Mono', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">⚡</div>
+            Expo
+        </div>
+        <div class="nav-section">
+            <div class="nav-title">Guides</div>
+            <a href="#" class="nav-item">Getting Started</a>
+            <a href="#" class="nav-item active">iOS Developer Mode</a>
+            <a href="#" class="nav-item">Android Emulator</a>
+        </div>
+        <div class="nav-section">
+            <div class="nav-title">Workflow</div>
+            <a href="#" class="nav-item">Development</a>
+            <a href="#" class="nav-item">Prebuild</a>
+        </div>
+    </div>
+    <div class="main">
+        <div class="breadcrumb">Expo Docs › Guides › iOS Developer Mode</div>
+        <h1>iOS Developer Mode</h1>
+        <p class="description">Learn how to enable Developer Mode on your iOS device to run development builds.</p>
+        
+        <div class="info-box">
+            <h3>⚠️ Required for Development</h3>
+            <p>Starting with iOS 16, Apple requires Developer Mode to be enabled on devices to run development builds. This is a security feature that must be manually enabled.</p>
+        </div>
+        
+        <h2 style="color:#fff;font-size:24px;margin:40px 0 20px;">How to Enable Developer Mode</h2>
+        
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">1</span>
+                <span class="step-title">Connect Your Device</span>
+            </div>
+            <div class="step-content">
+                Connect your iPhone or iPad to your Mac using a USB cable. Open Xcode and select your device.
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">2</span>
+                <span class="step-title">Open Settings</span>
+            </div>
+            <div class="step-content">
+                On your iOS device, go to <strong>Settings → General → VPN & Device Management</strong>.
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">3</span>
+                <span class="step-title">Enable Developer Mode</span>
+            </div>
+            <div class="step-content">
+                Tap on the developer app from your trusted provider, then toggle <strong>Developer Mode</strong> to ON.
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">4</span>
+                <span class="step-title">Restart Your Device</span>
+            </div>
+            <div class="step-content">
+                After enabling Developer Mode, you'll need to restart your device for the changes to take effect.
+            </div>
+        </div>
+        
+        <div class="info-box" style="background:rgba(52,199,89,0.1);border-color:rgba(52,199,89,0.3);">
+            <h3 style="color:#34c759;">✅ Ready for Development</h3>
+            <p>Once Developer Mode is enabled, you can run development builds, use Expo Go, and test on physical devices.</p>
+        </div>
+    </div>
+</body>
+</html>

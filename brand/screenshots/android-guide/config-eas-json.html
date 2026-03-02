@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { background: #1a1a2e; padding: 40px; font-family: 'Fira Code', monospace; }
+        .code-block {
+            background: #1e1e1e;
+            border-radius: 8px;
+            padding: 20px;
+            font-size: 13px;
+            line-height: 1.6;
+            border: 1px solid #3c3c3c;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            overflow-x: auto;
+        }
+        .key { color: #9cdcfe; }
+        .string { color: #ce9178; }
+        .number { color: #b5cea8; }
+        .comment { color: #6a9955; }
+        .bracket { color: #ffd700; }
+    </style>
+</head>
+<body>
+    <div class="code-block"><span class="comment">// eas.json - EAS Build Configuration</span><br>
+{<br>
+  <span class="key">"build"</span>: {<br>
+    <span class="key">"production"</span>: {<br>
+      <span class="key">"android"</span>: {<br>
+        <span class="key">"buildType"</span>: <span class="string">"app-bundle"</span>,<br>
+        <span class="key">"gradleCommand"</span>: <span class="string">":app:bundleRelease"</span><br>
+      },<br>
+      <span class="key">"release"</span>: {<br>
+        <span class="key">"distribution"</span>: <span class="string">"store"</span><br>
+      }<br>
+    },<br>
+    <span class="key">"preview"</span>: {<br>
+      <span class="key">"android"</span>: {<br>
+        <span class="key">"buildType"</span>: <span class="string">"apk"</span><br>
+      }<br>
+    }<br>
+  },<br>
+  <span class="key">"submit"</span>: {<br>
+    <span class="key">"production"</span>: {<br>
+      <span class="key">"android"</span>: {<br>
+        <span class="key">"serviceAccountKeyPath"</span>: <span class="string">"./service-account.json"</span>,<br>
+        <span class="key">"track"</span>: <span class="string">"internal"</span><br>
+      }<br>
+    }<br>
+  }<br>
+}
+    </div>
+</body>
+</html>

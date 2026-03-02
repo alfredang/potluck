@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #1e1e3f; padding: 20px; font-family: 'Fira Code', 'Monaco', monospace; }
+.code-block { background: #1e1e1e; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5); max-width: 500px; margin: 0 auto; }
+.code-header { background: #2d2d3a; padding: 10px 15px; display: flex; align-items: center; }
+.filename { color: #abb2bf; font-size: 13px; }
+.code-body { padding: 20px; font-size: 14px; line-height: 1.8; color: #abb2bf; }
+.comment { color: #5c6370; }
+.property { color: #61dafb; }
+.value { color: #98c379; }
+</style>
+</head>
+<body>
+<div class="code-block">
+  <div class="code-header">
+    <span class="filename">.npmrc</span>
+  </div>
+  <div class="code-body">
+<span class="comment"># pnpm monorepo configuration</span>
+<span class="property">node-linker</span>=<span class="value">hoisted</span><br>
+<br>
+<span class="comment"># Ensure consistent package versions</span>
+<span class="property">resolution-mode</span>=<span class="value">highest</span><br>
+<br>
+<span class="comment"># Enable public registry</span>
+<span class="property">registry</span>=<span class="value">https://registry.npmjs.org/</span>
+  </div>
+</div>
+</body>
+</html>

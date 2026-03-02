@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Business Registration</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .phone-frame {
+      width: 375px;
+      height: 700px;
+      background: #fff;
+      border-radius: 30px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      overflow: hidden;
+      position: relative;
+    }
+    .header {
+      background: #075E54;
+      padding: 15px;
+      text-align: center;
+    }
+    .header img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 10px;
+    }
+    .header h2 {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .content {
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .content h3 {
+      color: #333;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .content p {
+      color: #667;
+      font-size: 14px;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+    .country-select {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 15px;
+      background: #f9f9f9;
+    }
+    .country-select select {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      color: #333;
+      outline: none;
+    }
+    .phone-input {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 25px;
+      background: #f9f9f9;
+    }
+    .phone-input span {
+      color: #667;
+      font-size: 16px;
+      margin-right: 8px;
+    }
+    .phone-input input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      color: #333;
+      outline: none;
+    }
+    .btn-next {
+      background: #25D366;
+      color: #fff;
+      border: none;
+      padding: 14px 40px;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+    }
+    .terms {
+      font-size: 11px;
+      color: #888;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+    .terms a {
+      color: #075E54;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone-frame">
+    <div class="header">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+        <rect width="80" height="80" rx="20" fill="#25D366"/>
+        <path d="M25 40C25 40 30 50 40 50C50 50 55 40 55 40" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="40" cy="32" r="5" fill="white"/>
+      </svg>
+      <h2>WhatsApp Business</h2>
+    </div>
+    <div class="content">
+      <h3>Verify your phone number</h3>
+      <p>Choose a country and enter your phone number</p>
+      
+      <div class="country-select">
+        <span>🇸🇬</span>
+        <select>
+          <option>Singapore (+65)</option>
+        </select>
+      </div>
+      
+      <div class="phone-input">
+        <span>+65</span>
+        <input type="text" placeholder="9123 4567" value="9123 4567">
+      </div>
+      
+      <button class="btn-next">Next</button>
+      
+      <p class="terms">
+        By entering your phone number, you agree to our
+        <a href="#">Terms of Service</a> and
+        <a href="#">Privacy Policy</a>.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

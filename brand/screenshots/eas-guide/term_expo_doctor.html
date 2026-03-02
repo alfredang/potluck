@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #1a1a2e; padding: 20px; font-family: 'Fira Code', monospace; }
+.terminal { background: #0d0d1a; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5); max-width: 900px; margin: 0 auto; }
+.terminal-header { background: #16162a; padding: 10px 15px; display: flex; gap: 8px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot-red { background: #ff5f56; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #27c93f; }
+.terminal-title { flex: 1; text-align: center; color: #6c6c8a; font-size: 13px; }
+.terminal-body { padding: 20px; color: #e0e0e0; font-size: 13px; line-height: 1.5; }
+.prompt { color: #61dafb; }
+.command { color: #98c379; }
+.output { color: #abb2bf; }
+.comment { color: #5c6370; }
+.success { color: #98c379; }
+.warning { color: #e5c07b; }
+.info { color: #61dafb; }
+</style>
+</head>
+<body>
+<div class="terminal">
+  <div class="terminal-header">
+    <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+    <div class="terminal-title">Terminal — ~/projects/potluck</div>
+  </div>
+  <div class="terminal-body">
+    <div><span class="prompt">➜</span> <span class="command">npx expo-doctor</span></div>
+    <div class="output">
+      <span class="comment"># Check project health</span><br>
+      <br>
+      <span class="info">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</span><br>
+      <br>
+      <span class="success">✓</span> Found package.json<br>
+      <span class="success">✓</span> Validated Expo SDK: 52.0.0<br>
+      <br>
+      <span class="success">✓</span> <span class="success">✓</span> <span class="success">✓</span> <span class="success">✓</span> <span class="success">✓</span> <span class="success">✓</span> <span class="success">✓</span> <span class="success">✓</span> <span class="success">✓</span> <span class="success">✓</span> <span class="success">✓</span> <span class="success">✓</span> <span class="success">✓</span> <span class="success">✓</span> <span class="success">✓</span> <span class="success">✓</span> <span class="success">✓</span> <br>
+      <span class="success">17/17 checks passed!</span><br>
+      <br>
+      ─────────────────────────────────────────<br>
+      ✓ node: >=18.0.0 - meets minimums<br>
+      ✓ npm: >=8.0.0 - meets minimums<br>
+      ✓ app.json: exists and is valid<br>
+      ✓ package.json: exists and is valid<br>
+      ✓ dependencies: installed correctly<br>
+      ✓ devDependencies: installed correctly<br>
+      ✓ nativeModules: all configured<br>
+      ✓ assets: all accounted for<br>
+      ✓ android: gradle configured correctly<br>
+      ✓ ios: pbxproj configured correctly<br>
+      ✓ expo-updates: properly configured<br>
+      ✓ expo-fonts: properly configured<br>
+      ✓ expo-splash-screen: properly configured<br>
+      ✓ expo-web: properly configured<br>
+      ✓ react-native: compatible version<br>
+      ✓ typescript: properly configured<br>
+      ✓ metro: properly configured<br>
+      ─────────────────────────────────────────<br>
+      <br>
+      <span class="success">✓</span> Project is healthy!
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #1a1a2e; padding: 40px; font-family: system-ui, sans-serif; }
+.diagram { max-width: 1000px; margin: 0 auto; }
+.title { color: #fff; text-align: center; margin-bottom: 40px; font-size: 24px; font-weight: 600; }
+.flow { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 15px; }
+.step { 
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white; 
+  padding: 20px 30px; 
+  border-radius: 12px; 
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  min-width: 140px;
+}
+.step-icon { font-size: 32px; margin-bottom: 10px; }
+.step-label { font-weight: 600; font-size: 14px; }
+.step-cloud { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+.step-xcode { background: linear-gradient(135deg, #434343 0%, #000000 100%); }
+.step-gradle { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+.step-package { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: #333; }
+.step-store { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.arrow { color: #5c6370; font-size: 24px; }
+</style>
+</head>
+<body>
+<div class="diagram">
+  <div class="title">🚀 EAS Build Flow Architecture</div>
+  <div class="flow">
+    <div class="step">
+      <div class="step-icon">💻</div>
+      <div class="step-label">Your Code</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step step-cloud">
+      <div class="step-icon">☁️</div>
+      <div class="step-label">eas build</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step step-cloud">
+      <div class="step-icon">🏗️</div>
+      <div class="step-label">EAS Cloud</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step step-xcode">
+      <div class="step-icon">🍎</div>
+      <div class="step-label">Xcode</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step step-gradle">
+      <div class="step-icon">🤖</div>
+      <div class="step-label">Gradle</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step step-package">
+      <div class="step-icon">📦</div>
+      <div class="step-label">IPA / APK</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="step-icon">📤</div>
+      <div class="step-label">eas submit</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step step-store">
+      <div class="step-icon">🏪</div>
+      <div class="step-label">App Stores</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

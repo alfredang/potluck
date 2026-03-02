@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { background: #1a1a2e; padding: 40px; font-family: 'Fira Code', monospace; }
+        .terminal {
+            background: #0d1117;
+            border-radius: 8px;
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            border: 1px solid #30363d;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .prompt { color: #7ee787; }
+        .command { color: #79c0ff; }
+        .output { color: #8b949e; }
+        .path { color: #d2a8ff; }
+        .flag { color: #ff7b72; }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div><span class="prompt">$</span> <span class="command">eas build --platform android --profile production</span></div>
+        <div class="output">
+✔ EAS CLI detected<br>
+✔ Logged in as @pawbot<br>
+✔ Linked to project: potluck-app<br>
+<br>
+📦 Building Android AAB...<br>
+<br>
+🎯 Build Details:<br>
+  Platform: android<br>
+  Profile: production<br>
+  Artifact: app-release.aab<br>
+<br>
+⏳ Waiting for build to complete...<br>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>
+📱 Build Status: IN PROGRESS<br>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>
+<br>
+✔ Started build at 10:30:45 AM<br>
+🔄 Running Gradle...<br>
+📦 Bundling JavaScript...<br>
+🛠  Compiling native code...<br>
+<br>
+⏳ Build in progress... (may take 5-10 minutes)
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="240" fill="#FF6B35"/>
+  
+  <!-- Inner circle for depth -->
+  <circle cx="256" cy="256" r="200" fill="#FF8C42"/>
+  
+  <!-- Pot/Bowl shape -->
+  <path d="M120 220 L392 220 L370 380 Q360 420 256 420 Q152 420 142 380 Z" fill="#FFFFFF" stroke="#E85A24" stroke-width="8"/>
+  
+  <!-- Pot rim -->
+  <ellipse cx="256" cy="220" rx="136" ry="30" fill="#FFFFFF" stroke="#E85A24" stroke-width="8"/>
+  
+  <!-- Heart in the center -->
+  <path d="M256 280 C220 240 180 260 180 300 C180 340 256 380 256 380 C256 380 332 340 332 300 C332 260 292 240 256 280 Z" fill="#E85A24"/>
+  
+  <!-- Small steam wisps -->
+  <path d="M200 170 Q210 150 200 130" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+  <path d="M256 160 Q270 135 256 115" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+  <path d="M312 170 Q300 150 312 130" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+</svg>

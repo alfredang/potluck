@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eas.json - iOS Build Profiles</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'SF Mono', 'Fira Code', 'Monaco', monospace;
+            background: #1e1e2e;
+            min-height: 100vh;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .code-block {
+            background: #1e1e2e;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #45475a;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .code-header {
+            background: #181825;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #45475a;
+        }
+        .file-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #89b4fa, #74c7ec);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e1e2e;
+        }
+        .file-name {
+            color: #cdd6f4;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .code-body {
+            padding: 24px;
+            font-size: 14px;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+        .key { color: #89b4fa; }
+        .string { color: #a6e3a1; }
+        .number { color: #fab387; }
+        .boolean { color: #cba6f7; }
+        .bracket { color: #9399b2; }
+        .comment { color: #6c7086; }
+    </style>
+</head>
+<body>
+    <div class="code-block">
+        <div class="code-header">
+            <div class="file-icon">{ }</div>
+            <span class="file-name">eas.json</span>
+        </div>
+        <div class="code-body">
+<span class="bracket">{</span>
+  <span class="key">"cli"</span>: <span class="bracket">{</span>
+    <span class="key">"version"</span>: <span class="string">">= 3.0.0"</span>,
+    <span class="key">"requireCommit"</span>: <span class="boolean">true</span>
+  <span class="bracket">}</span>,
+
+  <span class="comment">// Build profiles for iOS</span>
+  <span class="key">"build"</span>: <span class="bracket">{</span>
+    <span class="key">"production"</span>: <span class="bracket">{</span>
+      <span class="key">"ios"</span>: <span class="bracket">{</span>
+        <span class="key">"credentialsSource"</span>: <span class="string">"remote"</span>,
+        <span class="key">"distribution"</span>: <span class="string">"store"</span>,
+        <span class="key">"buildNumber"</span>: <span class="string">"1"</span>
+      <span class="bracket">}</span>,
+      <span class="key">"android"</span>: <span class="bracket">{</span>
+        <span class="key">"credentialsSource"</span>: <span class="string">"remote"</span>,
+        <span class="key">"buildType"</span>: <span class="string">"app-bundle"</span>
+      <span class="bracket">}</span>,
+      <span class="key">"env"</span>: <span class="bracket">{</span>
+        <span class="key">"APP_ENV"</span>: <span class="string">"production"</span>
+      <span class="bracket">}</span>,
+      <span class="key">"cache"</span>: <span class="bracket">{</span>
+        <span class="key">"key"</span>: <span class="string">"prod-v1"</span>,
+        <span class="key">"cache"</span>: <span class="bracket">[</span><span class="string">"node_modules"</span>, <span class="string">".expo"</span><span class="bracket">]</span>
+      <span class="bracket">}</span>
+    <span class="bracket">}</span>,
+
+    <span class="key">"development"</span>: <span class="bracket">{</span>
+      <span class="key">"ios"</span>: <span class="bracket">{</span>
+        <span class="key">"credentialsSource"</span>: <span class="string">"local"</span>,
+        <span class="key">"distribution"</span>: <span class="string">"internal"</span>,
+        <span class="key">"buildNumber"</span>: <span class="string">"1"</span>
+      <span class="bracket">}</span>,
+      <span class="key">"android"</span>: <span class="bracket">{</span>
+        <span class="key">"credentialsSource"</span>: <span class="string">"local"</span>,
+        <span class="key">"buildType"</span>: <span class="string">"debug"</span>
+      <span class="bracket">}</span>,
+      <span class="key">"env"</span>: <span class="bracket">{</span>
+        <span class="key">"APP_ENV"</span>: <span class="string">"development"</span>
+      <span class="bracket">}</span>
+    <span class="bracket">}</span>,
+
+    <span class="key">"staging"</span>: <span class="bracket">{</span>
+      <span class="key">"ios"</span>: <span class="bracket">{</span>
+        <span class="key">"credentialsSource"</span>: <span class="string">"remote"</span>,
+        <span class="key">"distribution"</span>: <span class="string">"internal"</span>,
+        <span class="key">"buildNumber"</span>: <span class="string">"1"</span>
+      <span class="bracket">}</span>,
+      <span class="key">"env"</span>: <span class="bracket">{</span>
+        <span class="key">"APP_ENV"</span>: <span class="string">"staging"</span>
+      <span class="bracket">}</span>
+    <span class="bracket">}</span>
+  <span class="bracket">}</span>,
+  
+  <span class="comment">// Submit configuration</span>
+  <span class="key">"submit"</span>: <span class="bracket">{</span>
+    <span class="key">"production"</span>: <span class="bracket">{</span>
+      <span class="key">"ios"</span>: <span class="bracket">{</span>
+        <span class="key">"appleId"</span>: <span class="string">"developer@potluck.app"</span>,
+        <span class="key">"ascAppId"</span>: <span class="string">"1234567890"</span>
+      <span class="bracket">}</span>
+    <span class="bracket">}</span>
+  <span class="bracket">}</span>
+<span class="bracket">}</span>
+        </div>
+    </div>
+</body>
+</html>

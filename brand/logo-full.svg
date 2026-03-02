@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+  <!-- Icon portion (left side) -->
+  <g transform="translate(20, 20)">
+    <!-- Background circle -->
+    <circle cx="80" cy="80" r="75" fill="#FF6B35"/>
+    
+    <!-- Inner circle -->
+    <circle cx="80" cy="80" r="60" fill="#FF8C42"/>
+    
+    <!-- Pot/Bowl shape -->
+    <path d="M40 70 L120 70 L110 130 Q105 150 80 150 Q55 150 50 130 Z" fill="#FFFFFF" stroke="#E85A24" stroke-width="4"/>
+    
+    <!-- Pot rim -->
+    <ellipse cx="80" cy="70" rx="40" ry="10" fill="#FFFFFF" stroke="#E85A24" stroke-width="4"/>
+    
+    <!-- Heart -->
+    <path d="M80 90 C68 75 50 82 50 98 C50 114 80 135 80 135 C80 135 110 114 110 98 C110 82 92 75 80 90 Z" fill="#E85A24"/>
+  </g>
+  
+  <!-- Text portion -->
+  <text x="180" y="115" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="bold" fill="#E85A24">PotLuck</text>
+  <text x="490" y="115" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="bold" fill="#FF6B35">Hub</text>
+  
+  <!-- Tagline -->
+  <text x="180" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#666666">Home Cooks • Community • Good Food</text>
+</svg>

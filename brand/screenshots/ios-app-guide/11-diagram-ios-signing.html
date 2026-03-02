@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iOS Signing Flow Diagram</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 100%);
+            min-height: 100vh;
+            padding: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .diagram {
+            max-width: 1000px;
+            width: 100%;
+        }
+        h1 {
+            color: #fff;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+        .flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .step {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            min-width: 200px;
+            transition: all 0.3s;
+        }
+        .step:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+        .step-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+        }
+        .step-title {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .step-desc {
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+        }
+        .arrow {
+            color: #667eea;
+            font-size: 32px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: translateX(0); }
+            50% { opacity: 1; transform: translateX(5px); }
+        }
+        .final {
+            background: linear-gradient(135deg, #34c759, #30d158);
+            border: none;
+        }
+        .final .step-icon {
+            background: rgba(255,255,255,0.2);
+        }
+        .label {
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 12px;
+            margin-top: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="diagram">
+        <h1>iOS Signing Flow</h1>
+        <div class="flow">
+            <div class="step">
+                <div class="step-icon">📜</div>
+                <div class="step-title">Distribution Certificate</div>
+                <div class="step-desc">Apple Developer<br/>Account</div>
+            </div>
+            <span class="arrow">→</span>
+            <div class="step">
+                <div class="step-icon">📋</div>
+                <div class="step-title">Provisioning Profile</div>
+                <div class="step-desc">Bundle ID +<br/>Certificate</div>
+            </div>
+            <span class="arrow">→</span>
+            <div class="step">
+                <div class="step-icon">🆔</div>
+                <div class="step-title">Bundle Identifier</div>
+                <div class="step-desc">com.potluck.app<br/>Unique App ID</div>
+            </div>
+            <span class="arrow">→</span>
+            <div class="step">
+                <div class="step-icon">🔨</div>
+                <div class="step-title">Xcode Build</div>
+                <div class="step-desc">Sign with<br/>Certificate</div>
+            </div>
+            <span class="arrow">→</span>
+            <div class="step final">
+                <div class="step-icon">📦</div>
+                <div class="step-title">Signed IPA</div>
+                <div class="step-desc">Ready for<br/>Distribution</div>
+            </div>
+            <span class="arrow">→</span>
+            <div class="step final">
+                <div class="step-icon">🛍️</div>
+                <div class="step-title">App Store Connect</div>
+                <div class="step-desc">Upload &<br/>Submit</div>
+            </div>
+        </div>
+        <div class="label">iOS App Distribution Pipeline</div>
+    </div>
+</body>
+</html>

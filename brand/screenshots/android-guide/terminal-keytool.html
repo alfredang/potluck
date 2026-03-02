@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { background: #1a1a2e; padding: 40px; font-family: 'Fira Code', monospace; }
+        .terminal {
+            background: #0d1117;
+            border-radius: 8px;
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            border: 1px solid #30363d;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .prompt { color: #7ee787; }
+        .command { color: #79c0ff; }
+        .output { color: #8b949e; }
+        .path { color: #d2a8ff; }
+        .flag { color: #ff7b72; }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div><span class="prompt">$</span> <span class="command">keytool -genkeypair -v -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 \</span></div>
+        <div class="output">  <span class="flag">-keystore</span> upload-keystore.jks <span class="flag">-alias</span> upload-key <span class="flag">-keypass</span> *** <span class="flag">-storepass</span> ***<br>
+<br>
+🔐 Generating RSA key pair and self-signed certificate...<br>
+<br>
+[Storing upload-keystore.jks]<br>
+<br>
+✅ Key generated successfully!<br>
+<br>
+📋 Certificate Details:<br>
+  Algorithm: RSA 2048-bit<br>
+  Validity: 10,000 days<br>
+  Alias: upload-key<br>
+  Store: upload-keystore.jks<br>
+<br>
+⚠️  IMPORTANT: Store this keystore securely!<br>
+   - Backup your keystore file<br>
+   - Never commit to version control<br>
+   - Use same keystore for all updates<br>
+        </div>
+    </div>
+</body>
+</html>

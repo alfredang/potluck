@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>app.json - iOS Config</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'SF Mono', 'Fira Code', 'Monaco', monospace;
+            background: #1e1e2e;
+            min-height: 100vh;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .code-block {
+            background: #1e1e2e;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #45475a;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .code-header {
+            background: #181825;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #45475a;
+        }
+        .file-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #f9e2af, #fab387);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e1e2e;
+        }
+        .file-name {
+            color: #cdd6f4;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .code-body {
+            padding: 24px;
+            font-size: 14px;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+        .key { color: #89b4fa; }
+        .string { color: #a6e3a1; }
+        .number { color: #fab387; }
+        .boolean { color: #cba6f7; }
+        .bracket { color: #9399b2; }
+        .comment { color: #6c7086; }
+    </style>
+</head>
+<body>
+    <div class="code-block">
+        <div class="code-header">
+            <div class="file-icon">{}</div>
+            <span class="file-name">app.json</span>
+        </div>
+        <div class="code-body">
+<span class="bracket">{</span>
+  <span class="key">"expo"</span>: <span class="bracket">{</span>
+    <span class="comment">// App identification</span>
+    <span class="key">"name"</span>: <span class="string">"PotLuck"</span>,
+    <span class="key">"slug"</span>: <span class="string">"potluck"</span>,
+    <span class="key">"version"</span>: <span class="string">"1.0.0"</span>,
+    <span class="key">"orientation"</span>: <span class="string">"portrait"</span>,
+    
+    <span class="comment">// iOS Configuration</span>
+    <span class="key">"ios"</span>: <span class="bracket">{</span>
+      <span class="key">"bundleIdentifier"</span>: <span class="string">"com.potluck.app"</span>,
+      <span class="key">"buildNumber"</span>: <span class="string">"1"</span>,
+      <span class="key">"supportsTablet"</span>: <span class="boolean">true</span>,
+      <span class="key">"adaptiveIcon"</span>: <span class="bracket">{</span>
+        <span class="key">"foregroundImage"</span>: <span class="string">"./assets/ios-icon.png"</span>,
+        <span class="key">"backgroundColor"</span>: <span class="string">"#FF6B6B"</span>
+      <span class="bracket">}</span>,
+      <span class="key">"infoPlist"</span>: <span class="bracket">{</span>
+        <span class="key">"NSCameraUsageDescription"</span>: <span class="string">"PotLuck needs camera access to scan food items"</span>,
+        <span class="key">"NSPhotoLibraryUsageDescription"</span>: <span class="string">"PotLuck needs photo access to save your meals"</span>
+      <span class="bracket">}</span>
+    <span class="bracket">}</span>,
+
+    <span class="comment">// Android Configuration</span>
+    <span class="key">"android"</span>: <span class="bracket">{</span>
+      <span class="key">"package"</span>: <span class="string">"com.potluck.app"</span>,
+      <span class="key">"versionCode"</span>: <span class="number">1</span>,
+      <span class="key">"adaptiveIcon"</span>: <span class="bracket">{</span>
+        <span class="key">"foregroundImage"</span>: <span class="string">"./assets/android-icon.png"</span>,
+        <span class="key">"backgroundColor"</span>: <span class="string">"#FF6B6B"</span>
+      <span class="bracket">}</span>
+    <span class="bracket">}</span>,
+
+    <span class="comment">// App icon and splash</span>
+    <span class="key">"icon"</span>: <span class="string">"./assets/icon.png"</span>,
+    <span class="key">"splash"</span>: <span class="bracket">{</span>
+      <span class="key">"image"</span>: <span class="string">"./assets/splash.png"</span>,
+      <span class="key">"resizeMode"</span>: <span class="string">"contain"</span>,
+      <span class="key">"backgroundColor"</span>: <span class="string">"#FF6B6B"</span>
+    <span class="bracket">}</span>
+  <span class="bracket">}</span>
+<span class="bracket">}</span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { background: #1a1a2e; padding: 40px; font-family: 'Fira Code', monospace; }
+        .code-block {
+            background: #1e1e1e;
+            border-radius: 8px;
+            padding: 20px;
+            font-size: 13px;
+            line-height: 1.6;
+            border: 1px solid #3c3c3c;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            overflow-x: auto;
+        }
+        .key { color: #9cdcfe; }
+        .string { color: #ce9178; }
+        .number { color: #b5cea8; }
+        .comment { color: #6a9955; }
+    </style>
+</head>
+<body>
+    <div class="code-block"><span class="comment">// app.json - Expo App Configuration</span><br>
+{<br>
+  <span class="key">"expo"</span>: {<br>
+    <span class="key">"name"</span>: <span class="string">"PotLuck"</span>,<br>
+    <span class="key">"slug"</span>: <span class="string">"potluck-app"</span>,<br>
+    <span class="key">"version"</span>: <span class="string">"1.0.0"</span>,<br>
+    <span class="key">"orientation"</span>: <span class="string">"portrait"</span>,<br>
+    <span class="key">"icon"</span>: <span class="string">"./assets/icon.png"</span>,<br>
+    <span class="key">"splash"</span>: {<br>
+      <span class="key">"image"</span>: <span class="string">"./assets/splash.png"</span>,<br>
+      <span class="key">"resizeMode"</span>: <span class="string">"contain"</span><br>
+    },<br>
+    <span class="key">"android"</span>: {<br>
+      <span class="key">"adaptiveIcon"</span>: {<br>
+        <span class="key">"foregroundImage"</span>: <span class="string">"./assets/adaptive-icon.png"</span>,<br>
+        <span class="key">"backgroundColor"</span>: <span class="string">"#FF6B35"</span><br>
+      },<br>
+      <span class="key">"package"</span>: <span class="string">"com.potluck.app"</span>,<br>
+      <span class="key">"versionCode"</span>: <span class="number">1</span>,<br>
+      <span class="key">"permissions"</span>: [<br>
+        <span class="string">"CAMERA"</span>,<br>
+        <span class="string">"READ_EXTERNAL_STORAGE"</span>,<br>
+        <span class="string">"WRITE_EXTERNAL_STORAGE"</span>,<br>
+        <span class="string">"INTERNET"</span><br>
+      ]<br>
+    },<br>
+    <span class="key">"extra"</span>: {<br>
+      <span class="key">"eas"</span>: {<br>
+        <span class="key">"projectId"</span>: <span class="string">"potluck-app-id"</span><br>
+      }<br>
+    }<br>
+  }<br>
+}
+    </div>
+</body>
+</html>

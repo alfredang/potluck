@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { background: #1a1a2e; padding: 40px; font-family: 'Fira Code', monospace; }
+        .code-block {
+            background: #1e1e1e;
+            border-radius: 8px;
+            padding: 20px;
+            font-size: 13px;
+            line-height: 1.6;
+            border: 1px solid #3c3c3c;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            overflow-x: auto;
+        }
+        .key { color: #9cdcfe; }
+        .string { color: #ce9178; }
+        .number { color: #b5cea8; }
+        .comment { color: #6a9955; }
+    </style>
+</head>
+<body>
+    <div class="code-block"><span class="comment">// android/app/build.gradle - Key sections</span><br>
+<br>
+<span class="key">android</span> {<br>
+    <span class="key">namespace</span> <span class="string">"com.potluck.app"</span><br>
+    <span class="key">compileSdk</span> <span class="number">34</span><br>
+    <span class="key">defaultConfig</span> {<br>
+        <span class="key">applicationId</span> <span class="string">"com.potluck.app"</span><br>
+        <span class="key">minSdk<span class="number</span> ">24</span><br>
+        <span class="key">targetSdk</span> <span class="number">34</span><br>
+        <span class="key">versionCode</span> <span class="number">1</span><br>
+        <span class="key">versionName</span> <span class="string">"1.0.0"</span><br>
+    }<br>
+    <span class="key">signingConfigs</span> {<br>
+        <span class="key">release</span> {<br>
+            <span class="key">storeFile</span> file(<span class="string">"upload-keystore.jks"</span>)<br>
+            <span class="key">storePassword</span> <span class="string">"******"</span><br>
+            <span class="key">keyAlias</span> <span class="string">"upload-key"</span><br>
+            <span class="key">keyPassword</span> <span class="string">"******"</span><br>
+        }<br>
+    }<br>
+    <span class="key">buildTypes</span> {<br>
+        <span class="key">release</span> {<br>
+            <span class="key">signingConfig</span> signingConfigs.release<br>
+            <span class="key">minifyEnabled</span> <span class="boolean">true</span><br>
+            <span class="key">proguardFiles</span> getDefaultProguardFile(<span class="string">"proguard-android.txt"</span>)<br>
+        }<br>
+    }<br>
+}<br>
+    </div>
+</body>
+</html>

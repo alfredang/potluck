@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { background: #1e1e1e; margin: 0; padding: 20px; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', 'Source Code Pro', monospace; }
+    .terminal { background: #0d0d0d; border-radius: 8px; padding: 20px; max-width: 900px; margin: 0 auto; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .header { display: flex; align-items: center; margin-bottom: 15px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+    .red { background: #ff5f56; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #27c93f; }
+    .title { color: #888; font-size: 14px; margin-left: 10px; }
+    .prompt { color: #7ec699; }
+    .command { color: #fff; }
+    .output { color: #aaa; line-height: 1.6; }
+    .success { color: #27c93f; }
+    .info { color: #61afef; }
+    .warning { color: #e5c07b; }
+    .error { color: #ff6b6b; }
+    .path { color: #61afef; }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <div class="header">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+      <span class="title">~ — zsh</span>
+    </div>
+    <div class="output">
+      <span class="prompt">➜</span> <span class="path">~/potluck</span> <span class="command">expo prebuild --clean</span><br><br>
+      <span class="info">✔</span> Using local daemon<br>
+      <span class="info">✔</span> Loaded configuration from app.json and eas.json<br><br>
+      <span class="info">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</span><br>
+      <span class="info">Prebuild</span><br>
+      <span class="info">▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀</span><br><br>
+      <span class="warning">⚠</span> This will delete and regenerate your native folders.<br>
+      <span class="warning">  - ios folder will be deleted</span><br>
+      <span class="warning">  - android folder will be deleted</span><br><br>
+      <span class="info">? </span>Continue? <span class="warning">[Y/n]</span> <span class="success">y</span><br><br>
+      <span class="info">▶</span> Generating native folders...<br>
+      <span class="success">✔</span> Created ios folder<br>
+      <span class="success">✔</span> Created ios/PotLuck.xcworkspace<br>
+      <span class="success">✔</span> Created ios/PotLuck.xcodeproj<br>
+      <span class="success">✔</span> Updated ios/PotLuck/Info.plist<br>
+      <span class="success">✔</span> Updated ios/Podfile<br>
+      <span class="success">✔</span> Updated app.json with native configuration<br><br>
+      <span class="success">✔</span> Prebuild completed successfully!<br>
+      <span class="info">ℹ</span> Run 'eas build' to build your project<br><br>
+      <span class="prompt">➜</span> <span class="path">~/potluck</span>
+    </div>
+  </div>
+</body>
+</html>

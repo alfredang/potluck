@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { background: #1e1e1e; margin: 0; padding: 20px; font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', 'Source Code Pro', monospace; }
+    .terminal { background: #0d0d0d; border-radius: 8px; padding: 20px; max-width: 900px; margin: 0 auto; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .header { display: flex; align-items: center; margin-bottom: 15px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+    .red { background: #ff5f56; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #27c93f; }
+    .title { color: #888; font-size: 14px; margin-left: 10px; }
+    .prompt { color: #7ec699; }
+    .command { color: #fff; }
+    .output { color: #aaa; line-height: 1.6; }
+    .success { color: #27c93f; }
+    .info { color: #61afef; }
+    .warning { color: #e5c07b; }
+    .error { color: #ff6b6b; }
+    .path { color: #61afef; }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <div class="header">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+      <span class="title">~ — zsh</span>
+    </div>
+    <div class="output">
+      <span class="prompt">➜</span> <span class="path">~/potluck</span> <span class="command">eas submit --platform ios --latest</span><br><br>
+      <span class="info">✔</span> Using local daemon<br>
+      <span class="info">✔</span> Authenticated as potluckhub<br>
+      <span class="info">✔</span> Found latest build: build-123-abc-456-def<br><br>
+      <span class="info">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</span><br>
+      <span class="info">Submission Details</span><br>
+      <span class="info">▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀</span><br><br>
+      <span class="path">  Build ID:</span> build-123-abc-456-def<br>
+      <span class="path">  Platform:</span> iOS<br>
+      <span class="path">  App Version:</span> 1.0.0<br><br>
+      <span class="info">▶</span> Uploading to App Store Connect...<br>
+      <span class="success">✔</span> Build uploaded successfully!<br><br>
+      <span class="info">▶</span> Submitting for review...<br>
+      <span class="success">✔</span> Build submitted successfully!<br><br>
+      <span class="info">Submission ID:</span> e4f9a2b1-c3d4-5e6f-7a8b-9c0d1e2f3a4b<br>
+      <span class="warning">⏳</span> Status: Waiting for review<br><br>
+      <span class="success">✓</span> Submission completed successfully!<br>
+      <span class="prompt">➜</span> <span class="path">~/potluck</span>
+    </div>
+  </div>
+</body>
+</html>

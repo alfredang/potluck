@@ -221,3 +221,25 @@ async function sendWhatsAppMessage(to: string, text: string): Promise<void> {
     req.end();
   });
 }
+
+// Manual reply endpoint - for sending replies from Telegram
+// Usage: POST /webhooks/whatsapp/reply { "to": "6590480277", "message": "Hello!" }
+fastify.post('/whatsapp/reply', async (request, reply) => {
+  const body = request.body as { to: string; message: string };
+  
+  if (!body.to || !body.message) {
+    return reply.status(400).send({ error: 'Missing to or message' });
+  }
+
+  // Format phone number
+  let phone = body.to.replace(/\D/g, '');
+  if (!phone.startsWith('65')) {
+    phone = '65' + phone;
+  }
+
+  fastify.log.info(`Sending manual WhatsApp reply to +${phone}`);
+  
+  await sendWhatsAppMessage(phone, body.message);
+  
+  return reply.status(200).send({ success: true, to: phone });
+});
