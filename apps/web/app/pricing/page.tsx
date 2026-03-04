@@ -7,8 +7,8 @@ export default function PricingPage() {
       <nav className="border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="text-2xl font-bold text-orange-500">
-              Potluck
+                        <Link href="/" className="flex items-center gap-2">
+              <img src="/logo.png" alt="Potluck" className="h-10 w-auto" />
             </Link>
             <div className="hidden md:flex md:items-center md:gap-8">
               <Link href="/explore" className="text-gray-600 hover:text-gray-900">

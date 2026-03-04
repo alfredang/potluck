@@ -224,7 +224,7 @@ async function sendWhatsAppMessage(to: string, text: string): Promise<void> {
 
 // Manual reply endpoint - for sending replies from Telegram
 // Usage: POST /webhooks/whatsapp/reply { "to": "6590480277", "message": "Hello!" }
-fastify.post('/whatsapp/reply', async (request, reply) => {
+fastify.post('/whatsapp/reply', async (request: any, reply: any) => {
   const body = request.body as { to: string; message: string };
   
   if (!body.to || !body.message) {

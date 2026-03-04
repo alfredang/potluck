@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1242, height=2688">
+  <title>PotLuck - Home</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      width: 1242px; 
+      height: 2688px; 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #FFF7ED;
+      color: #1F2937;
+    }
+    .header {
+      background: #F97316;
+      padding: 60px 30px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { font-size: 36px; font-weight: 800; color: white; }
+    .search {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 30px;
+      font-size: 24px;
+      color: #9CA3AF;
+    }
+    .section { padding: 30px; }
+    .section-title { 
+      font-size: 32px; 
+      font-weight: 700; 
+      margin-bottom: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .card-img {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(135deg, #F97316 0%, #FB923C 100%);
+      border-radius: 16px;
+      margin-bottom: 16px;
+    }
+    .card-title { font-size: 28px; font-weight: 600; margin-bottom: 8px; }
+    .card-sub { font-size: 22px; color: #6B7280; }
+    .card-price { font-size: 28px; font-weight: 700; color: #F97316; margin-top: 12px; }
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: white;
+      display: flex;
+      justify-content: space-around;
+      padding: 24px 0;
+      border-top: 1px solid #E5E7EB;
+    }
+    .nav-item { text-align: center; font-size: 18px; color: #6B7280; }
+    .nav-item.active { color: #F97316; }
+    .tag {
+      display: inline-block;
+      background: #FEF3C7;
+      color: #D97706;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 18px;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">🍱 PotLuck</div>
+    <div style="font-size: 40px;">👤</div>
+  </div>
+  
+  <div class="search">🔍 Search meals, chefs...</div>
+  
+  <div class="section">
+    <div class="section-title">🔥 Popular Meals</div>
+    
+    <div class="card">
+      <div class="card-img"></div>
+      <div class="card-title">Nasi Lemak Special</div>
+      <div class="card-sub">Chef Maria Lee</div>
+      <div class="card-price">$12.00</div>
+      <span class="tag">Malaysian</span>
+    </div>
+    
+    <div class="card">
+      <div class="card-img" style="background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);"></div>
+      <div class="card-title">Homemade Pasta</div>
+      <div class="card-sub">Chef Antonio</div>
+      <div class="card-price">$18.00</div>
+      <span class="tag">Italian</span>
+    </div>
+    
+    <div class="card">
+      <div class="card-img" style="background: linear-gradient(135deg, #10B981 0%, #34D399 100%);"></div>
+      <div class="card-title">Thai Green Curry</div>
+      <div class="card-sub">Chef Somchai</div>
+      <div class="card-price">$15.00</div>
+      <span class="tag">Thai</span>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-title">👨‍🍳 Top Chefs</div>
+    
+    <div class="card">
+      <div class="card-img" style="background: linear-gradient(135deg, #EC4899 0%, #F472B6 100%);"></div>
+      <div class="card-title">Chef Maria Lee</div>
+      <div class="card-sub">⭐ 4.9 (128 orders)</div>
+      <div class="tag">Malaysian • Singapore</div>
+    </div>
+  </div>
+  
+  <div class="bottom-nav">
+    <div class="nav-item active">🏠 Home</div>
+    <div class="nav-item">👨‍🍳 Chefs</div>
+    <div class="nav-item">🍽️ Meals</div>
+    <div class="nav-item">🛒 Cart</div>
+    <div class="nav-item">👤 Profile</div>
+  </div>
+</body>
+</html>
