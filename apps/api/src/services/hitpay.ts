@@ -1,33 +1,30 @@
-import Stripe from 'stripe';
+import { config } from '../config';
 
-// HitPay configuration
-const HITPAY_API_KEY = process.env.HITPAY_API_KEY || '';
+const HITPAY_API_KEY = config.hitpayApiKey;
 const HITPAY_BASE_URL = 'https://api.hitpay.com/v1';
 
-// Initialize Stripe (for reference/comparison)
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2024-12-18.acacia',
-});
-
-interface HitPayPaymentRequest {
-  amount: number;
-  currency: string;
-  reference_id: string;
-  description: string;
-  callback_url?: string;
-  redirect_url?: string;
-}
-
 interface HitPayRecurringPlan {
+  id?: string;
   name: string;
   amount: number;
-  currency: string;
-  frequency: 'weekly' | 'monthly' | 'yearly';
+  currency?: string;
+  frequency: 'daily' | 'weekly' | 'monthly' | 'yearly';
   reference_id: string;
-  customer_email: string;
+  customer_email?: string;
+  payment_methods?: string[];
 }
 
-class HitPayService {
+interface HitPayPaymentRequest {
+  id?: string;
+  amount: number;
+  currency?: string;
+  reference_id: string;
+  description?: string;
+  status?: string;
+  url?: string;
+}
+
+export class HitPayService {
   private apiKey: string;
   private baseUrl: string;
 
@@ -51,56 +48,118 @@ class HitPayService {
       options.body = JSON.stringify(body);
     }
 
-    const response = await fetch(`${this.baseUrl}${endpoint}`, options);
-    
-    if (!response.ok) {
-      const error = await response.text();
-      throw new Error(`HitPay API Error: ${response.status} - ${error}`);
+    try {
+      const response = await fetch(`${this.baseUrl}${endpoint}`, options);
+      
+      if (!response.ok) {
+        const error = await response.text();
+        throw new Error(`HitPay API Error (${response.status}): ${error}`);
+      }
+
+      return response.json();
+    } catch (error: any) {
+      console.error('HitPay request failed:', error.message);
+      throw error;
     }
-
-    return response.json();
   }
 
-  // Create a one-time payment request
-  async createPaymentRequest(payment: HitPayPaymentRequest) {
-    return this.request('/payment-requests', 'POST', {
-      ...payment,
-      currency: 'SGD',
-    });
-  }
+  // ========================================
+  // SUBSCRIPTION METHODS
+  // ========================================
 
-  // Get payment request status
-  async getPaymentStatus(paymentId: string) {
-    return this.request(`/payment-requests/${paymentId}`, 'GET');
-  }
-
-  // Create a recurring payment plan (for subscriptions)
-  async createRecurringPlan(plan: HitPayRecurringPlan) {
-    return this.request('/recurring-payment-plans', 'POST', {
-      ...plan,
-      currency: 'SGD',
-    });
-  }
-
-  // Get all recurring plans
-  async getRecurringPlans() {
+  /**
+   * Get all recurring payment plans
+   * API: GET /recurring-payment-plans
+   */
+  async getRecurringPlans(): Promise<HitPayRecurringPlan[]> {
     return this.request('/recurring-payment-plans', 'GET');
   }
 
-  // Activate a recurring plan for a customer
-  async activateRecurringPlan(planId: string, customerEmail: string) {
-    return this.request('/recurring-payment-plans/${planId}/activate', 'POST', {
-      customer_email: customerEmail,
+  /**
+   * Create a new recurring payment plan
+   * API: POST /recurring-payment-plans
+   */
+  async createRecurringPlan(plan: HitPayRecurringPlan): Promise<any> {
+    return this.request('/recurring-payment-plans', 'POST', {
+      name: plan.name,
+      amount: plan.amount,
+      currency: plan.currency || 'SGD',
+      frequency: plan.frequency,
+      reference_id: plan.reference_id,
+      payment_methods: plan.payment_methods || ['card', 'paynow'],
     });
   }
 
-  // Get business details
-  async getBusiness() {
+  /**
+   * Get a specific recurring plan by ID
+   * API: GET /recurring-payment-plans/{plan_id}
+   */
+  async getRecurringPlan(planId: string): Promise<HitPayRecurringPlan> {
+    return this.request(`/recurring-payment-plans/${planId}`, 'GET');
+  }
+
+  /**
+   * Activate/subscribe a customer to a recurring plan
+   * API: POST /recurring-payment-plans/{plan_id}/activate
+   */
+  async activateRecurringPlan(planId: string, customerEmail: string, referenceId: string): Promise<any> {
+    return this.request(`/recurring-payment-plans/${planId}/activate`, 'POST', {
+      customer_email: customerEmail,
+      reference_id: referenceId,
+    });
+  }
+
+  /**
+   * Get all subscriptions (customers on plans)
+   * API: GET /recurring-payment-plans/{plan_id}/subscriptions
+   */
+  async getPlanSubscriptions(planId: string): Promise<any[]> {
+    return this.request(`/recurring-payment-plans/${planId}/subscriptions`, 'GET');
+  }
+
+  /**
+   * Cancel a subscription
+   * API: DELETE /recurring-payment-plans/{plan_id}/subscriptions/{subscription_id}
+   */
+  async cancelSubscription(planId: string, subscriptionId: string): Promise<any> {
+    return this.request(`/recurring-payment-plans/${planId}/subscriptions/${subscriptionId}`, 'DELETE');
+  }
+
+  // ========================================
+  // PAYMENT REQUEST METHODS
+  // ========================================
+
+  /**
+   * Create a one-time payment request
+   * API: POST /payment-requests
+   */
+  async createPaymentRequest(payment: HitPayPaymentRequest): Promise<HitPayPaymentRequest> {
+    return this.request('/payment-requests', 'POST', {
+      amount: payment.amount,
+      currency: payment.currency || 'SGD',
+      reference_id: payment.reference_id,
+      description: payment.description,
+      payment_methods: ['card', 'paynow'],
+    });
+  }
+
+  /**
+   * Get payment request status
+   * API: GET /payment-requests/{payment_id}
+   */
+  async getPaymentStatus(paymentId: string): Promise<HitPayPaymentRequest> {
+    return this.request(`/payment-requests/${paymentId}`, 'GET');
+  }
+
+  /**
+   * Get business details
+   * API: GET /business
+   */
+  async getBusiness(): Promise<any> {
     return this.request('/business', 'GET');
   }
 }
 
-// Export singleton instance
+// Export singleton
 export const hitpayService = new HitPayService(HITPAY_API_KEY);
-
 export default HitPayService;
