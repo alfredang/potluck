@@ -9,7 +9,6 @@ export default function BecomeChefPage() {
           <div className="flex h-16 items-center justify-between">
                         <Link href="/" className="flex items-center gap-2">
               <img src="/logo.png" alt="Potluck" className="h-10 w-auto" />
-              Potluck
             </Link>
             <div className="hidden md:flex md:items-center md:gap-8">
               <Link href="/explore" className="text-gray-600 hover:text-gray-900">
@@ -118,18 +117,18 @@ export default function BecomeChefPage() {
                 <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-orange-500 text-xl font-bold text-white">
                   2
                 </div>
-                <h3 className="mt-4 font-semibold">Create Menus</h3>
+                <h3 className="mt-4 font-semibold">Verify Identity</h3>
                 <p className="mt-2 text-sm text-gray-600">
-                  Design your menu offerings with photos, descriptions, and pricing
+                  Submit ID verification and food safety documents
                 </p>
               </div>
               <div className="text-center">
                 <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-orange-500 text-xl font-bold text-white">
                   3
                 </div>
-                <h3 className="mt-4 font-semibold">Set Availability</h3>
+                <h3 className="mt-4 font-semibold">Create Menus</h3>
                 <p className="mt-2 text-sm text-gray-600">
-                  Choose when you want to cook and how many guests you can host
+                  Design your menu offerings with photos, descriptions, and pricing
                 </p>
               </div>
               <div className="text-center">
@@ -141,6 +140,179 @@ export default function BecomeChefPage() {
                   Receive bookings, prepare delicious meals, and earn money
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Step-by-Step Guide */}
+      <section className="py-16">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-center text-3xl font-bold text-gray-900">Step-by-Step Guide</h2>
+          
+          <div className="mt-12 space-y-8">
+            {/* Step 1 */}
+            <div className="flex gap-6 rounded-xl border border-gray-200 p-6">
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 text-xl font-bold text-orange-600">
+                1
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold">Create Your Account</h3>
+                <p className="mt-2 text-gray-600">
+                  Sign up with your email and create a password. You'll receive a verification email to confirm your account.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="flex gap-6 rounded-xl border border-gray-200 p-6">
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 text-xl font-bold text-orange-600">
+                2
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold">Complete Your Chef Profile</h3>
+                <ul className="mt-2 list-inside list-disc text-gray-600">
+                  <li>Add a profile photo</li>
+                  <li>Write your chef story</li>
+                  <li>List your specialties and cuisine types</li>
+                  <li>Set your location and service area</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="flex gap-6 rounded-xl border border-gray-200 p-6">
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 text-xl font-bold text-orange-600">
+                3
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold">Verify Your Identity</h3>
+                <ul className="mt-2 list-inside list-disc text-gray-600">
+                  <li>Upload a government-issued ID (NRIC or passport)</li>
+                  <li>Provide food safety certification (if available)</li>
+                  <li>Verification typically takes 24-48 hours</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Step 4 */}
+            <div className="flex gap-6 rounded-xl border border-gray-200 p-6">
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 text-xl font-bold text-orange-600">
+                4
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold">Create Your First Menu</h3>
+                <ul className="mt-2 list-inside list-disc text-gray-600">
+                  <li>Add high-quality photos of your dishes</li>
+                  <li>List all dishes included in the menu</li>
+                  <li>Set your price per person</li>
+                  <li>Specify available dates and time slots</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Step 5 */}
+            <div className="flex gap-6 rounded-xl border border-gray-200 p-6">
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 text-xl font-bold text-orange-600">
+                5
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold">Set Up Payment</h3>
+                <ul className="mt-2 list-inside list-disc text-gray-600">
+                  <li>Connect your Stripe account</li>
+                  <li>Enter your bank account details</li>
+                  <li>Set your payout schedule (weekly)</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Step 6 */}
+            <div className="flex gap-6 rounded-xl border border-gray-200 p-6">
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 text-xl font-bold text-orange-600">
+                6
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold">Go Live!</h3>
+                <p className="mt-2 text-gray-600">
+                  Publish your chef profile and menu. Start receiving booking requests from diners in your area!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Requirements */}
+      <section className="bg-gray-50 py-16">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-center text-3xl font-bold text-gray-900">Requirements</h2>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            <div className="rounded-lg bg-white p-6 shadow-sm">
+              <h3 className="text-lg font-semibold">For All Chefs</h3>
+              <ul className="mt-4 space-y-3 text-gray-600">
+                <li className="flex items-center gap-2">
+                  <span className="text-green-500">✓</span> Valid government-issued ID
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-green-500">✓</span> Clean kitchen space
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-green-500">✓</span> Bank account for payouts
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-green-500">✓</span> Singapore-registered mobile number
+                </li>
+              </ul>
+            </div>
+            <div className="rounded-lg bg-white p-6 shadow-sm">
+              <h3 className="text-lg font-semibold">Recommended</h3>
+              <ul className="mt-4 space-y-3 text-gray-600">
+                <li className="flex items-center gap-2">
+                  <span className="text-green-500">✓</span> Food safety certification (WSQ-FSN)
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-green-500">✓</span> Professional food photos
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-green-500">✓</span> Public liability insurance
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-green-500">✓</span> Experience in hospitality/food
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-center text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
+          <div className="mt-8 space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold">How much can I earn?</h3>
+              <p className="mt-2 text-gray-600">
+                Earnings depend on your pricing and number of bookings. Many chefs earn $500-2000+ per month. You keep 95-96% of each booking after platform fees.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold">When do I get paid?</h3>
+              <p className="mt-2 text-gray-600">
+                Payouts are processed weekly (every Tuesday) for the previous week's completed bookings.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold">Do I need a food safety certificate?</h3>
+              <p className="mt-2 text-gray-600">
+                Not required to start, but recommended. We can help you obtain WSQ-FSN certification if needed.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold">What if I have no cooking experience?</h3>
+              <p className="mt-2 text professional-gray-600">
+                No problem! Many successful Potluck chefs are home cooks with a passion for cooking. Authenticity and passion matter more than professional training.
+              </p>
             </div>
           </div>
         </div>
