@@ -54,6 +54,9 @@ export const config = {
   stripePricePro: optionalEnv('STRIPE_PRICE_PRO', 'price_pro_monthly'),
   stripePriceUnlimited: optionalEnv('STRIPE_PRICE_UNLIMITED', 'price_unlimited_monthly'),
 
+  // HitPay
+  hitpayApiKey: optionalEnv('HITPAY_API_KEY', ''),
+
   // Google OAuth
   googleClientId: optionalEnv('GOOGLE_CLIENT_ID', ''),
   googleClientSecret: optionalEnv('GOOGLE_CLIENT_SECRET', ''),
