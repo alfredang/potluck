@@ -14,7 +14,7 @@
 		96905EF65AED1B983A6B3ABC /* libPods-PotLuck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-PotLuck.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		2DE71242389949A791DB5281 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E56240FB6C4802B211F0D8 /* noop-file.swift */; };
+		C387871FA7214FE4B5595108 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79A4F0E249442859B699047 /* noop-file.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,8 +31,8 @@
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-PotLuck/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		78E56240FB6C4802B211F0D8 /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "PotLuck/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
-		16823077CD3442E0970885AE /* PotLuck-Bridging-Header.h */ = {isa = PBXFileReference; name = "PotLuck-Bridging-Header.h"; path = "PotLuck/PotLuck-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		D79A4F0E249442859B699047 /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "PotLuck/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		FA4CEE8584164A6AB48381AD /* PotLuck-Bridging-Header.h */ = {isa = PBXFileReference; name = "PotLuck-Bridging-Header.h"; path = "PotLuck/PotLuck-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +57,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				78E56240FB6C4802B211F0D8 /* noop-file.swift */,
-				16823077CD3442E0970885AE /* PotLuck-Bridging-Header.h */,
+				D79A4F0E249442859B699047 /* noop-file.swift */,
+				FA4CEE8584164A6AB48381AD /* PotLuck-Bridging-Header.h */,
 			);
 			name = PotLuck;
 			sourceTree = "<group>";
@@ -198,7 +198,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				E7C6A135AC674BB4841FA466 /* PotLuck-Bridging-Header.h in Resources */,
+				F888D5CC1A0C46FEB5762668 /* PotLuck-Bridging-Header.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +274,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
-				2DE71242389949A791DB5281 /* noop-file.swift in Sources */,
+				C387871FA7214FE4B5595108 /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
