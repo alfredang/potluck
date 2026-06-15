@@ -1,6 +1,5 @@
 import type { MetadataRoute } from 'next';
 import { eq } from 'drizzle-orm';
-import { CHEFS } from '../lib/chefs-data';
 import { db } from '../lib/db';
 import { blogPosts, blogCategories } from '../lib/schema';
 
@@ -23,13 +22,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       { url: `${SITE_URL}/register`, changeFrequency: 'yearly', priority: 0.3 },
     ] as const
   ).map((r) => ({ ...r, lastModified: now }));
-
-  const chefRoutes: MetadataRoute.Sitemap = CHEFS.map((c) => ({
-    url: `${SITE_URL}/chef/${c.id}`,
-    lastModified: now,
-    changeFrequency: 'weekly',
-    priority: 0.7,
-  }));
 
   let blogRoutes: MetadataRoute.Sitemap = [];
   try {
@@ -58,5 +50,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // DB unavailable at build — ship the static + chef routes.
   }
 
-  return [...staticRoutes, ...chefRoutes, ...blogRoutes];
+  return [...staticRoutes, ...blogRoutes];
 }

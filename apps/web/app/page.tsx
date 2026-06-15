@@ -1,5 +1,9 @@
 import Link from 'next/link';
 import { FOOD_CATEGORIES } from '@homechef/shared';
+import { HomeBlogSection } from './components/HomeBlogSection';
+
+// Re-fetch the blog teaser periodically; fails soft if the DB is offline.
+export const revalidate = 300;
 
 export default function HomePage() {
   return (
@@ -20,6 +24,9 @@ export default function HomePage() {
               </Link>
               <Link href="/become-chef" className="text-gray-600 hover:text-gray-900">
                 Become a Chef
+              </Link>
+              <Link href="/blog" className="text-gray-600 hover:text-gray-900">
+                Blog
               </Link>
             </div>
             <div className="flex items-center gap-4">
@@ -170,6 +177,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* From the Blog */}
+      <HomeBlogSection />
 
       {/* Footer */}
       <footer className="border-t border-gray-200 bg-white py-12">

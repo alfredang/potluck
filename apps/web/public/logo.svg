@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF4E2"/>
+      <stop offset="1" stop-color="#FFE3BE"/>
+    </linearGradient>
+    <linearGradient id="spoon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E0764F"/>
+      <stop offset="1" stop-color="#C9512F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+
+  <!-- rainbow arch: golden outer, teal inner -->
+  <path d="M 212 560 A 300 300 0 0 1 812 560" fill="none" stroke="#E5A23B" stroke-width="74" stroke-linecap="round"/>
+  <path d="M 307 560 A 205 205 0 0 1 717 560" fill="none" stroke="#1F6E6A" stroke-width="74" stroke-linecap="round"/>
+
+  <!-- spoon -->
+  <rect x="486" y="250" width="52" height="380" rx="26" fill="url(#spoon)"/>
+  <ellipse cx="512" cy="690" rx="96" ry="124" fill="url(#spoon)"/>
+  <ellipse cx="512" cy="678" rx="60" ry="84" fill="#D8623F" opacity="0.55"/>
+</svg>

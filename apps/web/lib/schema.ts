@@ -12,4 +12,8 @@ export {
   subscriptions,
   reviews,
   disputes,
+  blogCategories,
+  blogPosts,
+  menuLikes,
+  blogStatusEnum,
 } from '../../api/src/db/schema/index';

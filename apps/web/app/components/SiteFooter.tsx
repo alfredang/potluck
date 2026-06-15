@@ -7,7 +7,7 @@ export function SiteFooter() {
         <div className="grid gap-8 md:grid-cols-4">
           <div>
             <span className="flex items-center gap-2">
-              <LogoMark className="h-7 w-7" />
+              <img src="/logo.png" alt="Potluck" className="h-7 w-7" />
               <span className="text-xl font-bold text-orange-500">Potluck</span>
             </span>
             <p className="mt-4 text-sm text-gray-600">

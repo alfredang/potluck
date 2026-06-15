@@ -1,6 +1,5 @@
 import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
-import { LogoMark } from '../../components/Logo';
 import { ADMIN_COOKIE, makeToken, verifyPassword } from '../../../lib/admin-auth';
 
 export const metadata = { title: 'Admin Login | Potluck', robots: { index: false } };
@@ -34,7 +33,7 @@ export default async function AdminLogin({
     <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-sm rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
         <div className="flex flex-col items-center">
-          <LogoMark className="h-12 w-12" />
+          <img src="/logo.png" alt="Potluck" className="h-12 w-12 rounded-xl" />
           <h1 className="mt-4 text-xl font-bold text-gray-900">Potluck Admin</h1>
           <p className="mt-1 text-sm text-gray-500">Sign in to manage the blog</p>
         </div>

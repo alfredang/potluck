@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
-import { LogoMark } from '../components/Logo';
 import { ADMIN_COOKIE } from '../../lib/admin-auth';
 
 export const metadata = { title: 'Admin | Potluck', robots: { index: false } };
@@ -37,7 +36,7 @@ export default async function AdminLayout({
     <div className="flex min-h-screen bg-gray-50">
       <aside className="flex w-60 flex-col border-r border-gray-200 bg-white">
         <div className="flex items-center gap-2 border-b border-gray-200 px-5 py-4">
-          <LogoMark className="h-8 w-8" />
+          <img src="/logo.png" alt="Potluck" className="h-8 w-8" />
           <span className="font-bold text-gray-900">Admin</span>
         </div>
         <nav className="flex-1 space-y-1 p-3">

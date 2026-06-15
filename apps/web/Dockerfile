@@ -2,30 +2,20 @@ FROM node:22-alpine AS base
 RUN corepack enable && corepack prepare pnpm@10.28.2 --activate
 WORKDIR /app
 
-# Install dependencies
-FROM base AS deps
-COPY pnpm-lock.yaml pnpm-workspace.yaml package.json .npmrc ./
-COPY apps/web/package.json ./apps/web/
-COPY packages/shared/package.json ./packages/shared/
-COPY packages/ui/package.json ./packages/ui/
-RUN pnpm install --frozen-lockfile
-
-# Build
+# Build stage — copy everything and install in ONE stage so pnpm's workspace
+# symlinks stay intact (copying node_modules between stages breaks them).
 FROM base AS builder
-COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/apps/web/node_modules ./apps/web/node_modules
-COPY --from=deps /app/packages/shared/node_modules ./packages/shared/node_modules
-COPY --from=deps /app/packages/ui/node_modules ./packages/ui/node_modules
 COPY . .
+RUN pnpm install --no-frozen-lockfile
 ENV NEXT_TELEMETRY_DISABLED=1
+# DATABASE_URL is a build placeholder; real value is injected at runtime.
 ARG DATABASE_URL=postgres://placeholder:placeholder@localhost:5432/placeholder
 ENV DATABASE_URL=${DATABASE_URL}
 RUN pnpm --filter @homechef/shared build 2>/dev/null || true
-RUN pnpm --filter @homechef/ui build 2>/dev/null || true
 RUN pnpm --filter @homechef/web build
 RUN mkdir -p /app/apps/web/public
 
-# Production
+# Runner — slim image serving Next.js standalone output (self-contained).
 FROM base AS runner
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1

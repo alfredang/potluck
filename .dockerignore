@@ -1,0 +1,12 @@
+**/node_modules
+**/.next
+**/dist
+.git
+.github
+**/.env
+**/.env.*
+!**/.env.example
+.env.coolify.local
+**/*.log
+.turbo
+.DS_Store

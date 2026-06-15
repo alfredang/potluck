@@ -22,6 +22,9 @@ export default function PrivacyPage() {
               <Link href="/become-chef" className="text-gray-600 hover:text-gray-900">
                 Become a Chef
               </Link>
+              <Link href="/blog" className="text-gray-600 hover:text-gray-900">
+                Blog
+              </Link>
             </div>
             <div className="flex items-center gap-4">
               <Link href="/login" className="text-gray-600 hover:text-gray-900">
