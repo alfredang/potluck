@@ -7,7 +7,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-336791?style=flat-square&logo=postgresql)](https://neon.tech/)
-[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=flat-square&logo=vercel)](https://vercel.com/)
+[![Coolify](https://img.shields.io/badge/Self--hosted-Coolify-8B5CF6?style=flat-square&logo=docker&logoColor=white)](https://coolify.io/)
 [![App Store](https://img.shields.io/badge/App%20Store-Ready-0D96F6?style=flat-square&logo=app-store)](https://developer.apple.com/)
 [![Play Store](https://img.shields.io/badge/Play%20Store-Ready-414141?style=flat-square&logo=google-play)](https://play.google.com/)
 
@@ -15,7 +15,7 @@ A marketplace platform connecting home chefs with food lovers in Singapore. Disc
 
 ## Live Demo
 
-**[https://potluck-ochre.vercel.app](https://potluck-ochre.vercel.app)**
+**[https://potluckhub.io](https://potluckhub.io)**
 
 ## About
 
@@ -51,7 +51,7 @@ Potluck solves the problem of finding authentic, home-cooked meals by connecting
 ### Infrastructure
 - **[Turborepo](https://turbo.build/)** - Monorepo build system
 - **[pnpm](https://pnpm.io/)** - Fast, disk space efficient package manager
-- **[Vercel](https://vercel.com/)** - Deployment platform
+- **[Coolify](https://coolify.io/)** - Self-hosted deployment (on Hostinger, via Docker)
 
 ## Project Structure
 
@@ -153,29 +153,23 @@ potluck/
 
 ## Deployment
 
-### Deploy to Vercel
+### Deploy with Coolify
 
-1. **Install Vercel CLI**
-   ```bash
-   npm install -g vercel
-   ```
+The web app and API are self-hosted on **Coolify** (Docker, on Hostinger). Each app
+ships with a `Dockerfile`; Coolify builds and deploys automatically on push to `main`.
 
-2. **Login to Vercel**
-   ```bash
-   vercel login
-   ```
+1. In Coolify, create an application from this Git repository for each service
+   (`apps/web` and `apps/api`), using the included `Dockerfile`.
+2. Configure the environment variables below in each service.
+3. Push to `main` — Coolify rebuilds and redeploys.
 
-3. **Deploy**
-   ```bash
-   vercel --prod
-   ```
+### Environment Variables
 
-### Environment Variables on Vercel
-
-Set these environment variables in your Vercel project settings:
+Set these in each Coolify service:
 
 - `DATABASE_URL` - Your Neon PostgreSQL connection string
 - `JWT_SECRET` - Secret key for JWT tokens
+- `NEXT_PUBLIC_API_URL` - The public API base URL (e.g. `https://api.potluckhub.io`)
 
 ### Database Setup (Neon)
 
