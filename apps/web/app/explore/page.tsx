@@ -5,81 +5,7 @@ import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { FOOD_CATEGORIES } from '@homechef/shared';
 
-// Sample chef data (will be replaced with database query)
-const sampleChefs = [
-  {
-    id: '1',
-    name: 'Chef Sarah Tan',
-    specialty: 'Peranakan',
-    rating: 4.9,
-    reviewCount: 127,
-    location: 'Tiong Bahru',
-    image: 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400',
-    priceRange: '$40-60',
-    minPrice: 40,
-    cuisines: ['Peranakan', 'Chinese'],
-  },
-  {
-    id: '2',
-    name: 'Chef Ahmad Rahman',
-    specialty: 'Malay',
-    rating: 4.8,
-    reviewCount: 89,
-    location: 'Geylang Serai',
-    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400',
-    priceRange: '$35-50',
-    minPrice: 35,
-    cuisines: ['Malay', 'Halal'],
-  },
-  {
-    id: '3',
-    name: 'Chef Maria Santos',
-    specialty: 'Filipino',
-    rating: 4.7,
-    reviewCount: 64,
-    location: 'Toa Payoh',
-    image: 'https://images.unsplash.com/photo-1581349485608-9469926a8e5e?w=400',
-    priceRange: '$30-45',
-    minPrice: 30,
-    cuisines: ['Filipino', 'Western'],
-  },
-  {
-    id: '4',
-    name: 'Chef Kenji Yamamoto',
-    specialty: 'Japanese',
-    rating: 4.9,
-    reviewCount: 156,
-    location: 'Robertson Quay',
-    image: 'https://images.unsplash.com/photo-1512485694743-9c9538b4e6e0?w=400',
-    priceRange: '$60-90',
-    minPrice: 60,
-    cuisines: ['Japanese'],
-  },
-  {
-    id: '5',
-    name: 'Chef Priya Sharma',
-    specialty: 'Indian',
-    rating: 4.8,
-    reviewCount: 103,
-    location: 'Little India',
-    image: 'https://images.unsplash.com/photo-1607631568010-a87245c0daf8?w=400',
-    priceRange: '$35-55',
-    minPrice: 35,
-    cuisines: ['Indian', 'Vegetarian'],
-  },
-  {
-    id: '6',
-    name: 'Chef Kim Soo-young',
-    specialty: 'Korean',
-    rating: 4.7,
-    reviewCount: 78,
-    location: 'Tanjong Pagar',
-    image: 'https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?w=400',
-    priceRange: '$45-65',
-    minPrice: 45,
-    cuisines: ['Korean'],
-  },
-];
+import { CHEFS } from '../../lib/chefs-data';
 
 function ExploreContent() {
   const searchParams = useSearchParams();
@@ -98,7 +24,7 @@ function ExploreContent() {
 
   // Filter and sort chefs
   const filteredChefs = useMemo(() => {
-    let result = [...sampleChefs];
+    let result = [...CHEFS];
 
     // Filter by search query
     if (searchQuery) {
@@ -331,7 +257,7 @@ function ExploreContent() {
         )}
 
         {/* End of Results */}
-        {filteredChefs.length > 0 && filteredChefs.length === sampleChefs.length && (
+        {filteredChefs.length > 0 && filteredChefs.length === CHEFS.length && (
           <div className="mt-8 text-center">
             <p className="text-sm text-gray-500">You&apos;ve seen all {filteredChefs.length} chefs</p>
           </div>

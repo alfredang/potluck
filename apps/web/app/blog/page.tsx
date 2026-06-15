@@ -47,8 +47,27 @@ export default async function BlogIndex() {
   const latestFiltered = latest.filter((p) => !featuredIds.has(p.id));
   const hasPosts = featured.length > 0 || latest.length > 0;
 
+  const listed = [...featured, ...latestFiltered];
+  const blogJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'Potluck Blog',
+    description:
+      'Stories from Singapore home chefs, recipes, food culture and tips for hosting and discovering authentic home-cooked meals.',
+    url: `${SITE_URL}/blog`,
+    blogPost: listed.map((p) => ({
+      '@type': 'BlogPosting',
+      headline: p.title,
+      url: `${SITE_URL}/blog/${p.slug}`,
+      datePublished: p.publishedAt?.toISOString(),
+      image: p.featuredImage ?? undefined,
+      author: { '@type': 'Person', name: p.authorName },
+    })),
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }} />
       <SiteNav active="/blog" />
 
       {/* Header */}
