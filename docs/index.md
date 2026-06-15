@@ -9,16 +9,13 @@ Welcome to the Potluck documentation. This guide covers everything you need to d
 
 ## Quick Links
 
-### Mobile App Deployment
-- [iOS Deployment Guide](ios-deployment) - Deploy to Apple App Store
-- [Android Deployment Guide](android-deployment) - Deploy to Google Play Store
 
 ### Backend Configuration
 - [Stripe Payment Setup](stripe-setup) - Configure payment processing
 - [Email Notification Setup](email-setup) - Set up transactional emails
 
 ### Web Deployment
-- [Vercel Deployment](vercel-deployment) - Deploy the web app to Vercel
+- The web app is self-hosted on Hostinger using Coolify, deployed via `apps/web/Dockerfile` from the `main` branch. See the [README](https://github.com/alfredang/potluck#deployment) for setup.
 
 ---
 
@@ -26,8 +23,7 @@ Welcome to the Potluck documentation. This guide covers everything you need to d
 
 Potluck is a marketplace platform connecting home chefs with food lovers in Singapore. The platform consists of:
 
-- **Web App** - Next.js 15 application deployed on Vercel
-- **Mobile App** - React Native app for iOS and Android
+- **Web App** - Next.js 15 application self-hosted on Hostinger via Coolify
 - **API** - Fastify backend with PostgreSQL database
 
 ## Tech Stack
@@ -35,12 +31,11 @@ Potluck is a marketplace platform connecting home chefs with food lovers in Sing
 | Component | Technology |
 |-----------|------------|
 | Web Frontend | Next.js 15, React 19, Tailwind CSS 4 |
-| Mobile App | React Native, Expo 52 |
 | Backend | Fastify, Drizzle ORM |
 | Database | Neon PostgreSQL |
 | Payments | Stripe |
 | Email | SendGrid / AWS SES |
-| Hosting | Vercel (Web), EAS (Mobile) |
+| Hosting | Hostinger + Coolify |
 
 ## Getting Started
 

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { Logo } from '../components/Logo';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -19,9 +20,11 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">
         <div>
-          <Link href="/" className="flex justify-center text-3xl font-bold text-orange-500">
-            Potluck
-          </Link>
+          <Logo
+            className="justify-center"
+            markClassName="h-10 w-10"
+            wordmarkClassName="text-3xl font-bold text-orange-500"
+          />
           <h2 className="mt-6 text-center text-2xl font-bold tracking-tight text-gray-900">
             Sign in to your account
           </h2>

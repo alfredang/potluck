@@ -5,7 +5,6 @@ node_modules/
 # Build outputs
 dist/
 .next/
-.expo/
 *.tsbuildinfo
 
 # Environment files
@@ -37,27 +36,10 @@ coverage/
 # Turbo
 .turbo/
 
-# Expo
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-*.orig.*
-
-# Metro
-.metro-health-check*
-
-# Native builds
-android/app/build/
-ios/Pods/
-ios/build/
-
 # Stripe CLI
 .stripe/
 
 # Database
 *.db
 *.sqlite
-.vercel
 .env*.local

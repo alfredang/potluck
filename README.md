@@ -2,12 +2,10 @@
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)](https://react.dev/)
-[![React Native](https://img.shields.io/badge/React%20Native-0.76-61DAFB?style=flat-square&logo=react)](https://reactnative.dev/)
-[![Expo](https://img.shields.io/badge/Expo-52-000020?style=flat-square&logo=expo)](https://expo.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-336791?style=flat-square&logo=postgresql)](https://neon.tech/)
-[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=flat-square&logo=vercel)](https://vercel.com/)
+[![Coolify](https://img.shields.io/badge/Deployed%20on-Coolify-8B5CF6?style=flat-square&logo=docker)](https://coolify.io/)
 [![App Store](https://img.shields.io/badge/App%20Store-Ready-0D96F6?style=flat-square&logo=app-store)](https://developer.apple.com/)
 [![Play Store](https://img.shields.io/badge/Play%20Store-Ready-414141?style=flat-square&logo=google-play)](https://play.google.com/)
 
@@ -15,7 +13,7 @@ A marketplace platform connecting home chefs with food lovers in Singapore. Disc
 
 ## Live Demo
 
-**[https://potluck-ochre.vercel.app](https://potluck-ochre.vercel.app)**
+**[https://potluckhub.io](https://potluckhub.io)**
 
 ## About
 
@@ -38,10 +36,9 @@ Potluck solves the problem of finding authentic, home-cooked meals by connecting
 - **[Tailwind CSS 4](https://tailwindcss.com/)** - Utility-first CSS framework
 - **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
 
-### Mobile App
-- **[React Native](https://reactnative.dev/)** - Cross-platform mobile framework
-- **[Expo](https://expo.dev/)** - React Native development platform
-- **[React Navigation](https://reactnavigation.org/)** - Native navigation
+> **Note:** The native iOS and Android apps are maintained in **separate repositories**
+> (already submitted to the App Store and Play Store). This repository contains the
+> **web platform + marketing site + API** only.
 
 ### Backend
 - **[Fastify](https://fastify.io/)** - Fast Node.js web framework
@@ -51,7 +48,7 @@ Potluck solves the problem of finding authentic, home-cooked meals by connecting
 ### Infrastructure
 - **[Turborepo](https://turbo.build/)** - Monorepo build system
 - **[pnpm](https://pnpm.io/)** - Fast, disk space efficient package manager
-- **[Vercel](https://vercel.com/)** - Deployment platform
+- **[Hostinger](https://www.hostinger.com/) + [Coolify](https://coolify.io/)** - Self-hosted Docker deployment platform
 
 ## Project Structure
 
@@ -59,15 +56,9 @@ Potluck solves the problem of finding authentic, home-cooked meals by connecting
 potluck/
 ├── apps/
 │   ├── web/              # Next.js frontend application
-│   │   ├── app/          # App Router pages
-│   │   └── ...
-│   ├── mobile/           # React Native mobile app (iOS & Android)
-│   │   ├── src/
-│   │   │   ├── screens/  # App screens
-│   │   │   ├── navigation/
-│   │   │   └── components/
-│   │   ├── app.json      # Expo configuration
-│   │   └── eas.json      # EAS Build configuration
+│   │   ├── app/          # App Router pages (incl. /blog and /admin CMS)
+│   │   ├── lib/          # DB, blog queries, chef data, admin auth
+│   │   └── scripts/      # seed-blog.ts
 │   └── api/              # Fastify backend API
 │       ├── src/
 │       │   ├── db/       # Database schema & migrations
@@ -76,7 +67,7 @@ potluck/
 ├── packages/
 │   └── shared/           # Shared types, constants, utilities
 ├── .github/
-│   └── workflows/        # CI/CD workflows for web & mobile
+│   └── workflows/        # CI/CD workflows
 ├── turbo.json            # Turborepo configuration
 └── package.json          # Root workspace config
 ```
@@ -153,28 +144,24 @@ potluck/
 
 ## Deployment
 
-### Deploy to Vercel
+### Deploy with Coolify (Hostinger)
 
-1. **Install Vercel CLI**
-   ```bash
-   npm install -g vercel
-   ```
+The web app is self-hosted on [Hostinger](https://www.hostinger.com/) using [Coolify](https://coolify.io/) and deploys automatically from this Git repository.
 
-2. **Login to Vercel**
-   ```bash
-   vercel login
-   ```
+1. **In Coolify, create a new Application** from the `alfredang/potluck` Git repository (branch `main`).
 
-3. **Deploy**
-   ```bash
-   vercel --prod
-   ```
+2. **Build settings**
+   - Build Pack: `Dockerfile`
+   - Dockerfile location: `apps/web/Dockerfile`
+   - Domain: `potluckhub.io`
 
-### Environment Variables on Vercel
+3. **Deploy** — Coolify builds the Docker image and deploys on each push to `main`. You can also trigger a manual redeploy from the Coolify dashboard.
 
-Set these environment variables in your Vercel project settings:
+### Environment Variables on Coolify
 
-- `DATABASE_URL` - Your Neon PostgreSQL connection string
+Set these environment variables in your Coolify application settings:
+
+- `DATABASE_URL` - Your PostgreSQL connection string
 - `JWT_SECRET` - Secret key for JWT tokens
 
 ### Database Setup (Neon)
@@ -182,49 +169,15 @@ Set these environment variables in your Vercel project settings:
 1. Create a free account at [neon.tech](https://neon.tech)
 2. Create a new project
 3. Copy the connection string to `DATABASE_URL`
-4. Run `pnpm db:push` to create tables
+4. Run `pnpm db:push` to create tables, then `pnpm --filter @homechef/web seed:blog` to seed the blog
 
-## Mobile App
+### Blog CMS
 
-The Potluck mobile app is built with React Native and Expo, providing native iOS and Android experiences.
+The blog and categories are managed from the built-in CMS at **`/admin`**, protected by the
+`ADMIN_PASSWORD` environment variable. Set a strong value in Coolify before going live.
 
-### Mobile App Setup
-
-```bash
-# Navigate to mobile app
-cd apps/mobile
-
-# Install dependencies
-pnpm install
-
-# Start development server
-pnpm start
-
-# Run on iOS simulator
-pnpm ios
-
-# Run on Android emulator
-pnpm android
-```
-
-### Mobile App Deployment
-
-See the detailed deployment guide: **[Mobile Deployment Guide](apps/mobile/DEPLOYMENT.md)**
-
-Quick commands:
-```bash
-# Build for iOS
-eas build --platform ios --profile production
-
-# Build for Android
-eas build --platform android --profile production
-
-# Submit to App Store
-eas submit --platform ios --latest
-
-# Submit to Play Store
-eas submit --platform android --latest
-```
+> **Native apps:** the iOS and Android apps are maintained in separate repositories and have
+> already been submitted to the App Store and Play Store. This repo does not contain mobile code.
 
 ## Documentation
 

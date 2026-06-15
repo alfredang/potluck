@@ -101,12 +101,8 @@ cd apps/web
 pnpm add @stripe/stripe-js @stripe/react-stripe-js
 ```
 
-### Mobile (React Native)
-
-```bash
-cd apps/mobile
-pnpm add @stripe/stripe-react-native
-```
+> **Note:** Mobile (native iOS/Android) Stripe integration lives in the separate native app
+> repositories. This repo covers the web + API only.
 
 ---
 
@@ -462,7 +458,7 @@ stripe trigger payment_intent.payment_failed
 ### Update Environment Variables
 
 ```env
-# Production keys (in Vercel/hosting platform)
+# Production keys (set in Coolify / your hosting platform)
 STRIPE_SECRET_KEY=sk_live_...
 STRIPE_WEBHOOK_SECRET=whsec_live_...
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_...

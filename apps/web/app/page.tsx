@@ -1,5 +1,10 @@
 import Link from 'next/link';
+import { Logo, LogoMark } from './components/Logo';
+import { HomeBlogSection } from './components/HomeBlogSection';
 import { FOOD_CATEGORIES } from '@homechef/shared';
+
+// Re-fetch the blog teaser periodically; fails soft if the DB is offline.
+export const revalidate = 300;
 
 export default function HomePage() {
   return (
@@ -8,9 +13,7 @@ export default function HomePage() {
       <nav className="border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="text-2xl font-bold text-orange-500">
-              Potluck
-            </Link>
+            <Logo />
             <div className="hidden md:flex md:items-center md:gap-8">
               <Link href="/explore" className="text-gray-600 hover:text-gray-900">
                 Explore
@@ -20,6 +23,9 @@ export default function HomePage() {
               </Link>
               <Link href="/become-chef" className="text-gray-600 hover:text-gray-900">
                 Become a Chef
+              </Link>
+              <Link href="/blog" className="text-gray-600 hover:text-gray-900">
+                Blog
               </Link>
             </div>
             <div className="flex items-center gap-4">
@@ -150,12 +156,18 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* From the Blog */}
+      <HomeBlogSection />
+
       {/* Footer */}
       <footer className="border-t border-gray-200 bg-white py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 md:grid-cols-4">
             <div>
-              <span className="text-xl font-bold text-orange-500">Potluck</span>
+              <span className="flex items-center gap-2">
+                <LogoMark className="h-7 w-7" />
+                <span className="text-xl font-bold text-orange-500">Potluck</span>
+              </span>
               <p className="mt-4 text-sm text-gray-600">
                 Connecting home chefs with food lovers in Singapore.
               </p>

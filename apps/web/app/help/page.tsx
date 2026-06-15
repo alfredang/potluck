@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { Logo } from '../components/Logo';
 
 const faqs = [
   {
@@ -91,9 +92,7 @@ export default function HelpPage() {
       <nav className="border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="text-2xl font-bold text-orange-500">
-              Potluck
-            </Link>
+            <Logo />
             <div className="hidden md:flex md:items-center md:gap-8">
               <Link href="/explore" className="text-gray-600 hover:text-gray-900">
                 Explore
@@ -103,6 +102,9 @@ export default function HelpPage() {
               </Link>
               <Link href="/become-chef" className="text-gray-600 hover:text-gray-900">
                 Become a Chef
+              </Link>
+              <Link href="/blog" className="text-gray-600 hover:text-gray-900">
+                Blog
               </Link>
             </div>
             <div className="flex items-center gap-4">
