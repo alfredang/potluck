@@ -66,11 +66,24 @@ export default async function BlogIndex({
   const page = parsePage((await searchParams).page);
   const isFirstPage = page === 1;
 
-  const [featured, paged, categories] = await Promise.all([
-    isFirstPage ? getFeaturedPosts(3) : Promise.resolve([]),
-    getPublishedPostsPage(page),
-    getActiveCategories(),
-  ]);
+  let featured: Awaited<ReturnType<typeof getFeaturedPosts>> = [];
+  let paged: Awaited<ReturnType<typeof getPublishedPostsPage>> = {
+    posts: [],
+    total: 0,
+    page,
+    pageSize: 0,
+    totalPages: 1,
+  };
+  let categories: Awaited<ReturnType<typeof getActiveCategories>> = [];
+  try {
+    [featured, paged, categories] = await Promise.all([
+      isFirstPage ? getFeaturedPosts(3) : Promise.resolve([]),
+      getPublishedPostsPage(page),
+      getActiveCategories(),
+    ]);
+  } catch {
+    // DB unavailable — fall through to the empty state instead of a 500.
+  }
 
   const featuredIds = new Set(featured.map((p) => p.id));
   const latest = paged.posts.filter((p) => !featuredIds.has(p.id));

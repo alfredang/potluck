@@ -34,6 +34,21 @@ const postSelect = {
   categorySlug: blogCategories.slug,
 };
 
+// Self-healing migration: the `tags` column is added by the seeder, but production may be
+// running the new (tags-aware) code before `seed:blog` has run. Add the column on first
+// blog read so queries don't 500. Idempotent + cached to one execution per process;
+// best-effort (a fresh DB without the table just falls through to the page's empty state).
+let blogColumnsEnsured: Promise<void> | null = null;
+function ensureBlogColumns(): Promise<void> {
+  if (!blogColumnsEnsured) {
+    blogColumnsEnsured = db
+      .execute(sql`ALTER TABLE blog_posts ADD COLUMN IF NOT EXISTS tags text[]`)
+      .then(() => undefined)
+      .catch(() => undefined);
+  }
+  return blogColumnsEnsured;
+}
+
 export async function getActiveCategories() {
   return db
     .select()
@@ -43,6 +58,7 @@ export async function getActiveCategories() {
 }
 
 export async function getFeaturedPosts(limit = 3): Promise<PostWithCategory[]> {
+  await ensureBlogColumns();
   return db
     .select(postSelect)
     .from(blogPosts)
@@ -53,6 +69,7 @@ export async function getFeaturedPosts(limit = 3): Promise<PostWithCategory[]> {
 }
 
 export async function getLatestPosts(limit = 12, offset = 0): Promise<PostWithCategory[]> {
+  await ensureBlogColumns();
   return db
     .select(postSelect)
     .from(blogPosts)
@@ -78,6 +95,7 @@ export async function getPublishedPostsPage(
   page = 1,
   pageSize = BLOG_PAGE_SIZE,
 ): Promise<PagedPosts> {
+  await ensureBlogColumns();
   const safePage = Math.max(1, Math.floor(page) || 1);
   const offset = (safePage - 1) * pageSize;
   const [posts, countRows] = await Promise.all([
@@ -104,6 +122,7 @@ export async function getPostsByCategorySlugPage(
   page = 1,
   pageSize = BLOG_PAGE_SIZE,
 ): Promise<PagedPosts> {
+  await ensureBlogColumns();
   const safePage = Math.max(1, Math.floor(page) || 1);
   const offset = (safePage - 1) * pageSize;
   const where = and(eq(blogPosts.status, 'published'), eq(blogCategories.slug, slug));
@@ -127,6 +146,7 @@ export async function getPostsByCategorySlugPage(
 }
 
 export async function getPostsByCategorySlug(slug: string): Promise<PostWithCategory[]> {
+  await ensureBlogColumns();
   return db
     .select(postSelect)
     .from(blogPosts)
@@ -136,6 +156,7 @@ export async function getPostsByCategorySlug(slug: string): Promise<PostWithCate
 }
 
 export async function getPostBySlug(slug: string): Promise<PostWithCategory | null> {
+  await ensureBlogColumns();
   const rows = (await db
     .select(postSelect)
     .from(blogPosts)
