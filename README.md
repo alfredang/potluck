@@ -17,6 +17,16 @@ A marketplace platform connecting home chefs with food lovers in Singapore. Disc
 
 ![Potluck — home screen](screenshot.png)
 
+## Get the App
+
+Potluck is also available as native mobile apps — book a home chef on the go:
+
+[![Download on the App Store](https://img.shields.io/badge/Download-App%20Store-0D96F6?style=for-the-badge&logo=apple&logoColor=white)](https://apps.apple.com/app/id6759842391)
+[![Get it on Google Play](https://img.shields.io/badge/Get%20it%20on-Google%20Play-414141?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=io.potluckhub.app)
+
+- **iOS (App Store):** https://apps.apple.com/app/id6759842391
+- **Android (Google Play):** https://play.google.com/store/apps/details?id=io.potluckhub.app
+
 ## About
 
 Potluck solves the problem of finding authentic, home-cooked meals by connecting passionate home chefs with people who want to experience genuine local cuisine. Whether you're craving Peranakan, Malay, Japanese, Korean, or Indian food, Potluck lets you book a dining experience directly with a home chef in Singapore.
