@@ -104,7 +104,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <SiteNav active="/blog" />
 
-      <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
+      <article className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
         <Link href="/blog" className="inline-flex items-center text-sm text-gray-600 hover:text-orange-500">
           ← Back to Blog
         </Link>
@@ -139,9 +139,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </ul>
         )}
 
-        <div className="mt-5 flex items-center justify-between border-y border-gray-100 py-3">
-          <span className="text-sm text-gray-500">By {post.authorName}</span>
-          <LikeButton id={post.slug} endpoint="/api/blog/like" initialCount={post.likeCount} />
+        {/* Share + like, right under the title — primary engagement bar */}
+        <div className="mt-5 flex flex-col gap-3 border-y border-orange-100 py-4 sm:flex-row sm:items-center sm:justify-between">
+          <span className="text-sm font-medium text-gray-600">By {post.authorName}</span>
+          <div className="flex flex-wrap items-center gap-3">
+            <ShareButtons url={url} title={post.title} />
+            <LikeButton id={post.slug} endpoint="/api/blog/like" initialCount={post.likeCount} size="md" />
+          </div>
         </div>
 
         {post.featuredImage && (
