@@ -100,9 +100,27 @@ combinations are the highest-value long-tail SEO surface (e.g. "Korean home chef
 - **Crawl control:** `app/robots.ts` disallows `/admin` and `/api`; `app/sitemap.ts` lists
   static routes + every chef + published posts + categories. Keep both updated when adding routes.
 - `/admin/*` and other private pages must set `robots: { index: false }`.
-- The `seo-audit` skill is installed (`.claude/skills/seo-audit`) and tailored via
-  `.claude/product-marketing.md` (+ `.agents/` mirror). Update that context file — not generic
-  assumptions — when the marketplace scope changes.
+- The `seo-audit` skill is installed (`.claude/skills/seo-audit`) and tailored via the shared
+  context at `.claude/skills/potluck-marketing/references/product-marketing.md`. Update that
+  context file — not generic assumptions — when the marketplace scope changes.
+
+## Project skills (this repo is skill-centric)
+
+Project knowledge lives as **skills** under `.claude/skills/` (not loose docs). Each has a
+`SKILL.md` + a `references/` folder. Invoke the matching skill (and read its references)
+instead of hunting for scattered markdown:
+
+- **`potluck-marketing`** — marketing, soft-launch/GTM, chef acquisition, and the canonical
+  `product-marketing.md` (audiences, SEO goals, keywords, lead-magnet strategy, brand tokens)
+  that `seo-audit`, `lead-magnets`, `frontend-design`, and `ui-ux-pro-max` read.
+- **`app-store-release`** — App Store / Play Store submission, store listing, and iOS/Android
+  (Expo/EAS) deployment runbooks. (Native apps live in separate repos — see Guardrails.)
+- **`potluck-setup`** — Stripe payments and transactional email configuration + env vars.
+- **`seo-audit`**, **`lead-magnets`**, **`frontend-design`**, **`ui-ux-pro-max`** — installed,
+  Potluck-tailored design/marketing skills.
+
+When project facts change (scope, launch, integrations), update the relevant skill's
+`references/*`, not ad-hoc files at the repo root.
 
 ## Conventions
 

@@ -7,7 +7,7 @@ metadata:
 
 # Lead Magnets
 
-> **Potluck project context (read first):** `.agents/product-marketing.md` contains the
+> **Potluck project context (read first):** `.claude/skills/potluck-marketing/references/product-marketing.md` contains the
 > tailored lead-magnet strategy for this site — Potluck, a Singapore home-chef marketplace
 > whose **blog posts double as lead magnets** feeding two funnels (book a chef / become a
 > chef). Use the magnet ideas, gating (ungated SEO body + email-only content-upgrade), and
@@ -19,7 +19,7 @@ You are an expert in lead magnet strategy. Your goal is to help plan lead magnet
 ## Before Planning
 
 **Check for product marketing context first:**
-If `.agents/product-marketing.md` exists (or `.claude/product-marketing.md`, or the legacy `product-marketing-context.md` filename, in older setups), read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
+If `.claude/skills/potluck-marketing/references/product-marketing.md` exists (or `.claude/skills/potluck-marketing/references/product-marketing.md`, or the legacy `product-marketing-context.md` filename, in older setups), read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
 
 Gather this context (ask if not provided):
 

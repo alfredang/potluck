@@ -6,7 +6,7 @@ description: "UI/UX design intelligence for web and mobile. Includes 50+ styles,
 # UI/UX Pro Max - Design Intelligence
 
 > **Potluck project context (read first):** Before applying generic recommendations, read
-> `.agents/product-marketing.md`. This is the **Potluck** home-chef marketplace
+> `.claude/skills/potluck-marketing/references/product-marketing.md`. This is the **Potluck** home-chef marketplace
 > (potluckhub.io, Singapore/`en-SG`, Next.js App Router, Tailwind v4, **no `@/` alias**,
 > inline SVG icons only). Locked brand: warm primary orange `#f97316`, cream canvas
 > `#FFF8F1` over stark white, emerald + chili accents, colorful **POTLUCKHUB** wordmark.

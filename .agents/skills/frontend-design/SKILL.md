@@ -50,7 +50,7 @@ book a home-cooked meal or private home-dining experience. It is **not** a resta
 recipe blog. When designing UI here, ground every choice in *the communal home table* —
 warmth, generosity, real people, real kitchens — not slick food-delivery-app chrome.
 
-**Read first:** `.agents/product-marketing.md` (audiences, funnels, keywords) before
+**Read first:** `.claude/skills/potluck-marketing/references/product-marketing.md` (audiences, funnels, keywords) before
 designing marketing surfaces.
 
 **Locked brand tokens (don't reinvent per page — extend them):**
