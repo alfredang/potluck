@@ -10,6 +10,7 @@ const LINKS = [
   { href: '/how-it-works', label: 'How it Works' },
   { href: '/become-chef', label: 'Become a Chef' },
   { href: '/blog', label: 'Blog' },
+  { href: '/founder', label: 'Our Story' },
   { href: '/contact', label: 'Contact' },
 ];
 

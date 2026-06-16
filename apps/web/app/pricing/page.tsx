@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Logo } from '../components/Logo';
+import { SiteNav } from '../components/SiteNav';
+import { SiteFooter } from '../components/SiteFooter';
 
 export const metadata: Metadata = {
   title: 'Pricing — Sell Home-Cooked Food in Singapore for Free',
@@ -33,42 +34,7 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="border-b border-gray-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <Logo />
-            <div className="hidden md:flex md:items-center md:gap-8">
-              <Link href="/explore" className="text-gray-600 hover:text-gray-900">
-                Explore
-              </Link>
-              <Link href="/how-it-works" className="text-gray-600 hover:text-gray-900">
-                How it Works
-              </Link>
-              <Link href="/pricing" className="text-orange-500 font-medium">
-                Pricing
-              </Link>
-              <Link href="/become-chef" className="text-gray-600 hover:text-gray-900">
-                Become a Chef
-              </Link>
-              <Link href="/blog" className="text-gray-600 hover:text-gray-900">
-                Blog
-              </Link>
-            </div>
-            <div className="flex items-center gap-4">
-              <Link href="/login" className="text-gray-600 hover:text-gray-900">
-                Sign In
-              </Link>
-              <Link
-                href="/register"
-                className="rounded-lg bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
-              >
-                Get Started
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteNav />
 
       {/* Hero */}
       <section className="bg-gradient-to-br from-orange-50 to-white py-16">
@@ -344,12 +310,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-200 bg-white py-8">
-        <div className="mx-auto max-w-7xl px-4 text-center text-sm text-gray-600 sm:px-6 lg:px-8">
-          © {new Date().getFullYear()} Potluck. All rights reserved.
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
