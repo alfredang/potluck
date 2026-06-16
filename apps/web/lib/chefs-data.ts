@@ -142,7 +142,7 @@ export const CHEFS: Chef[] = [
     bio: 'Soo-young ferments her own kimchi and gochujang, bringing authentic Seoul home-cooking to your table.',
     socialMedia: { instagram: 'chefkimsy', tiktok: 'kimsykitchen' },
     menus: [
-      { id: 'kim-soo-young-1', name: 'Korean BBQ Set', description: 'Marinated galbi and samgyeopsal with banchan, ssam and dipping sauces.', price: 5500, image: DISH('photo-1632558331135-c8e2c2c6c2c2'), isVegetarian: false, prepTime: 50 },
+      { id: 'kim-soo-young-1', name: 'Korean BBQ Set', description: 'Marinated galbi and samgyeopsal with banchan, ssam and dipping sauces.', price: 5500, image: DISH('photo-1563379091339-03b21ab4a4f8'), isVegetarian: false, prepTime: 50 },
       { id: 'kim-soo-young-2', name: 'Bibimbap', description: 'Warm rice bowl with seasoned vegetables, beef, egg and gochujang.', price: 2600, image: DISH('photo-1553163147-622ab57be1c7'), isVegetarian: false, prepTime: 35 },
     ],
   },
@@ -172,7 +172,7 @@ export const CHEFS: Chef[] = [
     rating: 4.6,
     reviewCount: 71,
     location: 'Serangoon',
-    image: PORTRAIT('photo-1583394293214-28a5b42a8c0f'),
+    image: PORTRAIT('photo-1556909114-f6e7ad7d3136'),
     priceRange: '$25-40',
     minPrice: 25,
     bio: 'Raj makes feather-light dosai and fiery Chettinad curries the way his amma taught him in Madurai.',
@@ -248,7 +248,7 @@ export const CHEFS: Chef[] = [
     bio: 'Chen Wei brings the numbing heat of Chengdu home — mala done with balance, not just fire.',
     socialMedia: { instagram: 'chenweimala', tiktok: 'malachef' },
     menus: [
-      { id: 'chen-wei-1', name: 'Mapo Tofu', description: 'Silken tofu in a fiery, numbing minced-pork sauce with Sichuan peppercorns.', price: 2400, image: DISH('photo-1582576163090-09d3b6f1d2c0'), isVegetarian: false, prepTime: 35 },
+      { id: 'chen-wei-1', name: 'Mapo Tofu', description: 'Silken tofu in a fiery, numbing minced-pork sauce with Sichuan peppercorns.', price: 2400, image: DISH('photo-1585032226651-759b368d7246'), isVegetarian: false, prepTime: 35 },
       { id: 'chen-wei-2', name: 'Boiled Fish in Chilli Oil', description: 'Tender fish slices poached in a cauldron of chilli and Sichuan pepper.', price: 4600, image: DISH('photo-1455619452474-d2be8b1e70cd'), isVegetarian: false, prepTime: 50 },
     ],
   },
@@ -267,7 +267,7 @@ export const CHEFS: Chef[] = [
     socialMedia: { instagram: 'lanphokitchen', facebook: 'lanvietnamese' },
     menus: [
       { id: 'nguyen-thi-lan-1', name: 'Pho Bo', description: '12-hour beef broth with rice noodles, brisket and a basket of fresh herbs.', price: 2400, image: DISH('photo-1582878826629-29b7ad1cdc43'), isVegetarian: false, prepTime: 40 },
-      { id: 'nguyen-thi-lan-2', name: 'Fresh Spring Rolls', description: 'Hand-rolled goi cuon with prawn, herbs and peanut hoisin dip.', price: 1600, image: DISH('photo-1553611042-d1d2e6c7f0bf'), isVegetarian: false, prepTime: 25 },
+      { id: 'nguyen-thi-lan-2', name: 'Fresh Spring Rolls', description: 'Hand-rolled goi cuon with prawn, herbs and peanut hoisin dip.', price: 1600, image: DISH('photo-1569718212165-3a8278d5f624'), isVegetarian: false, prepTime: 25 },
     ],
   },
   {
@@ -366,7 +366,7 @@ export const CHEFS: Chef[] = [
     rating: 4.7,
     reviewCount: 69,
     location: 'Pasir Ris',
-    image: PORTRAIT('photo-1559941836-04d5b1a3f2d8'),
+    image: PORTRAIT('photo-1581349485608-9469926a8e5e'),
     priceRange: '$35-55',
     minPrice: 35,
     bio: 'Fatimah cooks halal-certified Nyonya classics, balancing tradition with the needs of every guest.',
@@ -443,7 +443,7 @@ export const CHEFS: Chef[] = [
     bio: 'Boon Huat fires his wok over high heat for that smoky char kway teow he grew up eating in Hougang. He still uses cockles and Chinese sausage the traditional way.',
     socialMedia: { instagram: 'boonhuatwok', tiktok: 'wokheihero' },
     menus: [
-      { id: 'tan-boon-huat-1', name: 'Char Kway Teow', description: 'Wok-charred flat rice noodles with cockles, lup cheong, prawns, egg and bean sprouts.', price: 1500, image: DISH('photo-1582576163090-09d3b6f1d2c0'), isVegetarian: false, prepTime: 25 },
+      { id: 'tan-boon-huat-1', name: 'Char Kway Teow', description: 'Wok-charred flat rice noodles with cockles, lup cheong, prawns, egg and bean sprouts.', price: 1500, image: DISH('photo-1585032226651-759b368d7246'), isVegetarian: false, prepTime: 25 },
       { id: 'tan-boon-huat-2', name: 'Fried Carrot Cake (Chai Tow Kway)', description: 'Radish cake stir-fried black with sweet dark soy, egg and preserved radish.', price: 1300, image: DISH('photo-1516684732162-798a0062be99'), isVegetarian: true, prepTime: 25 },
     ],
   },
@@ -480,7 +480,7 @@ export const CHEFS: Chef[] = [
     socialMedia: { instagram: 'muikengbcm', tiktok: 'bakchormeequeen' },
     menus: [
       { id: 'wong-mui-keng-1', name: 'Bak Chor Mee', description: 'Springy noodles tossed in chilli vinegar with minced pork, liver, meatballs and ti poh.', price: 1500, image: DISH('photo-1580476262798-bddd9f4b7369'), isVegetarian: false, prepTime: 20 },
-      { id: 'wong-mui-keng-2', name: 'Bak Kut Teh', description: 'Peppery Teochew pork rib soup with garlic, served with rice and youtiao.', price: 2200, image: DISH('photo-1582576163090-09d3b6f1d2c0'), isVegetarian: false, prepTime: 90 },
+      { id: 'wong-mui-keng-2', name: 'Bak Kut Teh', description: 'Peppery Teochew pork rib soup with garlic, served with rice and youtiao.', price: 2200, image: DISH('photo-1585032226651-759b368d7246'), isVegetarian: false, prepTime: 90 },
     ],
   },
   {
@@ -509,7 +509,7 @@ export const CHEFS: Chef[] = [
     rating: 4.7,
     reviewCount: 108,
     location: 'Little India',
-    image: PORTRAIT('photo-1583394293214-28a5b42a8c0f'),
+    image: PORTRAIT('photo-1556909114-f6e7ad7d3136'),
     priceRange: '$22-40',
     minPrice: 22,
     bio: 'A third-generation mamak cook from Little India, Kadir specialises in murtabak and the kind of fish head curry that draws a whole family around one pot.',
@@ -569,7 +569,7 @@ export const CHEFS: Chef[] = [
     bio: 'Ji-ho cooks the comforting jjigaes and banchan of his Busan childhood from his Tanjong Pagar home. He offers a halal-friendly menu so everyone can share the table.',
     socialMedia: { instagram: 'jihokorean', facebook: 'parkjiho' },
     menus: [
-      { id: 'park-ji-ho-1', name: 'Kimchi Jjigae', description: 'Bubbling aged-kimchi stew with tofu and beef, served with rice and banchan.', price: 2800, image: DISH('photo-1632558331135-c8e2c2c6c2c2'), isVegetarian: false, prepTime: 40 },
+      { id: 'park-ji-ho-1', name: 'Kimchi Jjigae', description: 'Bubbling aged-kimchi stew with tofu and beef, served with rice and banchan.', price: 2800, image: DISH('photo-1563379091339-03b21ab4a4f8'), isVegetarian: false, prepTime: 40 },
       { id: 'park-ji-ho-2', name: 'Japchae', description: 'Glass noodles stir-fried with vegetables and sesame in a sweet-savoury glaze.', price: 2400, image: DISH('photo-1553163147-622ab57be1c7'), isVegetarian: true, prepTime: 35 },
     ],
   },
@@ -587,7 +587,7 @@ export const CHEFS: Chef[] = [
     bio: 'Minh moved from Hue to Sengkang and brought his grandmother\'s central-Vietnamese recipes with him. His banh mi crusts are baked fresh and shatteringly crisp.',
     socialMedia: { instagram: 'minhvietkitchen', tiktok: 'banhmiminh' },
     menus: [
-      { id: 'tran-van-minh-1', name: 'Banh Mi Thit', description: 'Crackly baguette with grilled pork, pate, pickled veg, coriander and chilli.', price: 1400, image: DISH('photo-1553611042-d1d2e6c7f0bf'), isVegetarian: false, prepTime: 20 },
+      { id: 'tran-van-minh-1', name: 'Banh Mi Thit', description: 'Crackly baguette with grilled pork, pate, pickled veg, coriander and chilli.', price: 1400, image: DISH('photo-1569718212165-3a8278d5f624'), isVegetarian: false, prepTime: 20 },
       { id: 'tran-van-minh-2', name: 'Bun Bo Hue', description: 'Spicy lemongrass beef noodle soup from central Vietnam with pork and herbs.', price: 2600, image: DISH('photo-1582878826629-29b7ad1cdc43'), isVegetarian: false, prepTime: 45 },
     ],
   },
@@ -617,7 +617,7 @@ export const CHEFS: Chef[] = [
     rating: 4.9,
     reviewCount: 147,
     location: 'Woodlands',
-    image: PORTRAIT('photo-1559941836-04d5b1a3f2d8'),
+    image: PORTRAIT('photo-1581349485608-9469926a8e5e'),
     priceRange: '$30-48',
     minPrice: 30,
     bio: 'Nurul cooks the kampung-style Malay dishes she learnt from her late grandmother in Woodlands. Her sambal is roasted over low heat for that signature smoky depth.',

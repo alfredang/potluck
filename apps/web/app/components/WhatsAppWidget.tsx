@@ -45,7 +45,7 @@ export function WhatsAppWidget() {
         aria-label="Chat with Potluck on WhatsApp"
         aria-hidden={!open}
       >
-        <div className="flex items-center gap-3 bg-[#075E54] px-4 py-3 text-white">
+        <div className="flex items-center gap-3 bg-gradient-to-r from-orange-500 to-amber-500 px-4 py-3 text-white">
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-lg">🍲</span>
           <div className="leading-tight">
             <p className="text-sm font-semibold">Potluck Concierge</p>
@@ -62,7 +62,7 @@ export function WhatsAppWidget() {
           </button>
         </div>
 
-        <div className="space-y-2 bg-[#ECE5DD] px-3 py-4">
+        <div className="space-y-2 bg-[#FFF8F1] px-3 py-4">
           <p className="mx-1 mb-1 text-xs font-medium text-gray-600">
             👋 Hungry or curious? Tap a question to start:
           </p>
@@ -72,7 +72,7 @@ export function WhatsAppWidget() {
               href={waLink(q.text)}
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-xl rounded-tl-sm bg-white px-3 py-2.5 text-sm text-gray-800 shadow-sm transition hover:bg-green-50"
+              className="block rounded-xl rounded-tl-sm bg-white px-3 py-2.5 text-sm text-gray-800 shadow-sm ring-1 ring-orange-100/60 transition hover:bg-orange-50"
             >
               <span className="mr-1.5">{q.emoji}</span>
               {q.text}
@@ -95,14 +95,14 @@ export function WhatsAppWidget() {
       {/* Floating launcher */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-green-600/30 transition hover:scale-105 hover:bg-[#1ebe5b] focus:outline-none focus:ring-4 focus:ring-green-500/30"
+        className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/30 transition hover:scale-105 hover:from-orange-600 hover:to-amber-600 focus:outline-none focus:ring-4 focus:ring-orange-500/30"
         aria-label={open ? 'Close WhatsApp chat' : 'Chat with us on WhatsApp'}
         aria-expanded={open}
       >
         {!open && (
           <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-75" />
-            <span className="relative inline-flex h-4 w-4 items-center justify-center rounded-full bg-orange-500 text-[10px] font-bold">1</span>
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-bold">1</span>
           </span>
         )}
         {open ? (
