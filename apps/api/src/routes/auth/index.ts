@@ -427,4 +427,66 @@ export const authRoutes: FastifyPluginAsync = async (fastify) => {
       });
     }
   );
+
+  // Delete account (App Store Guideline 5.1.1(v) — user-initiated account deletion).
+  // Immediately deactivates the account and anonymizes personal data so the user
+  // can no longer sign in. Transaction/payment records are retained only as long as
+  // legally required (Singapore tax law), then purged — see /delete-account policy page.
+  fastify.delete('/account', async (request, reply) => {
+    const authHeader = request.headers.authorization;
+    if (!authHeader?.startsWith('Bearer ')) {
+      return reply.status(401).send({
+        success: false,
+        error: { code: 'UNAUTHORIZED', message: 'Missing authorization header' },
+      });
+    }
+
+    const token = authHeader.substring(7);
+
+    try {
+      const payload = jwt.verify(token, config.jwtAccessSecret) as JwtPayload;
+
+      const user = await db.query.users.findFirst({
+        where: eq(schema.users.id, payload.userId),
+      });
+
+      if (!user || !user.isActive) {
+        return reply.status(401).send({
+          success: false,
+          error: { code: 'UNAUTHORIZED', message: 'User not found or inactive' },
+        });
+      }
+
+      // Deactivate and strip personal data. The row is kept (not hard-deleted) so
+      // that legally-required transaction records remain linkable until purged.
+      await db
+        .update(schema.users)
+        .set({
+          isActive: false,
+          email: `deleted+${user.id}@deleted.potluckhub.io`,
+          passwordHash: null,
+          firstName: 'Deleted',
+          lastName: 'User',
+          phone: null,
+          avatarUrl: null,
+          googleId: null,
+          appleId: null,
+          emailVerificationToken: null,
+          passwordResetToken: null,
+          passwordResetExpires: null,
+          updatedAt: new Date(),
+        })
+        .where(eq(schema.users.id, user.id));
+
+      return reply.send({
+        success: true,
+        data: { message: 'Your account has been deleted.' },
+      });
+    } catch {
+      return reply.status(401).send({
+        success: false,
+        error: { code: 'UNAUTHORIZED', message: 'Invalid or expired token' },
+      });
+    }
+  });
 };
