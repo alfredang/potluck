@@ -35,7 +35,7 @@ export function WhatsAppWidget() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3 print:hidden">
+    <div className="pointer-events-none fixed bottom-5 right-5 z-50 hidden flex-col items-end gap-3 md:flex print:hidden">
       {/* Chat panel */}
       <div
         className={`w-[min(20rem,calc(100vw-2.5rem))] origin-bottom-right overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl transition-all duration-300 ${
@@ -95,7 +95,7 @@ export function WhatsAppWidget() {
       {/* Floating launcher */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/30 transition hover:scale-105 hover:from-orange-600 hover:to-amber-600 focus:outline-none focus:ring-4 focus:ring-orange-500/30"
+        className="group pointer-events-auto relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/30 transition hover:scale-105 hover:from-orange-600 hover:to-amber-600 focus:outline-none focus:ring-4 focus:ring-orange-500/30"
         aria-label={open ? 'Close WhatsApp chat' : 'Chat with us on WhatsApp'}
         aria-expanded={open}
       >
