@@ -6,6 +6,17 @@ import { useSearchParams } from 'next/navigation';
 import { FOOD_CATEGORIES } from '@homechef/shared';
 
 import { CHEFS } from '../../lib/chefs-data';
+import { SiteNav } from '../components/SiteNav';
+
+// Maps a category slug to the cuisine strings (lowercased) that should match it.
+// Lets one filter chip cover several natural cuisine labels used on chef cards
+// (e.g. "Local & Hawker" covers "Local", "Hainanese", "Hawker").
+const CATEGORY_CUISINE_MATCHES: Record<string, string[]> = {
+  'indian-muslim': ['indian-muslim', 'mamak'],
+  'local-hawker': ['local', 'hawker', 'hainanese', 'local & hawker'],
+  hainanese: ['hainanese'],
+  peranakan: ['peranakan', 'nyonya'],
+};
 
 function ExploreContent() {
   const searchParams = useSearchParams();
@@ -42,10 +53,14 @@ function ExploreContent() {
     if (selectedCategory && selectedCategory !== 'all') {
       const categoryName = FOOD_CATEGORIES.find((c) => c.slug === selectedCategory)?.name;
       if (categoryName) {
+        const wanted = new Set<string>([
+          categoryName.toLowerCase(),
+          ...(CATEGORY_CUISINE_MATCHES[selectedCategory] ?? []),
+        ]);
         result = result.filter(
           (chef) =>
-            chef.cuisines.some((c) => c.toLowerCase() === categoryName.toLowerCase()) ||
-            chef.specialty.toLowerCase() === categoryName.toLowerCase()
+            chef.cuisines.some((c) => wanted.has(c.toLowerCase())) ||
+            wanted.has(chef.specialty.toLowerCase())
         );
       }
     }
@@ -74,50 +89,17 @@ function ExploreContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-cream">
       {/* Navigation */}
-      <nav className="border-b border-gray-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-                        <Link href="/" className="flex items-center gap-2">
-              <img src="/logo.png" alt="Potluck" className="h-10 w-auto" />
-              Potluck
-            </Link>
-            <div className="hidden md:flex md:items-center md:gap-8">
-              <Link href="/explore" className="text-orange-500 font-medium">
-                Explore
-              </Link>
-              <Link href="/how-it-works" className="text-gray-600 hover:text-gray-900">
-                How it Works
-              </Link>
-              <Link href="/become-chef" className="text-gray-600 hover:text-gray-900">
-                Become a Chef
-              </Link>
-              <Link href="/blog" className="text-gray-600 hover:text-gray-900">
-                Blog
-              </Link>
-            </div>
-            <div className="flex items-center gap-4">
-              <Link href="/login" className="text-gray-600 hover:text-gray-900">
-                Sign In
-              </Link>
-              <Link
-                href="/register"
-                className="rounded-lg bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
-              >
-                Get Started
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteNav active="/explore" />
 
       {/* Hero */}
-      <div className="bg-white py-8 shadow-sm">
+      <div className="border-b border-orange-100 bg-gradient-to-br from-orange-100/60 via-amber-50/50 to-[var(--cream)] py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900">Explore Home Chefs</h1>
+          <h1 className="font-display text-3xl font-black tracking-tight text-gray-900 sm:text-4xl">Explore Home Chefs</h1>
           <p className="mt-2 text-gray-600">
-            Discover talented home chefs and their unique culinary creations
+            Discover talented home chefs across Singapore — from Tiong Bahru to Tampines — and their
+            signature home-cooked menus.
           </p>
 
           {/* Search and Filters */}
@@ -213,19 +195,19 @@ function ExploreContent() {
                 <Link
                   key={chef.id}
                   href={`/chef/${chef.id}`}
-                  className="group overflow-hidden rounded-xl bg-white shadow-sm transition hover:shadow-md"
+                  className="group overflow-hidden rounded-2xl border border-orange-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-warm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
                 >
                   <div className="aspect-[4/3] overflow-hidden bg-gray-200">
                     <img
                       src={chef.image}
-                      alt={chef.name}
-                      className="h-full w-full object-cover transition group-hover:scale-105"
+                      alt={`${chef.name} — ${chef.specialty} home chef in ${chef.location}, Singapore`}
+                      className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                     />
                   </div>
                   <div className="p-4">
                     <div className="flex items-start justify-between">
                       <div>
-                        <h3 className="font-semibold text-gray-900">{chef.name}</h3>
+                        <h3 className="font-display font-bold text-gray-900">{chef.name}</h3>
                         <p className="text-sm text-gray-600">{chef.specialty} Cuisine</p>
                       </div>
                       <div className="flex items-center gap-1 text-sm">

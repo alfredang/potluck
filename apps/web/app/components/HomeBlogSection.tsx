@@ -23,12 +23,12 @@ export async function HomeBlogSection() {
   if (posts.length === 0) return null;
 
   return (
-    <section className="bg-gray-50 py-16">
+    <section className="bg-white py-14 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-orange-500">The Journal</p>
-            <h2 className="mt-2 text-3xl font-bold text-gray-900">From the Blog</h2>
+            <p className="text-sm font-semibold uppercase tracking-wide text-orange-500">The Kitchen Table</p>
+            <h2 className="font-display mt-2 text-3xl font-bold text-gray-900">Stories & guides from the blog</h2>
           </div>
           <Link href="/blog" className="hidden text-sm font-medium text-orange-500 hover:text-orange-600 sm:block">
             View all articles →

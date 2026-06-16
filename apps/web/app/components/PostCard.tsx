@@ -4,7 +4,7 @@ import { formatDate, snippetFromHtml, type PostWithCategory } from '../../lib/bl
 export function PostCard({ post, featured = false }: { post: PostWithCategory; featured?: boolean }) {
   const teaser = post.excerpt || snippetFromHtml(post.contentHtml, featured ? 200 : 130);
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:shadow-md">
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-orange-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-warm">
       <Link href={`/blog/${post.slug}`} className="block overflow-hidden bg-gray-100">
         <div className={featured ? 'aspect-[16/9]' : 'aspect-[3/2]'}>
           {post.featuredImage ? (
@@ -35,7 +35,7 @@ export function PostCard({ post, featured = false }: { post: PostWithCategory; f
           <span>·</span>
           <span>{post.readingTime} min read</span>
         </div>
-        <h3 className={`mt-3 font-bold text-gray-900 group-hover:text-orange-600 ${featured ? 'text-2xl' : 'text-lg'}`}>
+        <h3 className={`font-display mt-3 font-bold text-gray-900 group-hover:text-orange-600 ${featured ? 'text-2xl' : 'text-lg'}`}>
           <Link href={`/blog/${post.slug}`}>{post.title}</Link>
         </h3>
         <p className="mt-2 flex-1 text-sm text-gray-600 line-clamp-3">{teaser}</p>

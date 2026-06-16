@@ -1,63 +1,61 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SiteNav } from '../components/SiteNav';
+import { SiteFooter } from '../components/SiteFooter';
+
+export const metadata: Metadata = {
+  title: 'How It Works — Book a Home Chef or Start Cooking in Singapore',
+  description:
+    'See how Potluck works: discover home chefs near you, book an authentic home-cooked meal or private dining experience in Singapore, or start earning as a home chef.',
+  keywords: [
+    'how Potluck works',
+    'book a home chef Singapore',
+    'private dining Singapore',
+    'home cooked food Singapore',
+    'home dining experience',
+    'become a home chef Singapore',
+    'home chef marketplace',
+  ],
+  alternates: { canonical: '/how-it-works' },
+  openGraph: {
+    type: 'website',
+    title: 'How It Works — Book a Home Chef or Start Cooking in Singapore',
+    description:
+      'Discover, book and dine with home chefs in Singapore — or start earning from your own kitchen with Potluck.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'How It Works — Book a Home Chef or Start Cooking in Singapore',
+    description:
+      'Discover, book and dine with home chefs in Singapore — or start earning from your own kitchen with Potluck.',
+  },
+};
 
 export default function HowItWorksPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="border-b border-gray-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-                        <Link href="/" className="flex items-center gap-2">
-              <img src="/logo.png" alt="Potluck" className="h-10 w-auto" />
-              Potluck
-            </Link>
-            <div className="hidden md:flex md:items-center md:gap-8">
-              <Link href="/explore" className="text-gray-600 hover:text-gray-900">
-                Explore
-              </Link>
-              <Link href="/how-it-works" className="text-orange-500 font-medium">
-                How it Works
-              </Link>
-              <Link href="/become-chef" className="text-gray-600 hover:text-gray-900">
-                Become a Chef
-              </Link>
-              <Link href="/blog" className="text-gray-600 hover:text-gray-900">
-                Blog
-              </Link>
-            </div>
-            <div className="flex items-center gap-4">
-              <Link href="/login" className="text-gray-600 hover:text-gray-900">
-                Sign In
-              </Link>
-              <Link
-                href="/register"
-                className="rounded-lg bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
-              >
-                Get Started
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteNav active="/how-it-works" />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-orange-50 to-white py-16">
+      <section className="bg-gradient-to-br from-orange-100/70 via-amber-50/60 to-[var(--cream)] py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+            <h1 className="font-display text-4xl font-black tracking-tight text-gray-900 sm:text-5xl">
               How Potluck Works
             </h1>
-            <p className="mt-6 text-lg text-gray-600">
-              Experience authentic home-cooked meals from talented local chefs in just a few simple steps
+            <p className="mt-5 text-lg text-gray-600">
+              Authentic home-cooked meals from talented local chefs — from Ang Mo Kio to Katong — in
+              just a few simple steps.
             </p>
           </div>
         </div>
       </section>
 
       {/* For Diners */}
-      <section className="py-16">
+      <section className="bg-white py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-3xl font-bold text-gray-900">For Food Lovers</h2>
+          <h2 className="font-display text-center text-3xl font-bold text-gray-900">For Food Lovers</h2>
           <div className="mt-12 grid gap-12 md:grid-cols-3">
             <div className="relative text-center">
               <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-orange-100 text-4xl">
@@ -104,9 +102,9 @@ export default function HowItWorksPage() {
       </section>
 
       {/* For Chefs */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-cream py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-3xl font-bold text-gray-900">For Home Chefs</h2>
+          <h2 className="font-display text-center text-3xl font-bold text-gray-900">For Home Chefs</h2>
           <div className="mt-12 grid gap-12 md:grid-cols-4">
             <div className="text-center">
               <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-orange-500 text-2xl font-bold text-white">
@@ -157,35 +155,35 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Trust & Safety */}
-      <section className="py-16">
+      <section className="bg-white py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-3xl font-bold text-gray-900">Trust & Safety</h2>
+          <h2 className="font-display text-center text-3xl font-bold text-gray-900">Trust &amp; Safety</h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-gray-600">
             Your safety and satisfaction are our top priorities
           </p>
           <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-xl bg-gray-50 p-6 text-center">
+            <div className="rounded-xl border border-orange-100 bg-cream p-6 text-center transition hover:-translate-y-1 hover:shadow-warm">
               <div className="text-3xl">✅</div>
               <h3 className="mt-4 font-semibold">Verified Profiles</h3>
               <p className="mt-2 text-sm text-gray-600">
                 All chefs are verified with identity checks and food safety certifications
               </p>
             </div>
-            <div className="rounded-xl bg-gray-50 p-6 text-center">
+            <div className="rounded-xl border border-orange-100 bg-cream p-6 text-center transition hover:-translate-y-1 hover:shadow-warm">
               <div className="text-3xl">⭐</div>
               <h3 className="mt-4 font-semibold">Reviews & Ratings</h3>
               <p className="mt-2 text-sm text-gray-600">
                 Authentic reviews from verified diners help you make informed choices
               </p>
             </div>
-            <div className="rounded-xl bg-gray-50 p-6 text-center">
+            <div className="rounded-xl border border-orange-100 bg-cream p-6 text-center transition hover:-translate-y-1 hover:shadow-warm">
               <div className="text-3xl">🔒</div>
               <h3 className="mt-4 font-semibold">Secure Payments</h3>
               <p className="mt-2 text-sm text-gray-600">
                 Payments held securely until after your dining experience is complete
               </p>
             </div>
-            <div className="rounded-xl bg-gray-50 p-6 text-center">
+            <div className="rounded-xl border border-orange-100 bg-cream p-6 text-center transition hover:-translate-y-1 hover:shadow-warm">
               <div className="text-3xl">🛡️</div>
               <h3 className="mt-4 font-semibold">Support Team</h3>
               <p className="mt-2 text-sm text-gray-600">
@@ -197,9 +195,9 @@ export default function HowItWorksPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-cream py-14 sm:py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
+          <h2 className="font-display text-center text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
           <div className="mt-12 space-y-6">
             <div className="rounded-lg bg-white p-6 shadow-sm">
               <h3 className="font-semibold text-gray-900">How much does it cost to dine?</h3>
@@ -234,22 +232,22 @@ export default function HowItWorksPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-orange-500 py-16">
+      <section className="bg-gradient-to-br from-orange-500 to-amber-500 py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-white">Ready to Try Potluck?</h2>
-          <p className="mt-4 text-lg text-orange-100">
-            Join our community of food lovers and home chefs today
+          <h2 className="font-display text-3xl font-bold text-white">Ready to Try Potluck?</h2>
+          <p className="mt-4 text-lg text-orange-50">
+            Join our community of food lovers and home chefs across the island.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/explore"
-              className="rounded-lg bg-white px-8 py-3 font-semibold text-orange-500 hover:bg-orange-50"
+              className="rounded-lg bg-white px-8 py-3 font-semibold text-orange-600 shadow-sm transition hover:-translate-y-0.5 hover:bg-orange-50"
             >
               Find a Chef
             </Link>
             <Link
               href="/become-chef"
-              className="rounded-lg border-2 border-white px-8 py-3 font-semibold text-white hover:bg-orange-600"
+              className="rounded-lg border-2 border-white px-8 py-3 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
             >
               Become a Chef
             </Link>
@@ -257,12 +255,7 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-200 bg-white py-8">
-        <div className="mx-auto max-w-7xl px-4 text-center text-sm text-gray-600 sm:px-6 lg:px-8">
-          © {new Date().getFullYear()} Potluck. All rights reserved.
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

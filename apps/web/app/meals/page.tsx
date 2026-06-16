@@ -69,7 +69,7 @@ export default function MealsPage() {
       <div className="bg-orange-500 text-white p-6 pt-12">
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-3xl font-bold">🍱 PotLuck</h1>
-          <Link href="/profile" className="text-2xl">👤</Link>
+          <Link href="/login" className="text-2xl">👤</Link>
         </div>
         <h2 className="text-2xl font-semibold">Delicious Meals</h2>
       </div>
@@ -131,8 +131,8 @@ export default function MealsPage() {
         <Link href="/" className="text-gray-500 text-center text-xs">🏠<br/>Home</Link>
         <Link href="/chefs" className="text-gray-500 text-center text-xs">👨‍🍳<br/>Chefs</Link>
         <Link href="/meals" className="text-orange-500 text-center text-xs font-semibold">🍽️<br/>Meals</Link>
-        <Link href="/cart" className="text-gray-500 text-center text-xs">🛒<br/>Cart</Link>
-        <Link href="/profile" className="text-gray-500 text-center text-xs">👤<br/>Profile</Link>
+        <Link href="/explore" className="text-gray-500 text-center text-xs">🛒<br/>Cart</Link>
+        <Link href="/login" className="text-gray-500 text-center text-xs">👤<br/>Profile</Link>
       </div>
     </div>
   );

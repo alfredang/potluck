@@ -8,12 +8,53 @@
   --foreground: #0f172a;
   --muted: #f1f5f9;
   --border: #e2e8f0;
+  /* Warm appetite-forward brand tokens */
+  --cream: #fff8f1;
+  --chili: #ef4444;
+  --herb: #10b981;
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-body), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--background);
   color: var(--foreground);
+}
+
+/* Characterful serif for headings/wordmark; clean sans for body. */
+.font-display {
+  font-family: var(--font-display), Georgia, 'Times New Roman', serif;
+  letter-spacing: -0.01em;
+}
+
+/* Warm canvas + a few reusable surface helpers used across the homepage. */
+.bg-cream { background-color: var(--cream); }
+
+/* Soft, warm elevation — replaces flat gray shadows for a hand-made feel. */
+.shadow-warm { box-shadow: 0 10px 30px -12px rgba(234, 88, 12, 0.25); }
+.shadow-warm-lg { box-shadow: 0 24px 50px -20px rgba(234, 88, 12, 0.32); }
+
+/* Hairline "stitched" divider evoking a tablecloth / ticket-stub seam. */
+.seam {
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(249, 115, 22, 0.35) 0 10px,
+    transparent 10px 20px
+  );
+}
+
+/* Staggered page-load reveal for hero + card clusters. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-rise {
+  animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise { animation: none; }
+  * { scroll-behavior: auto !important; }
 }
 
 /* Rendered blog post HTML */

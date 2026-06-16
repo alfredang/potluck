@@ -63,6 +63,34 @@ It is *not* a restaurant, a recipe blog, or a grocery-delivery service.
 - **`en-SG` locale**, SGD currency, and Singapore-specific spelling/terms.
 - Image SEO: chef/dish photos need descriptive `alt` text and reasonable sizes.
 
+## Lead-magnet strategy (read by the `lead-magnets` skill)
+Potluck's blog posts double as **lead magnets** — each post should capture emails and push
+toward one of the two funnels (book a diner experience / become a home chef).
+
+- **Diner-side magnets (awareness → consideration):**
+  - "The Singapore Home-Dining Bucket List: 25 Dishes to Try Before You Die" (checklist)
+  - "Halal Home Chefs Near You: Neighbourhood-by-Neighbourhood Guide" (cheat sheet)
+  - "How to Host the Perfect Potluck Dinner Party" (guide) → CTA: book a chef to cater it
+  - "Private Dining in Singapore Under $50/pax" (curated list) → CTA: explore chefs
+- **Chef-side magnets (consideration → decision):**
+  - "Earn $2,000/month Cooking From Home: The Home-Chef Starter Kit" (checklist + template)
+  - "Home-Based Food Business Licensing in Singapore (SFA): Step-by-Step" (guide)
+  - "Pricing Your Home-Cooked Menu: Free Calculator + Template" → CTA: become a chef
+- **Gating:** ungated post body for SEO + an inline/end-of-post **content-upgrade** capture
+  (email only, lowest friction) offering a downloadable companion (checklist/template/PDF).
+  Use the on-page enquiry form and WhatsApp widget as secondary capture.
+- **Path to product:** every magnet ends with a contextual CTA into `/explore` (diners) or
+  `/become-chef` (chefs). Social proof = chef count, ratings, "downloaded by N home cooks".
+- **Components:** end-of-post CTA lives in `app/components/` (e.g. `LeadMagnetCTA`); the
+  homepage enquiry form (`EnquiryForm`) and `WhatsAppWidget` are site-wide capture points.
+
+## Design / brand context (read by `frontend-design` & `ui-ux-pro-max`)
+Warm, communal, appetite-forward — the home table, not delivery-app chrome. Primary orange
+`#f97316`; cream canvas (`#FFF8F1`) over stark white; emerald + chili accents for the
+"colorful" brand energy; colorful **POTLUCKHUB** wordmark beside the spoon/arches logo.
+Tighten vertical rhythm (alternating warm/white sections) to remove dead-space. Locale
+`en-SG`, SGD. See `app/components/Logo.tsx`, `WhatsAppWidget.tsx`, `EnquiryForm.tsx`.
+
 ## Out of scope / do NOT recommend
 - Vercel-specific tooling, analytics, or `vercel.json` (site is on Hostinger+Coolify).
 - React Native / Expo / app-store ASO (handled in the separate native app repos).

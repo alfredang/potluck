@@ -6,6 +6,7 @@ import { SiteFooter } from '../../components/SiteFooter';
 import { PostCard } from '../../components/PostCard';
 import { LikeButton } from '../../components/LikeButton';
 import { ShareButtons } from '../../components/ShareButtons';
+import { LeadMagnetCTA } from '../../components/LeadMagnetCTA';
 import {
   getPostBySlug,
   getLatestPosts,
@@ -143,6 +144,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           className="blog-content mt-8"
           dangerouslySetInnerHTML={{ __html: post.contentHtml || '' }}
         />
+
+        <LeadMagnetCTA />
 
         <div className="mt-10 flex flex-col gap-4 border-t border-gray-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <ShareButtons url={url} title={post.title} />

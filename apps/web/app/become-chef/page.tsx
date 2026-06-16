@@ -1,59 +1,62 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SiteNav } from '../components/SiteNav';
+import { SiteFooter } from '../components/SiteFooter';
+
+export const metadata: Metadata = {
+  title: 'Become a Home Chef in Singapore — Earn Cooking From Home',
+  description:
+    'Turn your cooking into income. Join Potluck as a home chef in Singapore, sell home-cooked food, set your own prices and schedule, and keep up to 96% of earnings.',
+  keywords: [
+    'become a home chef Singapore',
+    'sell home cooked food Singapore',
+    'earn cooking from home',
+    'home chef jobs Singapore',
+    'make money cooking Singapore',
+    'home based food business Singapore',
+    'private chef income',
+    'home chef marketplace',
+  ],
+  alternates: { canonical: '/become-chef' },
+  openGraph: {
+    type: 'website',
+    title: 'Become a Home Chef in Singapore — Earn Cooking From Home',
+    description:
+      'Join Potluck as a home chef in Singapore. Sell home-cooked food, set your own prices, and earn from your kitchen.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Become a Home Chef in Singapore — Earn Cooking From Home',
+    description:
+      'Join Potluck as a home chef in Singapore. Sell home-cooked food, set your own prices, and earn from your kitchen.',
+  },
+};
 
 export default function BecomeChefPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="border-b border-gray-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-                        <Link href="/" className="flex items-center gap-2">
-              <img src="/logo.png" alt="Potluck" className="h-10 w-auto" />
-            </Link>
-            <div className="hidden md:flex md:items-center md:gap-8">
-              <Link href="/explore" className="text-gray-600 hover:text-gray-900">
-                Explore
-              </Link>
-              <Link href="/how-it-works" className="text-gray-600 hover:text-gray-900">
-                How it Works
-              </Link>
-              <Link href="/become-chef" className="text-orange-500 font-medium">
-                Become a Chef
-              </Link>
-              <Link href="/blog" className="text-gray-600 hover:text-gray-900">
-                Blog
-              </Link>
-            </div>
-            <div className="flex items-center gap-4">
-              <Link href="/login" className="text-gray-600 hover:text-gray-900">
-                Sign In
-              </Link>
-              <Link
-                href="/register"
-                className="rounded-lg bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
-              >
-                Get Started
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteNav active="/become-chef" />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-orange-50 to-white py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-gradient-to-br from-orange-100/70 via-amber-50/60 to-[var(--cream)] py-14 sm:py-16">
+        <div className="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-amber-200/40 blur-3xl" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-              Share Your Culinary Passion
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/85 px-3.5 py-1.5 text-sm font-semibold text-orange-700 shadow-sm ring-1 ring-orange-200/70">
+              Earn ~$2,000/month from your own kitchen
+            </span>
+            <h1 className="font-display mt-5 text-4xl font-black tracking-tight text-gray-900 sm:text-5xl">
+              Turn your home cooking into income
             </h1>
-            <p className="mt-6 text-lg text-gray-600">
-              Turn your love for cooking into a rewarding experience. Join Potluck as a home chef
-              and connect with food lovers in your neighborhood.
+            <p className="mt-5 text-lg text-gray-600">
+              From your auntie&apos;s rendang recipe to your weekend laksa pot — share what you cook
+              best. Join Potluck as a home chef and connect with hungry neighbours across Singapore.
             </p>
-            <div className="mt-10">
+            <div className="mt-8">
               <Link
                 href="/register?role=chef"
-                className="rounded-lg bg-orange-500 px-8 py-3 text-lg font-semibold text-white shadow-lg hover:bg-orange-600"
+                className="inline-block rounded-xl bg-orange-500 px-8 py-3.5 text-lg font-semibold text-white shadow-warm transition hover:-translate-y-0.5 hover:bg-orange-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
               >
                 Start Your Journey
               </Link>
@@ -63,11 +66,11 @@ export default function BecomeChefPage() {
       </section>
 
       {/* Benefits */}
-      <section className="py-16">
+      <section className="bg-white py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-3xl font-bold text-gray-900">Why Cook with Potluck?</h2>
+          <h2 className="font-display text-center text-3xl font-bold text-gray-900">Why Cook with Potluck?</h2>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
-            <div className="rounded-xl bg-orange-50 p-6 text-center">
+            <div className="rounded-2xl border border-orange-100 bg-cream p-6 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-warm">
               <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-orange-100 text-3xl">
                 💰
               </div>
@@ -77,7 +80,7 @@ export default function BecomeChefPage() {
                 fee.
               </p>
             </div>
-            <div className="rounded-xl bg-orange-50 p-6 text-center">
+            <div className="rounded-2xl border border-orange-100 bg-cream p-6 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-warm">
               <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-orange-100 text-3xl">
                 🏠
               </div>
@@ -87,7 +90,7 @@ export default function BecomeChefPage() {
                 kitchen.
               </p>
             </div>
-            <div className="rounded-xl bg-orange-50 p-6 text-center">
+            <div className="rounded-2xl border border-orange-100 bg-cream p-6 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-warm">
               <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-orange-100 text-3xl">
                 👥
               </div>
@@ -102,9 +105,9 @@ export default function BecomeChefPage() {
       </section>
 
       {/* How It Works for Chefs */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-cream py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-3xl font-bold text-gray-900">How It Works</h2>
+          <h2 className="font-display text-center text-3xl font-bold text-gray-900">How It Works</h2>
           <div className="mt-12">
             <div className="grid gap-8 md:grid-cols-4">
               <div className="text-center">
@@ -149,13 +152,13 @@ export default function BecomeChefPage() {
       </section>
 
       {/* Step-by-Step Guide */}
-      <section className="py-16">
+      <section className="bg-white py-14 sm:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-3xl font-bold text-gray-900">Step-by-Step Guide</h2>
+          <h2 className="font-display text-center text-3xl font-bold text-gray-900">Step-by-Step Guide</h2>
           
           <div className="mt-12 space-y-8">
             {/* Step 1 */}
-            <div className="flex gap-6 rounded-xl border border-gray-200 p-6">
+            <div className="flex gap-6 rounded-2xl border border-orange-100 bg-orange-50/40 p-6 transition hover:shadow-warm">
               <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 text-xl font-bold text-orange-600">
                 1
               </div>
@@ -168,7 +171,7 @@ export default function BecomeChefPage() {
             </div>
 
             {/* Step 2 */}
-            <div className="flex gap-6 rounded-xl border border-gray-200 p-6">
+            <div className="flex gap-6 rounded-2xl border border-orange-100 bg-orange-50/40 p-6 transition hover:shadow-warm">
               <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 text-xl font-bold text-orange-600">
                 2
               </div>
@@ -184,7 +187,7 @@ export default function BecomeChefPage() {
             </div>
 
             {/* Step 3 */}
-            <div className="flex gap-6 rounded-xl border border-gray-200 p-6">
+            <div className="flex gap-6 rounded-2xl border border-orange-100 bg-orange-50/40 p-6 transition hover:shadow-warm">
               <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 text-xl font-bold text-orange-600">
                 3
               </div>
@@ -199,7 +202,7 @@ export default function BecomeChefPage() {
             </div>
 
             {/* Step 4 */}
-            <div className="flex gap-6 rounded-xl border border-gray-200 p-6">
+            <div className="flex gap-6 rounded-2xl border border-orange-100 bg-orange-50/40 p-6 transition hover:shadow-warm">
               <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 text-xl font-bold text-orange-600">
                 4
               </div>
@@ -215,7 +218,7 @@ export default function BecomeChefPage() {
             </div>
 
             {/* Step 5 */}
-            <div className="flex gap-6 rounded-xl border border-gray-200 p-6">
+            <div className="flex gap-6 rounded-2xl border border-orange-100 bg-orange-50/40 p-6 transition hover:shadow-warm">
               <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 text-xl font-bold text-orange-600">
                 5
               </div>
@@ -230,7 +233,7 @@ export default function BecomeChefPage() {
             </div>
 
             {/* Step 6 */}
-            <div className="flex gap-6 rounded-xl border border-gray-200 p-6">
+            <div className="flex gap-6 rounded-2xl border border-orange-100 bg-orange-50/40 p-6 transition hover:shadow-warm">
               <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 text-xl font-bold text-orange-600">
                 6
               </div>
@@ -246,9 +249,9 @@ export default function BecomeChefPage() {
       </section>
 
       {/* Requirements */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-cream py-14 sm:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-3xl font-bold text-gray-900">Requirements</h2>
+          <h2 className="font-display text-center text-3xl font-bold text-gray-900">Requirements</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             <div className="rounded-lg bg-white p-6 shadow-sm">
               <h3 className="text-lg font-semibold">For All Chefs</h3>
@@ -289,9 +292,9 @@ export default function BecomeChefPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-16">
+      <section className="bg-cream py-14 sm:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
+          <h2 className="font-display text-center text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
           <div className="mt-8 space-y-6">
             <div>
               <h3 className="text-lg font-semibold">How much can I earn?</h3>
@@ -313,7 +316,7 @@ export default function BecomeChefPage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold">What if I have no cooking experience?</h3>
-              <p className="mt-2 text professional-gray-600">
+              <p className="mt-2 text-gray-600">
                 No problem! Many successful Potluck chefs are home cooks with a passion for cooking. Authenticity and passion matter more than professional training.
               </p>
             </div>
@@ -322,14 +325,14 @@ export default function BecomeChefPage() {
       </section>
 
       {/* Pricing */}
-      <section className="py-16">
+      <section className="bg-white py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-3xl font-bold text-gray-900">Simple, Fair Pricing</h2>
+          <h2 className="font-display text-center text-3xl font-bold text-gray-900">Simple, Fair Pricing</h2>
           <p className="mt-4 text-center text-gray-600">
             Start for free. Pay only when you earn.
           </p>
           <div className="mx-auto mt-12 grid max-w-4xl gap-8 md:grid-cols-3">
-            <div className="rounded-xl border border-gray-200 p-6">
+            <div className="rounded-2xl border border-orange-100 p-6">
               <h3 className="text-lg font-semibold">Free</h3>
               <p className="mt-2 text-3xl font-bold">$0<span className="text-lg font-normal text-gray-500">/mo</span></p>
               <ul className="mt-6 space-y-3 text-sm text-gray-600">
@@ -369,7 +372,7 @@ export default function BecomeChefPage() {
                 Upgrade
               </button>
             </div>
-            <div className="rounded-xl border border-gray-200 p-6">
+            <div className="rounded-2xl border border-orange-100 p-6">
               <h3 className="text-lg font-semibold">Unlimited</h3>
               <p className="mt-2 text-3xl font-bold">$49<span className="text-lg font-normal text-gray-500">/mo</span></p>
               <ul className="mt-6 space-y-3 text-sm text-gray-600">
@@ -395,27 +398,22 @@ export default function BecomeChefPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-orange-500 py-16">
+      <section className="bg-gradient-to-br from-orange-500 to-amber-500 py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-white">Ready to Start Cooking?</h2>
-          <p className="mt-4 text-lg text-orange-100">
-            Join hundreds of home chefs already sharing their passion on Potluck
+          <h2 className="font-display text-3xl font-bold text-white">Ready to fire up the wok?</h2>
+          <p className="mt-4 text-lg text-orange-50">
+            Join hundreds of home chefs across Singapore already sharing what they cook best.
           </p>
           <Link
             href="/register?role=chef"
-            className="mt-8 inline-block rounded-lg bg-white px-8 py-3 font-semibold text-orange-500 hover:bg-orange-50"
+            className="mt-8 inline-block rounded-xl bg-white px-8 py-3 font-semibold text-orange-600 shadow-sm transition hover:-translate-y-0.5 hover:bg-orange-50"
           >
             Create Your Chef Profile
           </Link>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-200 bg-white py-8">
-        <div className="mx-auto max-w-7xl px-4 text-center text-sm text-gray-600 sm:px-6 lg:px-8">
-          © {new Date().getFullYear()} Potluck. All rights reserved.
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

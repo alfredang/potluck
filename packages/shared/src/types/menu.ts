@@ -7,7 +7,13 @@ export type FoodCategory =
   | 'malay'
   | 'indian'
   | 'halal'
-  | 'vegetarian';
+  | 'vegetarian'
+  | 'peranakan'
+  | 'hainanese'
+  | 'indian-muslim'
+  | 'vietnamese'
+  | 'filipino'
+  | 'local-hawker';
 
 export interface MenuCategory {
   id: string;

@@ -1,247 +1,212 @@
 import Link from 'next/link';
 import { FOOD_CATEGORIES } from '@homechef/shared';
+import { SiteNav } from './components/SiteNav';
+import { SiteFooter } from './components/SiteFooter';
+import { Testimonials } from './components/Testimonials';
+import { EnquiryForm } from './components/EnquiryForm';
 import { HomeBlogSection } from './components/HomeBlogSection';
 
 // Re-fetch the blog teaser periodically; fails soft if the DB is offline.
 export const revalidate = 300;
 
+const STATS = [
+  { value: '37', label: 'Singapore home chefs' },
+  { value: '15', label: 'Cuisines' },
+  { value: '4.9★', label: 'Average rating' },
+  { value: '1,200+', label: 'Meals served' },
+];
+
+// Inline SVG step icons (no emoji as structural icons).
+function IconSearch() {
+  return (
+    <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="11" cy="11" r="7" />
+      <path d="m21 21-4.3-4.3" />
+    </svg>
+  );
+}
+function IconCalendar() {
+  return (
+    <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="4" width="18" height="17" rx="2.5" />
+      <path d="M3 9h18M8 2v4M16 2v4" />
+    </svg>
+  );
+}
+function IconBowl() {
+  return (
+    <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 11h18a9 9 0 0 1-18 0Z" />
+      <path d="M12 7c0-2 2-2 2-3.5M8.5 7C8.5 5 10 5 10 3.5M5 20h14" />
+    </svg>
+  );
+}
+
+const STEPS = [
+  { icon: <IconSearch />, title: 'Discover', body: 'Browse home chefs by cuisine, neighbourhood and date — from Tiong Bahru to Tampines. Read real reviews and peek at their menus.' },
+  { icon: <IconCalendar />, title: 'Book', body: 'Pick your date, menu and party size. Pay securely in SGD and get instant confirmation — no deposit drama.' },
+  { icon: <IconBowl />, title: 'Makan', body: 'Pull up a chair at the chef’s table — or have them cook at yours — for a proper home-cooked spread.' },
+];
+
+const TRUST = [
+  'Identity-verified home chefs',
+  'Halal, vegetarian & dietary-friendly',
+  'Secure SGD payments, held till you dine',
+];
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="border-b border-gray-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <img src="/logo.png" alt="Potluck" className="h-10 w-auto" />
-            </Link>
-            <div className="hidden md:flex md:items-center md:gap-8">
-              <Link href="/explore" className="text-gray-600 hover:text-gray-900">
-                Explore
-              </Link>
-              <Link href="/how-it-works" className="text-gray-600 hover:text-gray-900">
-                How it Works
-              </Link>
-              <Link href="/become-chef" className="text-gray-600 hover:text-gray-900">
-                Become a Chef
-              </Link>
-              <Link href="/blog" className="text-gray-600 hover:text-gray-900">
-                Blog
-              </Link>
-            </div>
-            <div className="flex items-center gap-4">
-              {/* Contact Buttons */}
-              <a
-                href="mailto:hello@potluckhub.io"
-                className="text-gray-600 hover:text-orange-500 flex items-center gap-1"
-                title="Email us"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </a>
-              <a
-                href="https://wa.me/6590480277"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-green-500 flex items-center gap-1"
-                title="WhatsApp us"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
-              </a>
-              <Link
-                href="/login"
-                className="text-gray-600 hover:text-gray-900"
-              >
-                Sign In
-              </Link>
-              <Link
-                href="/register"
-                className="rounded-lg bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
-              >
-                Get Started
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteNav />
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-orange-50 to-white py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-              Authentic Home Dining
-              <span className="block text-orange-500">Experiences in Singapore</span>
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600">
-              Discover talented home chefs in your neighborhood. Book a seat at their table
-              and enjoy authentic, homemade cuisine in a warm, personal setting.
-            </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/explore"
-                className="rounded-lg bg-orange-500 px-8 py-3 text-lg font-semibold text-white shadow-lg hover:bg-orange-600"
-              >
-                Find a Chef
-              </Link>
-              <Link
-                href="/become-chef"
-                className="rounded-lg border border-gray-300 bg-white px-8 py-3 text-lg font-semibold text-gray-700 hover:bg-gray-50"
-              >
-                Become a Chef
-              </Link>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-orange-100/70 via-amber-50/70 to-[var(--cream)]">
+        {/* warm ambient blobs */}
+        <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-orange-200/50 blur-3xl" />
+        <div className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rounded-full bg-amber-200/50 blur-3xl" />
+        <div className="pointer-events-none absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-emerald-200/30 blur-3xl" />
+        <div className="relative mx-auto max-w-7xl px-4 pb-12 pt-12 sm:px-6 sm:pt-16 lg:px-8 lg:pb-16">
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            <div className="animate-rise">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/85 px-3.5 py-1.5 text-sm font-semibold text-orange-700 shadow-sm ring-1 ring-orange-200/70 backdrop-blur">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70 motion-reduce:hidden" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                </span>
+                Singapore’s home-chef marketplace
+              </span>
+              <h1 className="font-display mt-5 text-[2.6rem] font-black leading-[1.04] tracking-tight text-gray-900 sm:text-5xl lg:text-[3.5rem]">
+                Home-cooked meals,
+                <span className="block bg-gradient-to-r from-orange-500 via-red-500 to-amber-500 bg-clip-text italic text-transparent">
+                  from real Singapore kitchens.
+                </span>
+              </h1>
+              <p className="mt-5 max-w-xl text-lg leading-relaxed text-gray-600">
+                From Peranakan feasts in Joo Chiat to nasi lemak in Geylang Serai — discover talented
+                home chefs in your neighbourhood. Book a seat at their table, or have them cook a
+                private dinner at yours.
+              </p>
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/explore"
+                  className="rounded-xl bg-orange-500 px-7 py-3.5 text-center text-base font-semibold text-white shadow-warm transition hover:-translate-y-0.5 hover:bg-orange-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+                >
+                  Find a home chef
+                </Link>
+                <Link
+                  href="/become-chef"
+                  className="rounded-xl border border-orange-200 bg-white px-7 py-3.5 text-center text-base font-semibold text-gray-800 shadow-sm transition hover:-translate-y-0.5 hover:border-orange-300 hover:text-orange-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+                >
+                  Become a chef
+                </Link>
+              </div>
+              <dl className="mt-8 grid max-w-lg grid-cols-4 gap-4">
+                {STATS.map((s) => (
+                  <div key={s.label}>
+                    <dt className="font-display text-2xl font-extrabold text-gray-900">{s.value}</dt>
+                    <dd className="mt-0.5 text-xs text-gray-500">{s.label}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+
+            {/* Visual: floating dish cards */}
+            <div className="relative hidden lg:block">
+              <div className="relative mx-auto grid max-w-md grid-cols-2 gap-4">
+                {[
+                  { e: '🍜', t: 'Laksa night', s: 'Chef Mei · Katong', p: 'From $28/pax' },
+                  { e: '🍱', t: 'Omakase at home', s: 'Chef Ken · Bugis', p: 'From $88/pax' },
+                  { e: '🥘', t: 'Nasi padang feast', s: 'Chef Faizal · Geylang Serai', p: 'From $32/pax' },
+                  { e: '🍛', t: 'Peranakan table', s: 'Chef Lily · Joo Chiat', p: 'From $45/pax' },
+                ].map((c, i) => (
+                  <div
+                    key={c.t}
+                    className={`animate-rise rounded-2xl border border-orange-100 bg-white p-5 shadow-warm-lg transition hover:-translate-y-1 hover:rotate-0 ${i % 2 === 1 ? 'translate-y-6 -rotate-1' : 'rotate-1'}`}
+                    style={{ animationDelay: `${120 + i * 90}ms` }}
+                  >
+                    <div className="text-4xl">{c.e}</div>
+                    <p className="mt-3 font-semibold text-gray-900">{c.t}</p>
+                    <p className="text-sm text-gray-500">{c.s}</p>
+                    <p className="mt-2 inline-flex rounded-full bg-orange-50 px-2.5 py-0.5 text-sm font-semibold text-orange-600">{c.p}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
+
+          {/* Trust strip */}
+          <ul className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-orange-200/50 pt-6 text-sm font-medium text-gray-600">
+            {TRUST.map((t) => (
+              <li key={t} className="flex items-center gap-2">
+                <svg className="h-5 w-5 shrink-0 text-emerald-500" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M16.704 5.29a1 1 0 010 1.42l-7.5 7.5a1 1 0 01-1.42 0l-3.5-3.5a1 1 0 111.42-1.42l2.79 2.79 6.79-6.79a1 1 0 011.42 0z" clipRule="evenodd" />
+                </svg>
+                {t}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      {/* Categories Section */}
-      <section className="py-16">
+      {/* Cuisines */}
+      <section className="bg-cream py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-3xl font-bold text-gray-900">Browse by Cuisine</h2>
-          <p className="mt-4 text-center text-gray-600">
-            Explore diverse cuisines from home chefs across Singapore
-          </p>
-          <div className="mt-10 grid grid-cols-3 gap-4 sm:grid-cols-5 lg:grid-cols-9">
+          <div className="flex items-end justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-orange-500">Cravings, sorted</p>
+              <h2 className="font-display mt-1.5 text-2xl font-bold text-gray-900 sm:text-3xl">Browse by cuisine</h2>
+              <p className="mt-1.5 text-gray-600">From hawker-style favourites to private fine-dining at home.</p>
+            </div>
+            <Link href="/explore" className="hidden text-sm font-semibold text-orange-600 hover:text-orange-700 sm:block">
+              See all chefs →
+            </Link>
+          </div>
+          <div className="mt-7 grid grid-cols-3 gap-3 sm:grid-cols-5 lg:grid-cols-9">
             {FOOD_CATEGORIES.map((category) => (
               <Link
                 key={category.slug}
                 href={`/explore?category=${category.slug}`}
-                className="flex flex-col items-center rounded-xl bg-orange-50 p-4 transition hover:bg-orange-100"
+                className="group flex flex-col items-center rounded-2xl border border-orange-100/80 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:border-orange-200 hover:shadow-warm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
               >
-                <span className="text-3xl">{category.emoji}</span>
-                <span className="mt-2 text-sm font-medium text-gray-700">{category.name}</span>
+                <span className="text-3xl transition group-hover:scale-110">{category.emoji}</span>
+                <span className="mt-2 text-center text-xs font-medium text-gray-700 sm:text-sm">{category.name}</span>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section className="bg-gray-50 py-16">
+      {/* How it works */}
+      <section className="bg-white py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-3xl font-bold text-gray-900">How It Works</h2>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
-            <div className="text-center">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-orange-100 text-3xl">
-                🔍
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-wide text-orange-500">Craving to table</p>
+            <h2 className="font-display mt-1.5 text-2xl font-bold text-gray-900 sm:text-3xl">How Potluck works</h2>
+            <p className="mt-2 text-gray-600">Three steps, lah — from craving to a proper home-cooked spread.</p>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {STEPS.map((s, i) => (
+              <div key={s.title} className="group relative rounded-2xl border border-orange-100 bg-cream p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-warm">
+                <span className="font-display absolute right-5 top-5 text-3xl font-black text-orange-200/80">0{i + 1}</span>
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-100 text-orange-600 transition group-hover:bg-orange-500 group-hover:text-white">{s.icon}</div>
+                <h3 className="font-display mt-4 text-xl font-bold text-gray-900">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-gray-600">{s.body}</p>
               </div>
-              <h3 className="mt-4 text-xl font-semibold">Discover</h3>
-              <p className="mt-2 text-gray-600">
-                Browse home chefs by cuisine, location, and availability. Read reviews and explore
-                their menus.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-orange-100 text-3xl">
-                📅
-              </div>
-              <h3 className="mt-4 text-xl font-semibold">Book</h3>
-              <p className="mt-2 text-gray-600">
-                Select your preferred date, time, and menu. Pay securely online with your
-                booking confirmation.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-orange-100 text-3xl">
-                🍽️
-              </div>
-              <h3 className="mt-4 text-xl font-semibold">Dine</h3>
-              <p className="mt-2 text-gray-600">
-                Visit the chef&apos;s home and enjoy an authentic, home-cooked meal in a warm, personal
-                atmosphere.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl bg-orange-500 p-8 text-center text-white md:p-12">
-            <h2 className="text-3xl font-bold">Ready to Share Your Cuisine?</h2>
-            <p className="mt-4 text-lg text-orange-100">
-              Join Potluck as a home chef and share your passion for cooking with food lovers in
-              your neighborhood.
-            </p>
-            <Link
-              href="/become-chef"
-              className="mt-8 inline-block rounded-lg bg-white px-8 py-3 font-semibold text-orange-500 hover:bg-orange-50"
-            >
-              Become a Chef
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Testimonials */}
+      <Testimonials />
 
-      {/* From the Blog */}
+      {/* Enquiry form */}
+      <EnquiryForm />
+
+      {/* From the blog (lead magnets) */}
       <HomeBlogSection />
 
-      {/* Footer */}
-      <footer className="border-t border-gray-200 bg-white py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 md:grid-cols-4">
-            <div>
-              <span className="text-xl font-bold text-orange-500">Potluck</span>
-              <p className="mt-4 text-sm text-gray-600">
-                Connecting home chefs with food lovers in Singapore.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-gray-900">For Diners</h4>
-              <ul className="mt-4 space-y-2 text-sm text-gray-600">
-                <li>
-                  <Link href="/explore" className="hover:text-orange-500">
-                    Find a Chef
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/how-it-works" className="hover:text-orange-500">
-                    How it Works
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-gray-900">For Chefs</h4>
-              <ul className="mt-4 space-y-2 text-sm text-gray-600">
-                <li>
-                  <Link href="/become-chef" className="hover:text-orange-500">
-                    Become a Chef
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/pricing" className="hover:text-orange-500">
-                    Pricing
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-gray-900">Support</h4>
-              <ul className="mt-4 space-y-2 text-sm text-gray-600">
-                <li>
-                  <Link href="/help" className="hover:text-orange-500">
-                    Help Center
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact" className="hover:text-orange-500">
-                    Contact Us
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-8 border-t border-gray-200 pt-8 text-center text-sm text-gray-600">
-            © {new Date().getFullYear()} Potluck. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

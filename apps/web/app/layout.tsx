@@ -1,5 +1,24 @@
 import type { Metadata } from 'next';
+import { Fraunces, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
+import { WhatsAppWidget } from './components/WhatsAppWidget';
+
+// Characterful editorial serif for headings + the wordmark; warm and appetite-forward.
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '900'],
+  style: ['normal', 'italic'],
+  variable: '--font-display',
+  display: 'swap',
+});
+
+// Clean, friendly body sans.
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-body',
+  display: 'swap',
+});
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://potluckhub.io';
 
@@ -68,13 +87,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-SG">
+    <html lang="en-SG" className={`${fraunces.variable} ${jakarta.variable}`}>
       <body className="antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         {children}
+        <WhatsAppWidget />
       </body>
     </html>
   );

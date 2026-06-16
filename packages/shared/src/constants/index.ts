@@ -73,6 +73,12 @@ export const FOOD_CATEGORIES: Array<{
   { slug: 'indian', name: 'Indian', emoji: '🫓' },
   { slug: 'halal', name: 'Halal', emoji: '☪️' },
   { slug: 'vegetarian', name: 'Vegetarian', emoji: '🥗' },
+  { slug: 'peranakan', name: 'Peranakan', emoji: '🍤' },
+  { slug: 'hainanese', name: 'Hainanese', emoji: '🍗' },
+  { slug: 'indian-muslim', name: 'Indian-Muslim', emoji: '🍢' },
+  { slug: 'vietnamese', name: 'Vietnamese', emoji: '🍲' },
+  { slug: 'filipino', name: 'Filipino', emoji: '🥘' },
+  { slug: 'local-hawker', name: 'Local & Hawker', emoji: '🍜' },
 ];
 
 // Booking status display

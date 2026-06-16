@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { LikeButton } from '../../components/LikeButton';
 import { ShareButtons } from '../../components/ShareButtons';
 import { getChef, type MenuItem } from '../../../lib/chefs-data';
+import { Logo } from '../../components/Logo';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://potluckhub.io';
 
@@ -299,9 +300,7 @@ export default function ChefPageClient({ id }: { id: string }) {
       <nav className="border-b border-gray-200 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <img src="/logo.png" alt="Potluck" className="h-10 w-auto" />
-            </Link>
+            <Logo />
             <div className="hidden md:flex md:items-center md:gap-8">
               <Link href="/explore" className="text-gray-600 hover:text-gray-900">
                 Explore
