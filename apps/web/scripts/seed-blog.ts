@@ -1,8 +1,10 @@
 /**
- * Seeds blog categories + posts. Idempotent (skips existing slugs).
+ * Seeds blog categories + posts. Idempotent UPSERT: re-running syncs every post's
+ * content/tags/SEO to the latest (existing rows are updated, not skipped), while
+ * preserving live like/view counts. Run it on each environment to keep them identical.
  * Run: pnpm --filter @homechef/web seed:blog
  */
-import { sql, eq } from 'drizzle-orm';
+import { sql } from 'drizzle-orm';
 import { db } from '../lib/db';
 import { blogCategories, blogPosts } from '../lib/schema';
 import { slugify, estimateReadingTime } from '../lib/slug';
@@ -942,37 +944,62 @@ async function main() {
   const catBySlug = new Map(cats.map((c) => [c.slug, c.id]));
   console.log(`Categories ready: ${cats.length}`);
 
-  // Posts
+  // Posts — UPSERT so existing rows sync to the latest content/tags/SEO too, keeping the
+  // live like/view counts (and original publishedAt) intact. This is what makes localhost
+  // and the remote DB end up identical from a single `seed:blog` run.
   const now = Date.now();
-  let created = 0;
+  let count = 0;
   for (let i = 0; i < POSTS.length; i++) {
     const p = POSTS[i];
     const slug = slugify(p.title);
-    const [existing] = await db.select({ id: blogPosts.id }).from(blogPosts).where(eq(blogPosts.slug, slug));
-    if (existing) continue;
     const publishedAt = new Date(now - i * 3 * 24 * 60 * 60 * 1000); // stagger ~3 days apart
-    await db.insert(blogPosts).values({
-      title: p.title,
-      slug,
-      excerpt: p.excerpt,
-      contentHtml: p.body,
-      featuredImage: p.image,
-      categoryId: catBySlug.get(slugify(p.category)) ?? null,
-      authorName: 'Potluck Team',
-      status: 'published',
-      featured: p.featured ?? false,
-      readingTime: estimateReadingTime(p.body),
-      likeCount: 10 + ((i * 137 + 71) % 291),
-      viewCount: 120 + ((i * 219 + 33) % 4200),
-      seoTitle: p.title,
-      seoDescription: p.excerpt,
-      seoKeywords: `${p.category}, home dining, Singapore, Potluck`,
-      tags: p.tags ?? [],
-      publishedAt,
-    });
-    created++;
+    const categoryId = catBySlug.get(slugify(p.category)) ?? null;
+    const seoKeywords = `${p.category}, home dining, Singapore, Potluck`;
+    const readingTime = estimateReadingTime(p.body);
+    await db
+      .insert(blogPosts)
+      .values({
+        title: p.title,
+        slug,
+        excerpt: p.excerpt,
+        contentHtml: p.body,
+        featuredImage: p.image,
+        categoryId,
+        authorName: 'Potluck Team',
+        status: 'published',
+        featured: p.featured ?? false,
+        readingTime,
+        likeCount: 10 + ((i * 137 + 71) % 291),
+        viewCount: 120 + ((i * 219 + 33) % 4200),
+        seoTitle: p.title,
+        seoDescription: p.excerpt,
+        seoKeywords,
+        tags: p.tags ?? [],
+        publishedAt,
+      })
+      .onConflictDoUpdate({
+        target: blogPosts.slug,
+        set: {
+          // Content/SEO/tags re-synced on every run; likeCount/viewCount/publishedAt
+          // are intentionally NOT in `set`, so real engagement is preserved.
+          title: p.title,
+          excerpt: p.excerpt,
+          contentHtml: p.body,
+          featuredImage: p.image,
+          categoryId,
+          status: 'published',
+          featured: p.featured ?? false,
+          readingTime,
+          seoTitle: p.title,
+          seoDescription: p.excerpt,
+          seoKeywords,
+          tags: p.tags ?? [],
+          updatedAt: new Date(),
+        },
+      });
+    count++;
   }
-  console.log(`Posts created: ${created} (skipped ${POSTS.length - created} existing)`);
+  console.log(`Posts upserted: ${count} (new inserted + existing updated to latest content/tags)`);
   console.log('Done.');
   process.exit(0);
 }
