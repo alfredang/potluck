@@ -16,12 +16,12 @@ export function SiteFooter() {
               <p>12 Woodlands Square, #07-85/86/87</p>
               <p>Woods Square Tower 1, Singapore 737715</p>
               <p>
-                <a href="tel:+6561000613" className="hover:text-orange-500">+65 6100 0613</a>
+                <a href="tel:+6581213280" className="hover:text-orange-500">+65 8121 3280</a>
                 {' · WhatsApp '}
-                <a href="https://wa.me/6590480277" target="_blank" rel="noopener noreferrer" className="hover:text-orange-500">+65 9048 0277</a>
+                <a href="https://wa.me/6581213280" target="_blank" rel="noopener noreferrer" className="hover:text-orange-500">+65 8121 3280</a>
               </p>
               <p>
-                <a href="mailto:enquiry@tertiaryinfotech.com" className="hover:text-orange-500">enquiry@tertiaryinfotech.com</a>
+                <a href="mailto:hello@potluckhub.io" className="hover:text-orange-500">hello@potluckhub.io</a>
               </p>
             </address>
           </div>

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 // Potluck's WhatsApp business line. Suggested queries pre-fill the chat so a diner or
 // aspiring chef can reach us in one tap — a low-friction, site-wide lead-capture point.
-const WHATSAPP_NUMBER = '6590480277';
+const WHATSAPP_NUMBER = '6581213280';
 
 const SUGGESTED_QUERIES = [
   { emoji: '🍲', text: "Hi! I'd like to book a home chef for a dinner." },

@@ -176,7 +176,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Email</h3>
-                    <p className="text-gray-600">enquiry@tertiaryinfotech.com</p>
+                    <p className="text-gray-600">hello@potluckhub.io</p>
                     <p className="text-sm text-gray-500">We respond within 24 hours</p>
                   </div>
                 </div>
@@ -187,8 +187,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Phone &amp; WhatsApp</h3>
-                    <p className="text-gray-600">+65 6100 0613</p>
-                    <p className="text-gray-600">WhatsApp: +65 9048 0277</p>
+                    <p className="text-gray-600">+65 8121 3280</p>
+                    <p className="text-gray-600">WhatsApp: +65 8121 3280</p>
                   </div>
                 </div>
 
