@@ -99,7 +99,7 @@ export default function HomePage() {
         <div className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rounded-full bg-amber-200/50 blur-3xl" />
         <div className="pointer-events-none absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-emerald-200/30 blur-3xl" />
         <div className="relative mx-auto max-w-[1440px] px-4 pb-6 pt-6 sm:px-6 sm:pt-10 lg:px-8 lg:pb-8">
-          <div className="grid items-center gap-10 lg:grid-cols-2">
+          <div className="grid items-center gap-10 lg:grid-cols-[1.45fr_1fr]">
             <div className="animate-rise">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/85 px-3.5 py-1.5 text-sm font-semibold text-orange-700 shadow-sm ring-1 ring-orange-200/70 backdrop-blur">
                 <span className="relative flex h-2 w-2">
@@ -108,13 +108,13 @@ export default function HomePage() {
                 </span>
                 Singapore’s home-chef marketplace
               </span>
-              <h1 className="font-display mt-5 text-[2.6rem] font-black leading-[1.04] tracking-tight text-gray-900 sm:text-5xl lg:text-[3.5rem]">
+              <h1 className="font-display mt-5 text-[2.6rem] font-black leading-[1.04] tracking-tight text-gray-900 sm:text-5xl lg:text-[3.9rem] xl:text-[4.6rem]">
                 Home-cooked meals,
                 <span className="block bg-gradient-to-r from-orange-500 via-red-500 to-amber-500 bg-clip-text italic text-transparent">
                   from real Singapore kitchens.
                 </span>
               </h1>
-              <p className="mt-5 max-w-xl text-lg leading-relaxed text-gray-600">
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-gray-600 lg:text-xl">
                 From Peranakan feasts in Joo Chiat to nasi lemak in Geylang Serai — discover talented
                 home chefs in your neighbourhood. Book a seat at their table, or have them cook a
                 private dinner at yours.
@@ -133,11 +133,11 @@ export default function HomePage() {
                   Become a chef
                 </Link>
               </div>
-              <dl className="mt-8 grid max-w-lg grid-cols-4 gap-4">
+              <dl className="mt-8 grid max-w-2xl grid-cols-4 gap-6">
                 {STATS.map((s) => (
                   <div key={s.label}>
-                    <dt className="font-display text-2xl font-extrabold text-gray-900">{s.value}</dt>
-                    <dd className="mt-0.5 text-xs text-gray-500">{s.label}</dd>
+                    <dt className="font-display text-3xl font-extrabold text-gray-900 lg:text-4xl">{s.value}</dt>
+                    <dd className="mt-1 text-sm text-gray-500">{s.label}</dd>
                   </div>
                 ))}
               </dl>
