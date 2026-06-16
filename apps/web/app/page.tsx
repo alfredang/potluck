@@ -98,7 +98,7 @@ export default function HomePage() {
         <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-orange-200/50 blur-3xl" />
         <div className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rounded-full bg-amber-200/50 blur-3xl" />
         <div className="pointer-events-none absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-emerald-200/30 blur-3xl" />
-        <div className="relative mx-auto max-w-[1440px] px-4 pb-12 pt-6 sm:px-6 sm:pt-10 lg:px-8 lg:pb-14">
+        <div className="relative mx-auto max-w-[1440px] px-4 pb-6 pt-6 sm:px-6 sm:pt-10 lg:px-8 lg:pb-8">
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <div className="animate-rise">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/85 px-3.5 py-1.5 text-sm font-semibold text-orange-700 shadow-sm ring-1 ring-orange-200/70 backdrop-blur">
@@ -141,6 +141,18 @@ export default function HomePage() {
                   </div>
                 ))}
               </dl>
+
+              {/* Trust strip — right under the KPIs */}
+              <ul className="mt-7 flex flex-col gap-y-2.5 border-t border-orange-200/50 pt-6 text-sm font-medium text-gray-600 sm:flex-row sm:flex-wrap sm:gap-x-6">
+                {TRUST.map((t) => (
+                  <li key={t} className="flex items-center gap-2">
+                    <svg className="h-5 w-5 shrink-0 text-emerald-500" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M16.704 5.29a1 1 0 010 1.42l-7.5 7.5a1 1 0 01-1.42 0l-3.5-3.5a1 1 0 111.42-1.42l2.79 2.79 6.79-6.79a1 1 0 011.42 0z" clipRule="evenodd" />
+                    </svg>
+                    {t}
+                  </li>
+                ))}
+              </ul>
             </div>
 
             {/* Visual: drifting gallery of real home-cooked dishes */}
@@ -164,23 +176,11 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-
-          {/* Trust strip */}
-          <ul className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-orange-200/50 pt-6 text-sm font-medium text-gray-600">
-            {TRUST.map((t) => (
-              <li key={t} className="flex items-center gap-2">
-                <svg className="h-5 w-5 shrink-0 text-emerald-500" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M16.704 5.29a1 1 0 010 1.42l-7.5 7.5a1 1 0 01-1.42 0l-3.5-3.5a1 1 0 111.42-1.42l2.79 2.79 6.79-6.79a1 1 0 011.42 0z" clipRule="evenodd" />
-                </svg>
-                {t}
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
       {/* Cuisines */}
-      <section className="bg-cream py-12 sm:py-14">
+      <section className="bg-cream pb-12 pt-8 sm:pb-14 sm:pt-10">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between">
             <div>
