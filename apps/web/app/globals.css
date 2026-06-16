@@ -52,8 +52,23 @@ body {
   animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* Drifting dish gallery (hero) — two columns scroll in opposite directions. */
+@keyframes marquee-up {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+@keyframes marquee-down {
+  from { transform: translateY(-50%); }
+  to { transform: translateY(0); }
+}
+.animate-marquee-up { animation: marquee-up 30s linear infinite; will-change: transform; }
+.animate-marquee-down { animation: marquee-down 34s linear infinite; will-change: transform; }
+.marquee-pause:hover .animate-marquee-up,
+.marquee-pause:hover .animate-marquee-down { animation-play-state: paused; }
+
 @media (prefers-reduced-motion: reduce) {
   .animate-rise { animation: none; }
+  .animate-marquee-up, .animate-marquee-down { animation: none; transform: translateY(0); }
   * { scroll-behavior: auto !important; }
 }
 

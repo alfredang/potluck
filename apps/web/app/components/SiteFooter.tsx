@@ -26,24 +26,41 @@ export function SiteFooter() {
             </address>
 
             {/* App download */}
-            <a
-              href="https://play.google.com/store/apps/details?id=io.potluckhub.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Get Potluck on Google Play"
-              className="mt-5 inline-flex items-center gap-3 rounded-xl bg-gray-900 px-4 py-2.5 text-white shadow-warm transition hover:-translate-y-0.5 hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
-            >
-              <svg className="h-6 w-6 shrink-0" viewBox="0 0 512 512" aria-hidden="true">
-                <path fill="#34A853" d="m271 256-211 211c4 4 9 6 16 6 6 0 11-1 16-4l248-143z" />
-                <path fill="#EA4335" d="m271 256 69-70L92 43c-5-3-10-4-16-4-7 0-12 2-16 6z" />
-                <path fill="#FBBC04" d="m271 256 69 70 84-48c14-8 22-20 22-34 0-13-8-25-22-33l-84-48z" />
-                <path fill="#4285F4" d="M60 45c-3 5-4 11-4 18v386c0 7 1 13 4 18l217-211z" />
-              </svg>
-              <span className="text-left leading-tight">
-                <span className="block text-[10px] uppercase tracking-wide text-gray-300">Get it on</span>
-                <span className="block text-base font-semibold">Google Play</span>
-              </span>
-            </a>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <a
+                href="https://apps.apple.com/app/id6759842391"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Download Potluck on the App Store"
+                className="inline-flex items-center gap-3 rounded-xl bg-gray-900 px-4 py-2.5 text-white shadow-warm transition hover:-translate-y-0.5 hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+              >
+                <svg className="h-6 w-6 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M16.365 1.43c0 1.14-.42 2.2-1.12 2.98-.84.94-2.2 1.66-3.32 1.57-.14-1.12.42-2.32 1.1-3.06.78-.86 2.16-1.5 3.34-1.49zM20.5 17.1c-.55 1.27-.82 1.84-1.53 2.96-.99 1.57-2.39 3.52-4.12 3.53-1.54.02-1.94-1-4.03-.99-2.09.01-2.53 1.01-4.07.99-1.73-.02-3.05-1.78-4.04-3.34C-.06 16.7-.36 11.5 1.34 8.73c1.2-1.96 3.1-3.11 4.88-3.11 1.82 0 2.96 1 4.46 1 1.46 0 2.35-1 4.46-1 1.59 0 3.28.87 4.48 2.37-3.94 2.16-3.3 7.78.88 9.11z" />
+                </svg>
+                <span className="text-left leading-tight">
+                  <span className="block text-[10px] uppercase tracking-wide text-gray-300">Download on the</span>
+                  <span className="block text-base font-semibold">App Store</span>
+                </span>
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=io.potluckhub.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Get Potluck on Google Play"
+                className="inline-flex items-center gap-3 rounded-xl bg-gray-900 px-4 py-2.5 text-white shadow-warm transition hover:-translate-y-0.5 hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+              >
+                <svg className="h-6 w-6 shrink-0" viewBox="0 0 512 512" aria-hidden="true">
+                  <path fill="#34A853" d="m271 256-211 211c4 4 9 6 16 6 6 0 11-1 16-4l248-143z" />
+                  <path fill="#EA4335" d="m271 256 69-70L92 43c-5-3-10-4-16-4-7 0-12 2-16 6z" />
+                  <path fill="#FBBC04" d="m271 256 69 70 84-48c14-8 22-20 22-34 0-13-8-25-22-33l-84-48z" />
+                  <path fill="#4285F4" d="M60 45c-3 5-4 11-4 18v386c0 7 1 13 4 18l217-211z" />
+                </svg>
+                <span className="text-left leading-tight">
+                  <span className="block text-[10px] uppercase tracking-wide text-gray-300">Get it on</span>
+                  <span className="block text-base font-semibold">Google Play</span>
+                </span>
+              </a>
+            </div>
           </div>
           <div>
             <h4 className="font-display font-bold text-gray-900">For Diners</h4>

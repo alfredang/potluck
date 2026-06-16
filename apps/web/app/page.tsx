@@ -16,6 +16,39 @@ const STATS = [
   { value: '1,200+', label: 'Meals served' },
 ];
 
+// Real home-cooked dishes for the drifting hero gallery — appetite first, no prices.
+// Photos reuse the verified dish imagery from chefs-data.ts.
+const HERO_DISHES = [
+  { name: 'Laksa Lemak', desc: 'Coconut curry broth, simmered low and slow', by: 'Chef Sarah · Tiong Bahru', img: 'photo-1569718212165-3a8278d5f624' },
+  { name: 'Omakase at home', desc: 'Seasonal sashimi, sliced to order at the counter', by: 'Chef Kenji · Robertson Quay', img: 'photo-1579871494447-9811cf80d66c' },
+  { name: 'Beef Rendang', desc: 'Slow-cooked for hours till deeply caramelised', by: 'Chef Siti · Bedok', img: 'photo-1606491956689-2ea866880c84' },
+  { name: 'Ayam Buah Keluak', desc: 'Heritage Nyonya chicken stew with black nuts', by: 'Chef Sarah · Tiong Bahru', img: 'photo-1567620905732-2d1ec7ab7445' },
+  { name: 'Claypot Rice', desc: 'Smoky, crackling rice with lap cheong & chicken', by: 'Chef Mei Lin · Chinatown', img: 'photo-1516684732162-798a0062be99' },
+  { name: 'Korean BBQ', desc: 'Marinated galbi, grilled right at the table', by: 'Chef Soo-young · Tanjong Pagar', img: 'photo-1553163147-622ab57be1c7' },
+  { name: 'Vegetarian Thali', desc: 'A whole homemade feast on a single plate', by: 'Chef Priya · Little India', img: 'photo-1585937421612-70a008356fbe' },
+  { name: 'Chettinad Chicken', desc: 'Bold, peppery South Indian curry with appam', by: 'Chef Raj · Serangoon', img: 'photo-1631452180519-c014fe946bc7' },
+  { name: 'Nasi Ambeng', desc: 'Javanese rice feast, shared the kampung way', by: 'Chef Ahmad · Geylang Serai', img: 'photo-1563379091339-03b21ab4a4f8' },
+];
+
+function DishCard({ d }: { d: { name: string; desc: string; by: string; img: string } }) {
+  return (
+    <figure className="group relative overflow-hidden rounded-2xl border border-orange-100 bg-white shadow-warm-lg">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`https://images.unsplash.com/${d.img}?w=500&q=80&auto=format&fit=crop`}
+        alt={d.name}
+        loading="lazy"
+        className="aspect-[4/5] w-full object-cover transition duration-700 ease-out group-hover:scale-[1.06]"
+      />
+      <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 pt-12">
+        <p className="font-display text-[15px] font-bold leading-tight text-white">{d.name}</p>
+        <p className="mt-1 text-xs leading-snug text-white/85">{d.desc}</p>
+        <p className="mt-1.5 text-[11px] font-semibold uppercase tracking-wide text-orange-200">{d.by}</p>
+      </figcaption>
+    </figure>
+  );
+}
+
 // Inline SVG step icons (no emoji as structural icons).
 function IconSearch() {
   return (
@@ -110,26 +143,24 @@ export default function HomePage() {
               </dl>
             </div>
 
-            {/* Visual: floating dish cards */}
+            {/* Visual: drifting gallery of real home-cooked dishes */}
             <div className="relative hidden lg:block">
-              <div className="relative mx-auto grid max-w-md grid-cols-2 gap-4">
-                {[
-                  { e: '🍜', t: 'Laksa night', s: 'Chef Mei · Katong', p: 'From $28/pax' },
-                  { e: '🍱', t: 'Omakase at home', s: 'Chef Ken · Bugis', p: 'From $88/pax' },
-                  { e: '🥘', t: 'Nasi padang feast', s: 'Chef Faizal · Geylang Serai', p: 'From $32/pax' },
-                  { e: '🍛', t: 'Peranakan table', s: 'Chef Lily · Joo Chiat', p: 'From $45/pax' },
-                ].map((c, i) => (
-                  <div
-                    key={c.t}
-                    className={`animate-rise rounded-2xl border border-orange-100 bg-white p-5 shadow-warm-lg transition hover:-translate-y-1 hover:rotate-0 ${i % 2 === 1 ? 'translate-y-6 -rotate-1' : 'rotate-1'}`}
-                    style={{ animationDelay: `${120 + i * 90}ms` }}
-                  >
-                    <div className="text-4xl">{c.e}</div>
-                    <p className="mt-3 font-semibold text-gray-900">{c.t}</p>
-                    <p className="text-sm text-gray-500">{c.s}</p>
-                    <p className="mt-2 inline-flex rounded-full bg-orange-50 px-2.5 py-0.5 text-sm font-semibold text-orange-600">{c.p}</p>
+              <div
+                aria-hidden
+                className="marquee-pause relative mx-auto h-[620px] max-w-md overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,#000_7%,#000_93%,transparent)]"
+              >
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="animate-marquee-up flex flex-col gap-4">
+                    {[...HERO_DISHES.slice(0, 5), ...HERO_DISHES.slice(0, 5)].map((d, i) => (
+                      <DishCard key={`a-${d.name}-${i}`} d={d} />
+                    ))}
                   </div>
-                ))}
+                  <div className="animate-marquee-down flex flex-col gap-4 pt-10">
+                    {[...HERO_DISHES.slice(5), ...HERO_DISHES.slice(5)].map((d, i) => (
+                      <DishCard key={`b-${d.name}-${i}`} d={d} />
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
