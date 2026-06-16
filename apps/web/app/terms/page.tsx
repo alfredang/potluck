@@ -144,7 +144,7 @@ export default function TermsPage() {
                 <ul className="list-none space-y-2 pl-0">
                   <li><strong>Email:</strong> hello@potluckhub.io</li>
                   <li><strong>Phone:</strong> +65 9048 0277</li>
-                  <li><strong>Address:</strong> 71 Robinson Road, Singapore 068895</li>
+                  <li><strong>Address:</strong> 12 Woodlands Square #07-85/86/87, Woods Square Tower 1, Singapore 737715</li>
                 </ul>
               </div>
             </div>

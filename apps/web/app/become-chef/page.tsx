@@ -39,9 +39,9 @@ export default function BecomeChefPage() {
       <SiteNav active="/become-chef" />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-orange-100/70 via-amber-50/60 to-[var(--cream)] py-14 sm:py-16">
+      <section className="relative overflow-hidden bg-gradient-to-br from-orange-100/70 via-amber-50/60 to-[var(--cream)] py-12 sm:py-14">
         <div className="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-amber-200/40 blur-3xl" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/85 px-3.5 py-1.5 text-sm font-semibold text-orange-700 shadow-sm ring-1 ring-orange-200/70">
               Earn ~$2,000/month from your own kitchen
@@ -66,8 +66,8 @@ export default function BecomeChefPage() {
       </section>
 
       {/* Benefits */}
-      <section className="bg-white py-14 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-white py-12 sm:py-14">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-center text-3xl font-bold text-gray-900">Why Cook with Potluck?</h2>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             <div className="rounded-2xl border border-orange-100 bg-cream p-6 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-warm">
@@ -105,8 +105,8 @@ export default function BecomeChefPage() {
       </section>
 
       {/* How It Works for Chefs */}
-      <section className="bg-cream py-14 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-cream py-12 sm:py-14">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-center text-3xl font-bold text-gray-900">How It Works</h2>
           <div className="mt-12">
             <div className="grid gap-8 md:grid-cols-4">
@@ -152,7 +152,7 @@ export default function BecomeChefPage() {
       </section>
 
       {/* Step-by-Step Guide */}
-      <section className="bg-white py-14 sm:py-16">
+      <section className="bg-white py-12 sm:py-14">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-center text-3xl font-bold text-gray-900">Step-by-Step Guide</h2>
           
@@ -249,7 +249,7 @@ export default function BecomeChefPage() {
       </section>
 
       {/* Requirements */}
-      <section className="bg-cream py-14 sm:py-16">
+      <section className="bg-cream py-12 sm:py-14">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-center text-3xl font-bold text-gray-900">Requirements</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
@@ -292,7 +292,7 @@ export default function BecomeChefPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-cream py-14 sm:py-16">
+      <section className="bg-cream py-12 sm:py-14">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-center text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
           <div className="mt-8 space-y-6">
@@ -325,8 +325,8 @@ export default function BecomeChefPage() {
       </section>
 
       {/* Pricing */}
-      <section className="bg-white py-14 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-white py-12 sm:py-14">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-center text-3xl font-bold text-gray-900">Simple, Fair Pricing</h2>
           <p className="mt-4 text-center text-gray-600">
             Start for free. Pay only when you earn.
@@ -398,8 +398,8 @@ export default function BecomeChefPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-br from-orange-500 to-amber-500 py-14 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-br from-orange-500 to-amber-500 py-12 sm:py-14">
+        <div className="mx-auto max-w-[1440px] px-4 text-center sm:px-6 lg:px-8">
           <h2 className="font-display text-3xl font-bold text-white">Ready to fire up the wok?</h2>
           <p className="mt-4 text-lg text-orange-50">
             Join hundreds of home chefs across Singapore already sharing what they cook best.

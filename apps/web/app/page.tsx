@@ -10,8 +10,8 @@ import { HomeBlogSection } from './components/HomeBlogSection';
 export const revalidate = 300;
 
 const STATS = [
-  { value: '37', label: 'Singapore home chefs' },
-  { value: '15', label: 'Cuisines' },
+  { value: '45', label: 'Singapore home chefs' },
+  { value: '20', label: 'Cuisines' },
   { value: '4.9★', label: 'Average rating' },
   { value: '1,200+', label: 'Meals served' },
 ];
@@ -65,7 +65,7 @@ export default function HomePage() {
         <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-orange-200/50 blur-3xl" />
         <div className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rounded-full bg-amber-200/50 blur-3xl" />
         <div className="pointer-events-none absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-emerald-200/30 blur-3xl" />
-        <div className="relative mx-auto max-w-7xl px-4 pb-12 pt-12 sm:px-6 sm:pt-16 lg:px-8 lg:pb-16">
+        <div className="relative mx-auto max-w-[1440px] px-4 pb-12 pt-6 sm:px-6 sm:pt-10 lg:px-8 lg:pb-14">
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <div className="animate-rise">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/85 px-3.5 py-1.5 text-sm font-semibold text-orange-700 shadow-sm ring-1 ring-orange-200/70 backdrop-blur">
@@ -149,8 +149,8 @@ export default function HomePage() {
       </section>
 
       {/* Cuisines */}
-      <section className="bg-cream py-14 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-cream py-12 sm:py-14">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between">
             <div>
               <p className="text-sm font-semibold uppercase tracking-wide text-orange-500">Cravings, sorted</p>
@@ -177,8 +177,8 @@ export default function HomePage() {
       </section>
 
       {/* How it works */}
-      <section className="bg-white py-14 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-white py-12 sm:py-14">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-semibold uppercase tracking-wide text-orange-500">Craving to table</p>
             <h2 className="font-display mt-1.5 text-2xl font-bold text-gray-900 sm:text-3xl">How Potluck works</h2>

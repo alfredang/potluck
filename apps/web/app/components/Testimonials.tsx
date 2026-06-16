@@ -49,8 +49,8 @@ function Stars({ count }: { count: number }) {
 
 export function Testimonials() {
   return (
-    <section className="bg-cream py-14 sm:py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-cream py-12 sm:py-14">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-semibold uppercase tracking-wide text-orange-500">Loved across the island</p>
           <h2 className="font-display mt-2 text-3xl font-bold text-gray-900 sm:text-4xl">Real homes. Real food. Real reviews.</h2>

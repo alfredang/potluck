@@ -7,6 +7,7 @@ import { FOOD_CATEGORIES } from '@homechef/shared';
 
 import { CHEFS } from '../../lib/chefs-data';
 import { SiteNav } from '../components/SiteNav';
+import { SiteFooter } from '../components/SiteFooter';
 
 // Maps a category slug to the cuisine strings (lowercased) that should match it.
 // Lets one filter chip cover several natural cuisine labels used on chef cards
@@ -16,6 +17,11 @@ const CATEGORY_CUISINE_MATCHES: Record<string, string[]> = {
   'local-hawker': ['local', 'hawker', 'hainanese', 'local & hawker'],
   hainanese: ['hainanese'],
   peranakan: ['peranakan', 'nyonya'],
+  french: ['french'],
+  italian: ['italian'],
+  'fine-dining': ['fine dining'],
+  exotic: ['exotic'],
+  dessert: ['desserts & ice cream', 'dessert', 'gelato', 'ice cream'],
 };
 
 function ExploreContent() {
@@ -94,8 +100,8 @@ function ExploreContent() {
       <SiteNav active="/explore" />
 
       {/* Hero */}
-      <div className="border-b border-orange-100 bg-gradient-to-br from-orange-100/60 via-amber-50/50 to-[var(--cream)] py-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="border-b border-orange-100 bg-gradient-to-br from-orange-100/60 via-amber-50/50 to-[var(--cream)] py-8 sm:py-10">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <h1 className="font-display text-3xl font-black tracking-tight text-gray-900 sm:text-4xl">Explore Home Chefs</h1>
           <p className="mt-2 text-gray-600">
             Discover talented home chefs across Singapore — from Tiong Bahru to Tampines — and their
@@ -140,8 +146,8 @@ function ExploreContent() {
       </div>
 
       {/* Categories */}
-      <div className="border-b border-gray-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="border-b border-orange-100 bg-white">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <div className="flex gap-2 overflow-x-auto py-4">
             <button
               onClick={() => handleCategoryClick('all')}
@@ -171,7 +177,7 @@ function ExploreContent() {
       </div>
 
       {/* Chef Grid */}
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1440px] px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
         {filteredChefs.length === 0 ? (
           <div className="py-12 text-center">
             <p className="text-lg text-gray-600">No chefs found matching your criteria.</p>
@@ -245,6 +251,8 @@ function ExploreContent() {
           </div>
         )}
       </div>
+
+      <SiteFooter />
     </div>
   );
 }

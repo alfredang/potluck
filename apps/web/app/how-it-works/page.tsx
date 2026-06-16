@@ -38,8 +38,8 @@ export default function HowItWorksPage() {
       <SiteNav active="/how-it-works" />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-orange-100/70 via-amber-50/60 to-[var(--cream)] py-14 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-br from-orange-100/70 via-amber-50/60 to-[var(--cream)] py-12 sm:py-14">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="font-display text-4xl font-black tracking-tight text-gray-900 sm:text-5xl">
               How Potluck Works
@@ -53,8 +53,8 @@ export default function HowItWorksPage() {
       </section>
 
       {/* For Diners */}
-      <section className="bg-white py-14 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-white py-12 sm:py-14">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-center text-3xl font-bold text-gray-900">For Food Lovers</h2>
           <div className="mt-12 grid gap-12 md:grid-cols-3">
             <div className="relative text-center">
@@ -102,8 +102,8 @@ export default function HowItWorksPage() {
       </section>
 
       {/* For Chefs */}
-      <section className="bg-cream py-14 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-cream py-12 sm:py-14">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-center text-3xl font-bold text-gray-900">For Home Chefs</h2>
           <div className="mt-12 grid gap-12 md:grid-cols-4">
             <div className="text-center">
@@ -155,8 +155,8 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Trust & Safety */}
-      <section className="bg-white py-14 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-white py-12 sm:py-14">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-center text-3xl font-bold text-gray-900">Trust &amp; Safety</h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-gray-600">
             Your safety and satisfaction are our top priorities
@@ -195,7 +195,7 @@ export default function HowItWorksPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-cream py-14 sm:py-16">
+      <section className="bg-cream py-12 sm:py-14">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-center text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
           <div className="mt-12 space-y-6">
@@ -232,8 +232,8 @@ export default function HowItWorksPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-br from-orange-500 to-amber-500 py-14 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-br from-orange-500 to-amber-500 py-12 sm:py-14">
+        <div className="mx-auto max-w-[1440px] px-4 text-center sm:px-6 lg:px-8">
           <h2 className="font-display text-3xl font-bold text-white">Ready to Try Potluck?</h2>
           <p className="mt-4 text-lg text-orange-50">
             Join our community of food lovers and home chefs across the island.

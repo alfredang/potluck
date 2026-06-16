@@ -36,7 +36,7 @@ export function EnquiryForm() {
   }
 
   return (
-    <section id="enquiry" className="bg-orange-500 py-14 sm:py-16">
+    <section id="enquiry" className="bg-orange-500 py-12 sm:py-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="overflow-hidden rounded-3xl bg-white shadow-xl md:grid md:grid-cols-5">
           {/* Pitch */}

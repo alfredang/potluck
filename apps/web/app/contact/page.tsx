@@ -176,7 +176,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Email</h3>
-                    <p className="text-gray-600">support@potluck.sg</p>
+                    <p className="text-gray-600">enquiry@tertiaryinfotech.com</p>
                     <p className="text-sm text-gray-500">We respond within 24 hours</p>
                   </div>
                 </div>
@@ -186,9 +186,9 @@ export default function ContactPage() {
                     💬
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">Live Chat</h3>
-                    <p className="text-gray-600">Available on the app</p>
-                    <p className="text-sm text-gray-500">Mon-Fri, 9am-6pm SGT</p>
+                    <h3 className="font-semibold text-gray-900">Phone &amp; WhatsApp</h3>
+                    <p className="text-gray-600">+65 6100 0613</p>
+                    <p className="text-gray-600">WhatsApp: +65 9048 0277</p>
                   </div>
                 </div>
 
@@ -198,8 +198,9 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Office</h3>
-                    <p className="text-gray-600">71 Robinson Road</p>
-                    <p className="text-gray-600">Singapore 068895</p>
+                    <p className="text-gray-600">12 Woodlands Square, #07-85/86/87</p>
+                    <p className="text-gray-600">Woods Square Tower 1, Singapore 737715</p>
+                    <p className="text-sm text-gray-500">3 mins walk from Woodlands MRT (NS9), Exit 2 · Disabled-friendly</p>
                   </div>
                 </div>
               </div>

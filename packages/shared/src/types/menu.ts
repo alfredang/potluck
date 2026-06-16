@@ -13,7 +13,12 @@ export type FoodCategory =
   | 'indian-muslim'
   | 'vietnamese'
   | 'filipino'
-  | 'local-hawker';
+  | 'local-hawker'
+  | 'french'
+  | 'italian'
+  | 'fine-dining'
+  | 'exotic'
+  | 'dessert';
 
 export interface MenuCategory {
   id: string;

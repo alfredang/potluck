@@ -23,15 +23,15 @@ export async function HomeBlogSection() {
   if (posts.length === 0) return null;
 
   return (
-    <section className="bg-white py-14 sm:py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-white py-12 sm:py-14">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-orange-500">The Kitchen Table</p>
-            <h2 className="font-display mt-2 text-3xl font-bold text-gray-900">Stories & guides from the blog</h2>
+            <h2 className="font-display mt-2 text-2xl font-bold text-gray-900 sm:text-3xl">Stories & guides from the blog</h2>
           </div>
-          <Link href="/blog" className="hidden text-sm font-medium text-orange-500 hover:text-orange-600 sm:block">
-            View all articles →
+          <Link href="/blog" className="hidden shrink-0 text-sm font-semibold text-orange-600 hover:text-orange-700 sm:block">
+            See all blogs →
           </Link>
         </div>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -40,8 +40,11 @@ export async function HomeBlogSection() {
           ))}
         </div>
         <div className="mt-8 text-center sm:hidden">
-          <Link href="/blog" className="text-sm font-medium text-orange-500 hover:text-orange-600">
-            View all articles →
+          <Link
+            href="/blog"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-orange-200 bg-cream px-6 text-sm font-semibold text-orange-600 transition hover:border-orange-300 hover:text-orange-700"
+          >
+            See all blogs →
           </Link>
         </div>
       </div>

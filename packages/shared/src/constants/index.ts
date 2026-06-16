@@ -79,6 +79,11 @@ export const FOOD_CATEGORIES: Array<{
   { slug: 'vietnamese', name: 'Vietnamese', emoji: '🍲' },
   { slug: 'filipino', name: 'Filipino', emoji: '🥘' },
   { slug: 'local-hawker', name: 'Local & Hawker', emoji: '🍜' },
+  { slug: 'french', name: 'French', emoji: '🥐' },
+  { slug: 'italian', name: 'Italian', emoji: '🍕' },
+  { slug: 'fine-dining', name: 'Fine Dining', emoji: '🥂' },
+  { slug: 'exotic', name: 'Exotic', emoji: '🌶️' },
+  { slug: 'dessert', name: 'Desserts & Ice Cream', emoji: '🍨' },
 ];
 
 // Booking status display

@@ -34,6 +34,10 @@ export const blogPosts = pgTable('blog_posts', {
   }),
   authorName: varchar('author_name', { length: 120 }).default('Potluck Team').notNull(),
 
+  // Free-form topical tags (e.g. ['Laksa', 'Peranakan', 'Hawker']). Distinct from the
+  // single `category` — used for tag chips and related-content discovery.
+  tags: text('tags').array(),
+
   status: blogStatusEnum('status').default('draft').notNull(),
   featured: boolean('featured').default(false).notNull(),
   readingTime: integer('reading_time').default(3).notNull(),

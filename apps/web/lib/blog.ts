@@ -18,6 +18,7 @@ const postSelect = {
   featuredImage: blogPosts.featuredImage,
   categoryId: blogPosts.categoryId,
   authorName: blogPosts.authorName,
+  tags: blogPosts.tags,
   status: blogPosts.status,
   featured: blogPosts.featured,
   readingTime: blogPosts.readingTime,
@@ -60,6 +61,69 @@ export async function getLatestPosts(limit = 12, offset = 0): Promise<PostWithCa
     .orderBy(desc(blogPosts.publishedAt))
     .limit(limit)
     .offset(offset) as Promise<PostWithCategory[]>;
+}
+
+export const BLOG_PAGE_SIZE = 9;
+
+export type PagedPosts = {
+  posts: PostWithCategory[];
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+};
+
+/** Paginated published posts (newest first), with a total count for pager UI. */
+export async function getPublishedPostsPage(
+  page = 1,
+  pageSize = BLOG_PAGE_SIZE,
+): Promise<PagedPosts> {
+  const safePage = Math.max(1, Math.floor(page) || 1);
+  const offset = (safePage - 1) * pageSize;
+  const [posts, countRows] = await Promise.all([
+    db
+      .select(postSelect)
+      .from(blogPosts)
+      .leftJoin(blogCategories, eq(blogPosts.categoryId, blogCategories.id))
+      .where(eq(blogPosts.status, 'published'))
+      .orderBy(desc(blogPosts.publishedAt))
+      .limit(pageSize)
+      .offset(offset) as Promise<PostWithCategory[]>,
+    db
+      .select({ c: sql<number>`count(*)::int` })
+      .from(blogPosts)
+      .where(eq(blogPosts.status, 'published')),
+  ]);
+  const total = Number(countRows[0]?.c ?? 0);
+  return { posts, total, page: safePage, pageSize, totalPages: Math.max(1, Math.ceil(total / pageSize)) };
+}
+
+/** Paginated published posts within a category slug. */
+export async function getPostsByCategorySlugPage(
+  slug: string,
+  page = 1,
+  pageSize = BLOG_PAGE_SIZE,
+): Promise<PagedPosts> {
+  const safePage = Math.max(1, Math.floor(page) || 1);
+  const offset = (safePage - 1) * pageSize;
+  const where = and(eq(blogPosts.status, 'published'), eq(blogCategories.slug, slug));
+  const [posts, countRows] = await Promise.all([
+    db
+      .select(postSelect)
+      .from(blogPosts)
+      .leftJoin(blogCategories, eq(blogPosts.categoryId, blogCategories.id))
+      .where(where)
+      .orderBy(desc(blogPosts.publishedAt))
+      .limit(pageSize)
+      .offset(offset) as Promise<PostWithCategory[]>,
+    db
+      .select({ c: sql<number>`count(*)::int` })
+      .from(blogPosts)
+      .leftJoin(blogCategories, eq(blogPosts.categoryId, blogCategories.id))
+      .where(where),
+  ]);
+  const total = Number(countRows[0]?.c ?? 0);
+  return { posts, total, page: safePage, pageSize, totalPages: Math.max(1, Math.ceil(total / pageSize)) };
 }
 
 export async function getPostsByCategorySlug(slug: string): Promise<PostWithCategory[]> {

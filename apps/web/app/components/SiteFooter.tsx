@@ -4,7 +4,7 @@ import { Logo } from './Logo';
 export function SiteFooter() {
   return (
     <footer className="border-t border-orange-100 bg-cream py-12">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-4">
           <div>
             <Logo href={null} size="sm" />
@@ -12,6 +12,18 @@ export function SiteFooter() {
               Home-cooked meals from real Singapore kitchens — from kampung classics to private
               dining, brought to your table.
             </p>
+            <address className="mt-4 space-y-1 text-sm not-italic leading-relaxed text-gray-600">
+              <p>12 Woodlands Square, #07-85/86/87</p>
+              <p>Woods Square Tower 1, Singapore 737715</p>
+              <p>
+                <a href="tel:+6561000613" className="hover:text-orange-500">+65 6100 0613</a>
+                {' · WhatsApp '}
+                <a href="https://wa.me/6590480277" target="_blank" rel="noopener noreferrer" className="hover:text-orange-500">+65 9048 0277</a>
+              </p>
+              <p>
+                <a href="mailto:enquiry@tertiaryinfotech.com" className="hover:text-orange-500">enquiry@tertiaryinfotech.com</a>
+              </p>
+            </address>
           </div>
           <div>
             <h4 className="font-display font-bold text-gray-900">For Diners</h4>

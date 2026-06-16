@@ -104,7 +104,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <SiteNav active="/blog" />
 
-      <article className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
+      <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
         <Link href="/blog" className="inline-flex items-center text-sm text-gray-600 hover:text-orange-500">
           ← Back to Blog
         </Link>
@@ -123,8 +123,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <span>{post.readingTime} min read</span>
         </div>
 
-        <h1 className="mt-3 text-4xl font-bold leading-tight text-gray-900">{post.title}</h1>
+        <h1 className="font-display mt-3 text-4xl font-bold leading-tight text-gray-900">{post.title}</h1>
         {post.excerpt && <p className="mt-4 text-lg text-gray-600">{post.excerpt}</p>}
+
+        {(post.tags ?? []).filter(Boolean).length > 0 && (
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {(post.tags ?? []).filter(Boolean).map((tag) => (
+              <li
+                key={tag}
+                className="rounded-full bg-orange-50 px-2.5 py-1 text-xs font-medium text-orange-600"
+              >
+                #{tag}
+              </li>
+            ))}
+          </ul>
+        )}
 
         <div className="mt-5 flex items-center justify-between border-y border-gray-100 py-3">
           <span className="text-sm text-gray-500">By {post.authorName}</span>
@@ -154,8 +167,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </article>
 
       {related.length > 0 && (
-        <section className="border-t border-gray-100 bg-gray-50 py-12">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="border-t border-orange-100 bg-cream py-12">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold text-gray-900">More from the Journal</h2>
             <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((p) => (
