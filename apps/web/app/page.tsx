@@ -143,9 +143,9 @@ export default function HomePage() {
               </dl>
 
               {/* Trust strip — right under the KPIs */}
-              <ul className="mt-7 flex flex-col gap-y-2.5 border-t border-orange-200/50 pt-6 text-sm font-medium text-gray-600 sm:flex-row sm:flex-wrap sm:gap-x-6">
+              <ul className="mt-6 flex flex-col gap-y-2.5 text-sm font-medium text-gray-600 sm:flex-row sm:flex-wrap sm:gap-x-5 lg:flex-nowrap lg:gap-x-6">
                 {TRUST.map((t) => (
-                  <li key={t} className="flex items-center gap-2">
+                  <li key={t} className="flex items-center gap-2 lg:whitespace-nowrap">
                     <svg className="h-5 w-5 shrink-0 text-emerald-500" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.704 5.29a1 1 0 010 1.42l-7.5 7.5a1 1 0 01-1.42 0l-3.5-3.5a1 1 0 111.42-1.42l2.79 2.79 6.79-6.79a1 1 0 011.42 0z" clipRule="evenodd" />
                     </svg>
