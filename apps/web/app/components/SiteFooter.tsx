@@ -1,45 +1,67 @@
 import Link from 'next/link';
 import { Logo } from './Logo';
 
+const DINER_LINKS = [
+  { href: '/explore', label: 'Explore Chefs' },
+  { href: '/how-it-works', label: 'How it Works' },
+  { href: '/blog', label: 'Blog' },
+];
+
+const CHEF_LINKS = [
+  { href: '/become-chef', label: 'Become a Chef' },
+  { href: '/pricing', label: 'Pricing' },
+];
+
+const SUPPORT_LINKS = [
+  { href: '/founder', label: 'Our Story' },
+  { href: '/help', label: 'Help Center' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: '/terms', label: 'Terms' },
+];
+
+function LinkColumn({ title, links }: { title: string; links: { href: string; label: string }[] }) {
+  return (
+    <div>
+      <h4 className="text-xs font-bold uppercase tracking-wider text-gray-900">{title}</h4>
+      <ul className="mt-3 space-y-2 text-sm text-gray-600">
+        {links.map((l) => (
+          <li key={l.href}>
+            <Link href={l.href} className="transition hover:text-orange-500">
+              {l.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export function SiteFooter() {
   return (
-    <footer className="border-t border-orange-100 bg-cream py-12">
-      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 md:grid-cols-4">
-          <div>
+    <footer className="border-t border-orange-100 bg-cream">
+      <div className="mx-auto max-w-[1440px] px-4 py-10 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 lg:grid-cols-12">
+          {/* Brand + app download */}
+          <div className="col-span-2 sm:col-span-4 lg:col-span-4">
             <Logo href={null} size="sm" />
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-gray-600">
-              Home-cooked meals from real Singapore kitchens — from kampung classics to private
-              dining, brought to your table.
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-gray-600">
+              Home-cooked meals from real Singapore kitchens — kampung classics to private dining.
             </p>
-            <address className="mt-4 space-y-1 text-sm not-italic leading-relaxed text-gray-600">
-              <p>12 Woodlands Square, #07-85/86/87</p>
-              <p>Woods Square Tower 1, Singapore 737715</p>
-              <p>
-                <a href="tel:+6581213280" className="hover:text-orange-500">+65 8121 3280</a>
-                {' · WhatsApp '}
-                <a href="https://wa.me/6581213280" target="_blank" rel="noopener noreferrer" className="hover:text-orange-500">+65 8121 3280</a>
-              </p>
-              <p>
-                <a href="mailto:hello@potluckhub.io" className="hover:text-orange-500">hello@potluckhub.io</a>
-              </p>
-            </address>
-
-            {/* App download */}
-            <div className="mt-5 flex flex-wrap gap-3">
+            <div className="mt-4 flex flex-wrap gap-2.5">
               <a
                 href="https://apps.apple.com/app/id6759842391"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Download Potluck on the App Store"
-                className="inline-flex items-center gap-3 rounded-xl bg-gray-900 px-4 py-2.5 text-white shadow-warm transition hover:-translate-y-0.5 hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+                className="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-3 py-2 text-white transition hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
               >
-                <svg className="h-6 w-6 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M16.365 1.43c0 1.14-.42 2.2-1.12 2.98-.84.94-2.2 1.66-3.32 1.57-.14-1.12.42-2.32 1.1-3.06.78-.86 2.16-1.5 3.34-1.49zM20.5 17.1c-.55 1.27-.82 1.84-1.53 2.96-.99 1.57-2.39 3.52-4.12 3.53-1.54.02-1.94-1-4.03-.99-2.09.01-2.53 1.01-4.07.99-1.73-.02-3.05-1.78-4.04-3.34C-.06 16.7-.36 11.5 1.34 8.73c1.2-1.96 3.1-3.11 4.88-3.11 1.82 0 2.96 1 4.46 1 1.46 0 2.35-1 4.46-1 1.59 0 3.28.87 4.48 2.37-3.94 2.16-3.3 7.78.88 9.11z" />
                 </svg>
                 <span className="text-left leading-tight">
-                  <span className="block text-[10px] uppercase tracking-wide text-gray-300">Download on the</span>
-                  <span className="block text-base font-semibold">App Store</span>
+                  <span className="block text-[9px] uppercase tracking-wide text-gray-300">Download on the</span>
+                  <span className="block text-sm font-semibold">App Store</span>
                 </span>
               </a>
               <a
@@ -47,49 +69,57 @@ export function SiteFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Get Potluck on Google Play"
-                className="inline-flex items-center gap-3 rounded-xl bg-gray-900 px-4 py-2.5 text-white shadow-warm transition hover:-translate-y-0.5 hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+                className="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-3 py-2 text-white transition hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
               >
-                <svg className="h-6 w-6 shrink-0" viewBox="0 0 512 512" aria-hidden="true">
+                <svg className="h-5 w-5 shrink-0" viewBox="0 0 512 512" aria-hidden="true">
                   <path fill="#34A853" d="m271 256-211 211c4 4 9 6 16 6 6 0 11-1 16-4l248-143z" />
                   <path fill="#EA4335" d="m271 256 69-70L92 43c-5-3-10-4-16-4-7 0-12 2-16 6z" />
                   <path fill="#FBBC04" d="m271 256 69 70 84-48c14-8 22-20 22-34 0-13-8-25-22-33l-84-48z" />
                   <path fill="#4285F4" d="M60 45c-3 5-4 11-4 18v386c0 7 1 13 4 18l217-211z" />
                 </svg>
                 <span className="text-left leading-tight">
-                  <span className="block text-[10px] uppercase tracking-wide text-gray-300">Get it on</span>
-                  <span className="block text-base font-semibold">Google Play</span>
+                  <span className="block text-[9px] uppercase tracking-wide text-gray-300">Get it on</span>
+                  <span className="block text-sm font-semibold">Google Play</span>
                 </span>
               </a>
             </div>
           </div>
-          <div>
-            <h4 className="font-display font-bold text-gray-900">For Diners</h4>
-            <ul className="mt-4 space-y-2 text-sm text-gray-600">
-              <li><Link href="/explore" className="hover:text-orange-500">Explore Chefs</Link></li>
-              <li><Link href="/how-it-works" className="hover:text-orange-500">How it Works</Link></li>
-              <li><Link href="/blog" className="hover:text-orange-500">Blog</Link></li>
-            </ul>
+
+          {/* Link columns */}
+          <div className="lg:col-span-2">
+            <LinkColumn title="For Diners" links={DINER_LINKS} />
           </div>
-          <div>
-            <h4 className="font-display font-bold text-gray-900">For Chefs</h4>
-            <ul className="mt-4 space-y-2 text-sm text-gray-600">
-              <li><Link href="/become-chef" className="hover:text-orange-500">Become a Chef</Link></li>
-              <li><Link href="/pricing" className="hover:text-orange-500">Pricing</Link></li>
-            </ul>
+          <div className="lg:col-span-2">
+            <LinkColumn title="For Chefs" links={CHEF_LINKS} />
           </div>
-          <div>
-            <h4 className="font-display font-bold text-gray-900">Support</h4>
-            <ul className="mt-4 space-y-2 text-sm text-gray-600">
-              <li><Link href="/founder" className="hover:text-orange-500">Our Story</Link></li>
-              <li><Link href="/help" className="hover:text-orange-500">Help Center</Link></li>
-              <li><Link href="/contact" className="hover:text-orange-500">Contact</Link></li>
-              <li><Link href="/privacy" className="hover:text-orange-500">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="hover:text-orange-500">Terms of Service</Link></li>
-            </ul>
+          <div className="lg:col-span-2">
+            <LinkColumn title="Support" links={SUPPORT_LINKS} />
+          </div>
+
+          {/* Contact — its own column */}
+          <div className="col-span-2 sm:col-span-4 lg:col-span-2">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-gray-900">Contact</h4>
+            <address className="mt-3 space-y-2 text-sm not-italic leading-relaxed text-gray-600">
+              <p>
+                12 Woodlands Square, #07-85/86/87
+                <br />
+                Woods Square Tower 1, Singapore 737715
+              </p>
+              <p>
+                <a href="tel:+6581213280" className="transition hover:text-orange-500">+65 8121 3280</a>
+                <br />
+                <span className="text-gray-500">WhatsApp </span>
+                <a href="https://wa.me/6581213280" target="_blank" rel="noopener noreferrer" className="transition hover:text-orange-500">+65 8121 3280</a>
+              </p>
+              <p>
+                <a href="mailto:hello@potluckhub.io" className="transition hover:text-orange-500">hello@potluckhub.io</a>
+              </p>
+            </address>
           </div>
         </div>
-        <div className="mt-8 border-t border-orange-100 pt-8 text-center text-sm text-gray-500">
-          © {new Date().getFullYear()} Potluck · Made with love in Singapore 🇸🇬 · All rights reserved.
+
+        <div className="mt-8 border-t border-orange-100 pt-6 text-center text-xs text-gray-500">
+          © {new Date().getFullYear()} Potluck · Made with love in Singapore 🇸🇬
         </div>
       </div>
     </footer>
