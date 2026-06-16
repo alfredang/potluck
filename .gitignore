@@ -60,3 +60,6 @@ ios/build/
 *.db
 *.sqlite
 .env*.local
+
+# Playwright MCP artifacts
+.playwright-mcp/
