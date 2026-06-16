@@ -99,21 +99,37 @@ export function SiteFooter() {
           {/* Contact — its own column */}
           <div className="col-span-2 sm:col-span-4 lg:col-span-2">
             <h4 className="text-xs font-bold uppercase tracking-wider text-gray-900">Contact</h4>
-            <address className="mt-3 space-y-2 text-sm not-italic leading-relaxed text-gray-600">
-              <p>
-                12 Woodlands Square, #07-85/86/87
-                <br />
-                Woods Square Tower 1, Singapore 737715
-              </p>
-              <p>
+            <address className="mt-3 space-y-3 text-sm not-italic leading-relaxed text-gray-600">
+              <div className="flex gap-2.5">
+                <svg className="mt-0.5 h-4 w-4 shrink-0 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span>
+                  12 Woodlands Square, #07-85/86/87
+                  <br />
+                  Woods Square Tower 1, Singapore 737715
+                </span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <svg className="h-4 w-4 shrink-0 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
                 <a href="tel:+6581213280" className="transition hover:text-orange-500">+65 8121 3280</a>
-                <br />
-                <span className="text-gray-500">WhatsApp </span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <svg className="h-4 w-4 shrink-0 text-green-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12.04 2a9.93 9.93 0 0 0-8.5 15.06L2 22l5.07-1.49A9.93 9.93 0 1 0 12.04 2zm0 1.82a8.1 8.1 0 0 1 6.86 12.4l-.2.32.62 2.27-2.32-.61-.31.18a8.1 8.1 0 1 1-4.65-14.76zm-3.4 4.2c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.5.57.18 1.1.16 1.51.1.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.64-1.19-1.42-1.33-1.66-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46z" />
+                </svg>
                 <a href="https://wa.me/6581213280" target="_blank" rel="noopener noreferrer" className="transition hover:text-orange-500">+65 8121 3280</a>
-              </p>
-              <p>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <svg className="h-4 w-4 shrink-0 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-10 5L2 7" />
+                </svg>
                 <a href="mailto:hello@potluckhub.io" className="transition hover:text-orange-500">hello@potluckhub.io</a>
-              </p>
+              </div>
             </address>
           </div>
         </div>
