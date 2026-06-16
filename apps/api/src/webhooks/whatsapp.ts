@@ -110,6 +110,28 @@ export const whatsappWebhookRoutes: FastifyPluginAsync = async (fastify) => {
     // Always respond with 200 quickly (Meta requires this)
     return reply.status(200).send('OK');
   });
+
+  // Manual reply endpoint - for sending replies from Telegram
+  // Usage: POST /webhooks/whatsapp/reply { "to": "6590480277", "message": "Hello!" }
+  fastify.post('/whatsapp/reply', async (request: any, reply: any) => {
+    const body = request.body as { to: string; message: string };
+  
+    if (!body.to || !body.message) {
+      return reply.status(400).send({ error: 'Missing to or message' });
+    }
+
+    // Format phone number
+    let phone = body.to.replace(/\D/g, '');
+    if (!phone.startsWith('65')) {
+      phone = '65' + phone;
+    }
+
+    fastify.log.info(`Sending manual WhatsApp reply to +${phone}`);
+  
+    await sendWhatsAppMessage(phone, body.message);
+  
+    return reply.status(200).send({ success: true, to: phone });
+  });
 };
 
 // Forward incoming WhatsApp message to Telegram PotLuck group
@@ -221,25 +243,3 @@ async function sendWhatsAppMessage(to: string, text: string): Promise<void> {
     req.end();
   });
 }
-
-// Manual reply endpoint - for sending replies from Telegram
-// Usage: POST /webhooks/whatsapp/reply { "to": "6590480277", "message": "Hello!" }
-fastify.post('/whatsapp/reply', async (request: any, reply: any) => {
-  const body = request.body as { to: string; message: string };
-  
-  if (!body.to || !body.message) {
-    return reply.status(400).send({ error: 'Missing to or message' });
-  }
-
-  // Format phone number
-  let phone = body.to.replace(/\D/g, '');
-  if (!phone.startsWith('65')) {
-    phone = '65' + phone;
-  }
-
-  fastify.log.info(`Sending manual WhatsApp reply to +${phone}`);
-  
-  await sendWhatsAppMessage(phone, body.message);
-  
-  return reply.status(200).send({ success: true, to: phone });
-});
