@@ -1,8 +1,8 @@
 import 'dotenv/config';
-import { drizzle } from 'drizzle-orm/neon-http';
-import { neon } from '@neondatabase/serverless';
+import { drizzle } from 'drizzle-orm/node-postgres';
+import pg from 'pg';
 import { eq } from 'drizzle-orm';
-import * as schema from './schema';
+import * as schema from './schema/index.js';
 
 /**
  * Additive, idempotent seed for diner reviews.
@@ -14,8 +14,10 @@ import * as schema from './schema';
  * use deterministic booking numbers and reviews are keyed by their unique booking.
  */
 
-const sqlClient = neon(process.env.DATABASE_URL!);
-const db = drizzle({ client: sqlClient, schema });
+// Use the same driver/config as the running API (node-postgres, ssl:false) so this
+// works against the Coolify-hosted Postgres, not just Neon.
+const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL!, ssl: false });
+const db = drizzle({ client: pool, schema });
 
 const DINERS = [
   { email: 'review.wei@potluckhub-diners.io', firstName: 'Wei Ling', lastName: 'Goh', avatarUrl: 'https://i.pravatar.cc/200?img=5' },
