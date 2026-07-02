@@ -8,6 +8,7 @@ import { FOOD_CATEGORIES } from '@homechef/shared';
 import { CHEFS } from '../../lib/chefs-data';
 import { SiteNav } from '../components/SiteNav';
 import { SiteFooter } from '../components/SiteFooter';
+import { FeaturedBadge, VerifiedBadge } from '../components/ChefBadges';
 
 // Maps a category slug to the cuisine strings (lowercased) that should match it.
 // Lets one filter chip cover several natural cuisine labels used on chef cards
@@ -83,8 +84,12 @@ function ExploreContent() {
         result.sort((a, b) => b.minPrice - a.minPrice);
         break;
       default:
-        // recommended - keep original order with slight boost for higher ratings
-        result.sort((a, b) => b.rating * b.reviewCount - a.rating * a.reviewCount);
+        // recommended — featured chefs first, then by rating momentum
+        result.sort(
+          (a, b) =>
+            Number(b.isFeatured) - Number(a.isFeatured) ||
+            b.rating * b.reviewCount - a.rating * a.reviewCount
+        );
     }
 
     return result;
@@ -203,12 +208,18 @@ function ExploreContent() {
                   href={`/chef/${chef.id}`}
                   className="group overflow-hidden rounded-2xl border border-orange-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-warm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
                 >
-                  <div className="aspect-[4/3] overflow-hidden bg-gray-200">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
                     <img
                       src={chef.image}
                       alt={`${chef.name} — ${chef.specialty} home chef in ${chef.location}, Singapore`}
                       className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                     />
+                    {(chef.isVerified || chef.isFeatured) && (
+                      <div className="absolute left-2 top-2 flex gap-1.5">
+                        {chef.isFeatured && <FeaturedBadge />}
+                        {chef.isVerified && <VerifiedBadge />}
+                      </div>
+                    )}
                   </div>
                   <div className="p-4">
                     <div className="flex items-start justify-between">

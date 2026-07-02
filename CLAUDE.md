@@ -86,6 +86,15 @@ Drizzle queries in pages.
   **The iOS/Android apps use these same endpoints** (they poll the status route and open the
   hosted page in an in-app browser) — don't change the request/response shapes without
   updating both apps. Setup runbook: `potluck-setup` skill → `references/checkout-providers.md`.
+- **Reviews (same shared-endpoint pattern as checkout):** shared `GET/POST app/api/reviews`
+  (used by web + both mobile apps; accepts slug or uuid chef ids), backed by `chef_reviews`
+  (`apps/api/src/db/schema/chef-reviews.ts`, self-migrating via `lib/reviews.ts`). For uuid
+  chefs the GET merges the canonical `reviews` table. UI: `app/components/ChefReviews.tsx`
+  (list + write form) on chef pages; moderation at `/admin/reviews` (hide/delete).
+- **Chef verification & featured:** static chefs carry `isVerified` (site-visit verified) and
+  `isFeatured` flags in `chefs-data.ts`; badges in `app/components/ChefBadges.tsx` render on
+  `/explore` cards and chef pages; the process is explained at `/chef-verification` (in the
+  sitemap). Featured chefs sort first under the default "recommended" sort.
 - **Likes:** generic `app/components/LikeButton.tsx` (optimistic + `localStorage`) backed by
   `app/api/menus/like/route.ts` (static menus) and `app/api/blog/like/route.ts` (posts).
 - **Social share:** `app/components/ShareButtons.tsx` (LinkedIn/X/Facebook/WhatsApp/Email/copy).

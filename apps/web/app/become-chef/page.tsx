@@ -125,7 +125,10 @@ export default function BecomeChefPage() {
                 </div>
                 <h3 className="mt-4 font-semibold">Verify Identity</h3>
                 <p className="mt-2 text-sm text-gray-600">
-                  Submit ID verification and food safety documents
+                  Submit ID verification and food safety documents, then pass our{' '}
+                  <Link href="/chef-verification" className="text-orange-500 hover:text-orange-600">
+                    site-visit verification
+                  </Link>
                 </p>
               </div>
               <div className="text-center">

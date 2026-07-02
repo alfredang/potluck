@@ -9,6 +9,7 @@ const DINER_LINKS = [
 
 const CHEF_LINKS = [
   { href: '/become-chef', label: 'Become a Chef' },
+  { href: '/chef-verification', label: 'Chef Verification' },
   { href: '/pricing', label: 'Pricing' },
 ];
 

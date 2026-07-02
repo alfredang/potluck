@@ -20,4 +20,5 @@ export {
   orderStatusEnum,
   paymentProviderEnum,
   orderPlatformEnum,
+  chefReviews,
 } from '../../api/src/db/schema/index';

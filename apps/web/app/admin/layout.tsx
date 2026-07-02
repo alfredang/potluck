@@ -15,6 +15,7 @@ async function logout() {
 const NAV = [
   { href: '/admin', label: 'Dashboard' },
   { href: '/admin/orders', label: 'Orders' },
+  { href: '/admin/reviews', label: 'Reviews' },
   { href: '/admin/posts', label: 'Blog Posts' },
   { href: '/admin/categories', label: 'Categories' },
 ];

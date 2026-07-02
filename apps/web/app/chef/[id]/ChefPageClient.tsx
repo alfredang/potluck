@@ -7,6 +7,8 @@ import { ShareButtons } from '../../components/ShareButtons';
 import { getChef, type MenuItem } from '../../../lib/chefs-data';
 import { SiteNav } from '../../components/SiteNav';
 import { SiteFooter } from '../../components/SiteFooter';
+import { FeaturedBadge, VerifiedBadge } from '../../components/ChefBadges';
+import { ChefReviews } from '../../components/ChefReviews';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://potluckhub.io';
 
@@ -488,8 +490,20 @@ export default function ChefPageClient({ id }: { id: string }) {
             <div className="md:col-span-2">
               <div className="flex items-start justify-between">
                 <div>
-                  <h1 className="text-3xl font-bold text-gray-900">{chef.name}</h1>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h1 className="text-3xl font-bold text-gray-900">{chef.name}</h1>
+                    {chef.isFeatured && <FeaturedBadge />}
+                    {chef.isVerified && <VerifiedBadge withLink />}
+                  </div>
                   <p className="mt-1 text-lg text-gray-600">{chef.specialty} Cuisine</p>
+                  {chef.isVerified && (
+                    <Link
+                      href="/chef-verification"
+                      className="mt-1 inline-block text-sm text-teal-700 hover:text-teal-800"
+                    >
+                      Identity &amp; kitchen verified by Potluck (site visit) →
+                    </Link>
+                  )}
                 </div>
                 <div className="text-right">
                   <div className="flex items-center gap-1 text-lg">
@@ -637,52 +651,10 @@ export default function ChefPageClient({ id }: { id: string }) {
         </div>
       </div>
 
-      {/* Reviews Section */}
+      {/* Reviews Section — live, same /api/reviews the mobile apps use */}
       <div className="bg-white py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900">Reviews</h2>
-          <div className="mt-6 space-y-6">
-            {/* Sample reviews */}
-            <div className="border-b border-gray-200 pb-6">
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-500 font-semibold">
-                  JL
-                </div>
-                <div>
-                  <p className="font-medium">John Lee</p>
-                  <div className="flex items-center gap-1 text-sm text-yellow-500">
-                    ★★★★★
-                  </div>
-                </div>
-                <span className="ml-auto text-sm text-gray-500">2 weeks ago</span>
-              </div>
-              <p className="mt-3 text-gray-700">
-                Amazing experience! The food was authentic and delicious. {chef.name} was so welcoming
-                and shared stories about each dish. Will definitely come back!
-              </p>
-            </div>
-            <div className="border-b border-gray-200 pb-6">
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-500 font-semibold">
-                  SC
-                </div>
-                <div>
-                  <p className="font-medium">Sarah Chen</p>
-                  <div className="flex items-center gap-1 text-sm text-yellow-500">
-                    ★★★★★
-                  </div>
-                </div>
-                <span className="ml-auto text-sm text-gray-500">1 month ago</span>
-              </div>
-              <p className="mt-3 text-gray-700">
-                Such a unique dining experience. The attention to detail in every dish was incredible.
-                Highly recommend for anyone looking for authentic home-cooked food.
-              </p>
-            </div>
-          </div>
-          <button className="mt-6 text-orange-500 hover:text-orange-600 font-medium">
-            View all {chef.reviewCount} reviews →
-          </button>
+          <ChefReviews chefId={chef.id} chefName={chef.name} />
         </div>
       </div>
 
