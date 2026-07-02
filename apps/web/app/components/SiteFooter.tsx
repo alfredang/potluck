@@ -136,6 +136,17 @@ export function SiteFooter() {
 
         <div className="mt-8 border-t border-orange-100 pt-6 text-center text-xs text-gray-500">
           © {new Date().getFullYear()} Potluck · Made with love in Singapore 🇸🇬
+          <p className="powered-by mt-1">
+            Powered by{' '}
+            <a
+              href="https://www.tertiaryinfotech.com/"
+              target="_blank"
+              rel="noopener"
+              className="transition hover:text-orange-500"
+            >
+              Tertiary Infotech Academy Pte Ltd
+            </a>
+          </p>
         </div>
       </div>
     </footer>
