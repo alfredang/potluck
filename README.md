@@ -42,7 +42,14 @@ Potluck solves the problem of finding authentic, home-cooked meals by connecting
 - **Multi-Provider Checkout** - Pay by credit/debit card (Stripe), PayPal, or PayNow/card
   (HitPay) — one shared checkout backend used by the website and both mobile apps, with
   server-side pricing (menu × guests + 4% platform fee, SGD) and signature-verified webhooks
-- **Admin CMS** - Password-protected `/admin` for blog posts, categories, and checkout orders
+- **Chef Verification (site visit)** - Every Verified badge is earned through an in-person
+  kitchen visit; the process is public at [/chef-verification](https://potluckhub.io/chef-verification)
+- **Featured & Verified Badges** - Trust badges on explore cards and chef pages; featured
+  chefs surface first, on the website and in both mobile apps
+- **Guest Reviews** - Write and read chef reviews (shared `/api/reviews` endpoint across web,
+  iOS and Android, with verified-booking tagging and admin moderation)
+- **Admin CMS** - Password-protected `/admin` for blog posts, categories, checkout orders, and
+  review moderation
 - **Multi-tier Pricing** - Free, Basic (S$10/mo), Pro (S$20/mo), and Unlimited (S$30/mo)
   subscription plans for chefs
 
