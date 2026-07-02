@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "seed:blog": "tsx scripts/seed-blog.ts"
+    "seed:blog": "tsx scripts/seed-blog.ts",
+    "migrate:orders": "tsx scripts/migrate-orders.ts"
   },
   "dependencies": {
     "@homechef/shared": "workspace:*",

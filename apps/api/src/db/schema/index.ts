@@ -13,3 +13,4 @@ export * from './reviews';
 export * from './disputes';
 export * from './admin';
 export * from './blog';
+export * from './orders';

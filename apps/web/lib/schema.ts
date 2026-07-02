@@ -16,4 +16,8 @@ export {
   blogPosts,
   menuLikes,
   blogStatusEnum,
+  orders,
+  orderStatusEnum,
+  paymentProviderEnum,
+  orderPlatformEnum,
 } from '../../api/src/db/schema/index';

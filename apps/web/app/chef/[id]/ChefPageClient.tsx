@@ -71,7 +71,46 @@ function getAvailableSlots() {
   return slots;
 }
 
-// Booking Modal Component
+// Payment method icons (inline SVG per repo convention)
+function CardIcon() {
+  return (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+      <rect x="2.5" y="5" width="19" height="14" rx="2.5" />
+      <path strokeLinecap="round" d="M2.5 9.5h19M6 14.5h4" />
+    </svg>
+  );
+}
+
+function PayPalIcon() {
+  return (
+    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 1.79A.77.77 0 0 1 5.704 1h7.088c2.352 0 4.01.49 4.927 1.457.859.904 1.135 2.19.845 3.93-.014.083-.029.168-.046.254-.594 3.05-2.63 4.596-6.053 4.596H10.72a.77.77 0 0 0-.76.65l-.93 5.894-.263 1.668a.64.64 0 0 1-.633.545l-1.058 3.343zm12.09-15.06c-.02.117-.043.237-.069.36-.594 3.05-2.63 4.595-6.053 4.595h-1.745a.77.77 0 0 0-.76.65l-1.192 7.562a.641.641 0 0 0 .633.74h3.24a.674.674 0 0 0 .665-.568l.028-.145.517-3.278.033-.18a.674.674 0 0 1 .665-.569h.42c2.995 0 5.34-1.216 6.025-4.735.286-1.47.138-2.698-.62-3.561a2.96 2.96 0 0 0-.848-.647l.06-.224z" />
+    </svg>
+  );
+}
+
+function QrIcon() {
+  return (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+      <rect x="3" y="3" width="7" height="7" rx="1" />
+      <rect x="14" y="3" width="7" height="7" rx="1" />
+      <rect x="3" y="14" width="7" height="7" rx="1" />
+      <path strokeLinecap="round" d="M14 14h3v3h-3zM20 14h1M14 20h1M18 18h3v3h-3z" />
+    </svg>
+  );
+}
+
+const PAYMENT_METHODS = [
+  { id: 'stripe', label: 'Credit / Debit Card', sub: 'Powered by Stripe', icon: <CardIcon /> },
+  { id: 'paypal', label: 'PayPal', sub: 'Pay with your PayPal account', icon: <PayPalIcon /> },
+  { id: 'hitpay', label: 'PayNow / Card', sub: 'Powered by HitPay', icon: <QrIcon /> },
+] as const;
+
+type PaymentProvider = (typeof PAYMENT_METHODS)[number]['id'];
+
+// Booking Modal Component — two steps: details → contact & payment.
+// Submitting creates an order via /api/checkout and redirects to the
+// provider's hosted payment page (Stripe / PayPal / HitPay).
 function BookingModal({
   isOpen,
   onClose,
@@ -83,12 +122,17 @@ function BookingModal({
   menu: { id: string; name: string; price: number; prepTime: number } | null;
   chefName: string;
 }) {
+  const [step, setStep] = useState<'details' | 'payment'>('details');
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [guests, setGuests] = useState(2);
   const [notes, setNotes] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [provider, setProvider] = useState<PaymentProvider>('stripe');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const availableSlots = getAvailableSlots();
 
@@ -96,174 +140,297 @@ function BookingModal({
 
   const selectedSlotData = availableSlots.find(s => s.date === selectedSlot);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!selectedSlot || !selectedTime) return;
+  const subtotal = menu.price * guests;
+  const platformFee = Math.round(subtotal * 0.04);
+  const total = subtotal + platformFee;
+  const fmt = (cents: number) => `S$${(cents / 100).toFixed(2)}`;
 
-    setIsSubmitting(true);
-
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
-    setIsSubmitting(false);
-    setIsSuccess(true);
-
-    // Reset after showing success
-    setTimeout(() => {
-      setIsSuccess(false);
-      onClose();
-      setSelectedSlot(null);
-      setSelectedTime(null);
-      setGuests(2);
-      setNotes('');
-    }, 2000);
+  const handleClose = () => {
+    setStep('details');
+    setError(null);
+    onClose();
   };
 
-  const totalPrice = (menu.price * guests) / 100;
+  const handlePay = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedSlot || !selectedTime || isSubmitting) return;
+
+    setIsSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          menuId: menu.id,
+          guests,
+          scheduledDate: selectedSlot,
+          scheduledTime: selectedTime,
+          specialRequests: notes || null,
+          customerName: name,
+          customerEmail: email,
+          customerPhone: phone || null,
+          provider,
+          platform: 'web',
+        }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { redirectUrl?: string; error?: string };
+      if (!res.ok || !data.redirectUrl) {
+        setError(data.error || 'Could not start the payment. Please try again.');
+        setIsSubmitting(false);
+        return;
+      }
+      window.location.href = data.redirectUrl; // hosted payment page
+    } catch {
+      setError('Network error — please check your connection and try again.');
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
       {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-        onClick={onClose}
+        onClick={handleClose}
       />
 
       {/* Modal */}
       <div className="relative w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl my-8">
-        {isSuccess ? (
-          <div className="py-12 text-center">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-4xl">
-              ✓
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900">Booking Request Sent!</h3>
-            <p className="mt-2 text-gray-600">
-              {chefName} will confirm your booking shortly.
-            </p>
-          </div>
-        ) : (
-          <>
-            <div className="flex items-center justify-between">
-              <h3 className="text-xl font-semibold text-gray-900">Book This Dish</h3>
-              <button
-                onClick={onClose}
-                className="rounded-full p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
-              >
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+        <div className="flex items-center justify-between">
+          <h3 className="text-xl font-semibold text-gray-900">
+            {step === 'details' ? 'Book This Dish' : 'Contact & Payment'}
+          </h3>
+          <button
+            onClick={handleClose}
+            className="rounded-full p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+          >
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="mt-4 rounded-lg bg-orange-50 p-4">
+          <h4 className="font-medium text-gray-900">{menu.name}</h4>
+          <p className="text-sm text-gray-600">by {chefName}</p>
+          <p className="mt-1 text-lg font-semibold text-orange-500">
+            ${(menu.price / 100).toFixed(2)} per person
+          </p>
+        </div>
+
+        {step === 'details' ? (
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (selectedSlot && selectedTime) setStep('payment');
+            }}
+            className="mt-6 space-y-4"
+          >
+            {/* Available Dates */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Select Available Date</label>
+              <div className="flex gap-2 overflow-x-auto pb-2">
+                {availableSlots.map((slot) => (
+                  <button
+                    key={slot.date}
+                    type="button"
+                    onClick={() => {
+                      setSelectedSlot(slot.date);
+                      setSelectedTime(null);
+                    }}
+                    className={`flex-shrink-0 rounded-lg border px-4 py-3 text-center transition ${
+                      selectedSlot === slot.date
+                        ? 'border-orange-500 bg-orange-50 text-orange-600'
+                        : 'border-gray-200 hover:border-orange-300 hover:bg-orange-50'
+                    }`}
+                  >
+                    <div className="text-sm font-medium">{slot.displayDate}</div>
+                    <div className="text-xs text-gray-500">{slot.times.length} slots</div>
+                  </button>
+                ))}
+              </div>
             </div>
 
-            <div className="mt-4 rounded-lg bg-orange-50 p-4">
-              <h4 className="font-medium text-gray-900">{menu.name}</h4>
-              <p className="text-sm text-gray-600">by {chefName}</p>
-              <p className="mt-1 text-lg font-semibold text-orange-500">
-                ${(menu.price / 100).toFixed(2)} per person
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-              {/* Available Dates */}
+            {/* Available Times */}
+            {selectedSlotData && (
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Select Available Date</label>
-                <div className="flex gap-2 overflow-x-auto pb-2">
-                  {availableSlots.map((slot) => (
+                <label className="block text-sm font-medium text-gray-700 mb-2">Select Time</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {selectedSlotData.times.map((time) => (
                     <button
-                      key={slot.date}
+                      key={time}
                       type="button"
-                      onClick={() => {
-                        setSelectedSlot(slot.date);
-                        setSelectedTime(null);
-                      }}
-                      className={`flex-shrink-0 rounded-lg border px-4 py-3 text-center transition ${
-                        selectedSlot === slot.date
-                          ? 'border-orange-500 bg-orange-50 text-orange-600'
+                      onClick={() => setSelectedTime(time)}
+                      className={`rounded-lg border px-3 py-2 text-sm font-medium transition ${
+                        selectedTime === time
+                          ? 'border-orange-500 bg-orange-500 text-white'
                           : 'border-gray-200 hover:border-orange-300 hover:bg-orange-50'
                       }`}
                     >
-                      <div className="text-sm font-medium">{slot.displayDate}</div>
-                      <div className="text-xs text-gray-500">{slot.times.length} slots</div>
+                      {time}
                     </button>
                   ))}
                 </div>
               </div>
+            )}
 
-              {/* Available Times */}
-              {selectedSlotData && (
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Select Time</label>
-                  <div className="grid grid-cols-3 gap-2">
-                    {selectedSlotData.times.map((time) => (
-                      <button
-                        key={time}
-                        type="button"
-                        onClick={() => setSelectedTime(time)}
-                        className={`rounded-lg border px-3 py-2 text-sm font-medium transition ${
-                          selectedTime === time
-                            ? 'border-orange-500 bg-orange-500 text-white'
-                            : 'border-gray-200 hover:border-orange-300 hover:bg-orange-50'
-                        }`}
-                      >
-                        {time}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700">Number of Guests</label>
-                <div className="mt-1 flex items-center gap-3">
-                  <button
-                    type="button"
-                    onClick={() => setGuests(Math.max(1, guests - 1))}
-                    className="rounded-lg border border-gray-300 px-3 py-2 hover:bg-gray-50"
-                  >
-                    -
-                  </button>
-                  <span className="w-12 text-center text-lg font-medium">{guests}</span>
-                  <button
-                    type="button"
-                    onClick={() => setGuests(Math.min(10, guests + 1))}
-                    className="rounded-lg border border-gray-300 px-3 py-2 hover:bg-gray-50"
-                  >
-                    +
-                  </button>
-                </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Number of Guests</label>
+              <div className="mt-1 flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setGuests(Math.max(1, guests - 1))}
+                  className="rounded-lg border border-gray-300 px-3 py-2 hover:bg-gray-50"
+                >
+                  -
+                </button>
+                <span className="w-12 text-center text-lg font-medium">{guests}</span>
+                <button
+                  type="button"
+                  onClick={() => setGuests(Math.min(20, guests + 1))}
+                  className="rounded-lg border border-gray-300 px-3 py-2 hover:bg-gray-50"
+                >
+                  +
+                </button>
               </div>
+            </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700">Special Requests (optional)</label>
-                <textarea
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
-                  placeholder="Allergies, dietary restrictions, special occasions..."
-                  rows={3}
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Special Requests (optional)</label>
+              <textarea
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                placeholder="Allergies, dietary restrictions, special occasions..."
+                rows={3}
+                className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
+              />
+            </div>
+
+            <div className="border-t border-gray-200 pt-4 space-y-1 text-sm">
+              <div className="flex items-center justify-between text-gray-600">
+                <span>Subtotal ({guests} guest{guests > 1 ? 's' : ''})</span>
+                <span>{fmt(subtotal)}</span>
+              </div>
+              <div className="flex items-center justify-between text-gray-600">
+                <span>Platform fee (4%)</span>
+                <span>{fmt(platformFee)}</span>
+              </div>
+              <div className="flex items-center justify-between text-lg">
+                <span className="font-medium text-gray-900">Total</span>
+                <span className="font-semibold text-orange-500">{fmt(total)}</span>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={!selectedSlot || !selectedTime}
+              className="w-full rounded-lg bg-orange-500 py-3 font-semibold text-white hover:bg-orange-600 disabled:bg-orange-300 disabled:cursor-not-allowed"
+            >
+              {!selectedSlot ? 'Select a date' : !selectedTime ? 'Select a time' : 'Continue to Payment'}
+            </button>
+          </form>
+        ) : (
+          <form onSubmit={handlePay} className="mt-6 space-y-4">
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="sm:col-span-2">
+                <label className="block text-sm font-medium text-gray-700">Your Name</label>
+                <input
+                  type="text"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Full name"
                   className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
                 />
               </div>
-
-              <div className="border-t border-gray-200 pt-4">
-                <div className="flex items-center justify-between text-lg">
-                  <span className="font-medium text-gray-900">Total</span>
-                  <span className="font-semibold text-orange-500">${totalPrice.toFixed(2)}</span>
-                </div>
-                <p className="text-sm text-gray-500">for {guests} guest{guests > 1 ? 's' : ''}</p>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Email</label>
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@example.com"
+                  className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
+                />
               </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Phone (optional)</label>
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="+65"
+                  className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
+                />
+              </div>
+            </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting || !selectedSlot || !selectedTime}
-                className="w-full rounded-lg bg-orange-500 py-3 font-semibold text-white hover:bg-orange-600 disabled:bg-orange-300 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? 'Sending Request...' : !selectedSlot ? 'Select a date' : !selectedTime ? 'Select a time' : 'Request Booking'}
-              </button>
-              <p className="text-center text-xs text-gray-500">
-                You won&apos;t be charged until the chef confirms your booking
-              </p>
-            </form>
-          </>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Payment Method</label>
+              <div className="space-y-2">
+                {PAYMENT_METHODS.map((m) => (
+                  <button
+                    key={m.id}
+                    type="button"
+                    onClick={() => setProvider(m.id)}
+                    className={`flex w-full items-center gap-3 rounded-lg border px-4 py-3 text-left transition ${
+                      provider === m.id
+                        ? 'border-orange-500 bg-orange-50'
+                        : 'border-gray-200 hover:border-orange-300'
+                    }`}
+                  >
+                    <span className={provider === m.id ? 'text-orange-500' : 'text-gray-400'}>{m.icon}</span>
+                    <span className="flex-1">
+                      <span className="block text-sm font-medium text-gray-900">{m.label}</span>
+                      <span className="block text-xs text-gray-500">{m.sub}</span>
+                    </span>
+                    <span
+                      className={`h-4 w-4 rounded-full border-2 ${
+                        provider === m.id ? 'border-orange-500 bg-orange-500' : 'border-gray-300'
+                      }`}
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="border-t border-gray-200 pt-4 space-y-1 text-sm">
+              <div className="flex items-center justify-between text-gray-600">
+                <span>
+                  {selectedSlotData?.displayDate} at {selectedTime} · {guests} guest{guests > 1 ? 's' : ''}
+                </span>
+                <button type="button" onClick={() => setStep('details')} className="text-orange-500 hover:text-orange-600 font-medium">
+                  Edit
+                </button>
+              </div>
+              <div className="flex items-center justify-between text-gray-600">
+                <span>Platform fee (4%)</span>
+                <span>{fmt(platformFee)}</span>
+              </div>
+              <div className="flex items-center justify-between text-lg">
+                <span className="font-medium text-gray-900">Total</span>
+                <span className="font-semibold text-orange-500">{fmt(total)}</span>
+              </div>
+            </div>
+
+            {error && (
+              <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">{error}</p>
+            )}
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full rounded-lg bg-orange-500 py-3 font-semibold text-white hover:bg-orange-600 disabled:bg-orange-300 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? 'Redirecting to payment…' : `Proceed to Payment — ${fmt(total)}`}
+            </button>
+            <p className="text-center text-xs text-gray-500">
+              Paid securely in SGD — held until {chefName} confirms your booking. Full refund if the
+              chef can&apos;t make it.
+            </p>
+          </form>
         )}
       </div>
     </div>

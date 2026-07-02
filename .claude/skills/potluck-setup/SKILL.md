@@ -1,12 +1,13 @@
 ---
 name: potluck-setup
 description: >-
-  Configure Potluck's third-party integrations and infrastructure — Stripe payments
-  (Connect, subscriptions, webhooks) and transactional email setup for the home-chef
-  marketplace. Use when wiring up, configuring, or debugging Potluck payments or email, or
-  setting required environment variables. Triggers: "stripe", "payments", "Connect",
-  "subscription", "webhook", "payout", "email setup", "transactional email", "SMTP", "Resend",
-  "env vars for payments/email".
+  Configure Potluck's third-party integrations and infrastructure — the multi-provider
+  booking checkout (Stripe + PayPal + HitPay, shared by web/iOS/Android), Stripe
+  Connect/subscriptions, and transactional email setup for the home-chef marketplace. Use
+  when wiring up, configuring, or debugging Potluck payments, checkout, or email, or setting
+  required environment variables. Triggers: "stripe", "paypal", "hitpay", "paynow",
+  "checkout", "payments", "Connect", "subscription", "webhook", "payout", "orders table",
+  "email setup", "transactional email", "SMTP", "Resend", "env vars for payments/email".
 ---
 
 # Potluck Setup & Integrations
@@ -16,6 +17,10 @@ the repo's secrets rules: **never hardcode keys** — all credentials come from 
 variables (`.env` / Coolify), see CLAUDE.md guardrails and the `secrets` skill.
 
 ## References
+- [references/checkout-providers.md](references/checkout-providers.md) — **the live checkout**:
+  multi-provider (Stripe + PayPal + HitPay) booking checkout shared by web/iOS/Android —
+  architecture, `orders` table migration (`pnpm --filter @homechef/web migrate:orders`),
+  webhook endpoints, and the `STRIPE_*` / `PAYPAL_*` / `HITPAY_*` env vars.
 - [references/stripe-setup.md](references/stripe-setup.md) — Stripe payments: account/Connect
   setup, subscription tiers, webhooks, payouts, and the required `STRIPE_*` env vars.
 - [references/email-setup.md](references/email-setup.md) — transactional email configuration

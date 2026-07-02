@@ -38,3 +38,15 @@ export const subscriptionStatusEnum = pgEnum('subscription_status', [
   'canceled',
   'past_due',
 ]);
+
+export const paymentProviderEnum = pgEnum('payment_provider', ['stripe', 'paypal', 'hitpay']);
+
+export const orderStatusEnum = pgEnum('order_status', [
+  'pending_payment',
+  'paid',
+  'failed',
+  'cancelled',
+  'refunded',
+]);
+
+export const orderPlatformEnum = pgEnum('order_platform', ['web', 'ios', 'android']);

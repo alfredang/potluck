@@ -63,6 +63,9 @@ There are **two data sources** by design:
 DB tables added for the web surface (defined in `apps/api/src/db/schema/blog.ts`):
 - `blog_categories`, `blog_posts` (status `draft|published`, `featured`, `like_count`,
   `view_count`, SEO fields), `menu_likes` (`menu_id` → counter for static menu likes).
+- `orders` (`apps/api/src/db/schema/orders.ts`) — the multi-provider checkout. `menu_id` is
+  text so it accepts both static slugs and DB menu uuids. Create it per environment with
+  `pnpm --filter @homechef/web migrate:orders` (idempotent) or `pnpm db:push`.
 
 Query helpers live in `apps/web/lib/blog.ts`. Always go through these rather than re-writing
 Drizzle queries in pages.
@@ -74,6 +77,15 @@ Drizzle queries in pages.
 - **Blog CMS (admin):** `app/admin/*` — dashboard, posts (list + `[id]` editor incl. `new`),
   categories. Server actions in `actions.ts` files. Auth: single `ADMIN_PASSWORD` env →
   signed cookie (`lib/admin-auth.ts`) → guarded by `middleware.ts` (`/admin/:path*`).
+- **Checkout (Stripe + PayPal + HitPay):** the booking modal in
+  `app/chef/[id]/ChefPageClient.tsx` → `POST app/api/checkout` (server-side pricing:
+  menu × guests + 4% fee, creates `orders` row + hosted-payment session) → provider page →
+  webhooks `app/api/webhooks/{stripe,paypal,hitpay}` + reconciliation on
+  `GET app/api/checkout/[orderId]` and `app/checkout/result/page.tsx`. Provider clients in
+  `lib/payments/*`, order service in `lib/orders.ts`, admin view at `/admin/orders`.
+  **The iOS/Android apps use these same endpoints** (they poll the status route and open the
+  hosted page in an in-app browser) — don't change the request/response shapes without
+  updating both apps. Setup runbook: `potluck-setup` skill → `references/checkout-providers.md`.
 - **Likes:** generic `app/components/LikeButton.tsx` (optimistic + `localStorage`) backed by
   `app/api/menus/like/route.ts` (static menus) and `app/api/blog/like/route.ts` (posts).
 - **Social share:** `app/components/ShareButtons.tsx` (LinkedIn/X/Facebook/WhatsApp/Email/copy).
